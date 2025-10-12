@@ -16,8 +16,10 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flat-top.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="一个基于Hexo的技术博客">
 <meta property="og:type" content="website">
@@ -56,6 +58,7 @@
 
 
 
+  <script src="/js/third-party/pace.js" defer></script>
 
 
   
@@ -69,13 +72,17 @@
 
 
 <!-- GitHub 丝带 -->
-<a href="https://github.com/你的用户名/你的仓库名" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
+<a href="https://github.com/Yoyolp/blog_recouse" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
   <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
     <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
     <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
   </svg>
 </a>
+
+
+
+
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -157,6 +164,11 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
   </nav>
 </div>
   <div class="links-of-author animated">
@@ -165,8 +177,53 @@
       </span>
   </div>
 
+<div id="sidebar-digital-clock" class="site-overview-item">
+    <div class="clock-container">
+        <div class="clock-time">00:00:00</div>
+        <div class="clock-date">2024-01-01</div>
+        <div class="clock-weekday">星期一</div>
+    </div>
+</div>
+
+<script>
+// 简化版电子钟，避免复杂的 JS
+function initClock() {
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const weekday = weekdays[now.getDay()];
+        
+        const clockElement = document.getElementById('sidebar-digital-clock');
+        if (clockElement) {
+            clockElement.querySelector('.clock-time').textContent = hours + ':' + minutes + ':' + seconds;
+            clockElement.querySelector('.clock-date').textContent = year + '-' + month + '-' + day;
+            clockElement.querySelector('.clock-weekday').textContent = weekday;
+        }
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000);
+}
+
+// 延迟初始化，确保 DOM 加载完成
+setTimeout(initClock, 100);
+</script>
+
+
         </div>
       </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
     </div>
 
     
@@ -213,9 +270,24 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-10-11 19:23:58 / 修改时间：21:19:24" itemprop="dateCreated datePublished" datetime="2025-10-11T19:23:58+08:00">2025-10-11</time>
+      <time title="创建时间：2025-10-11 19:23:58" itemprop="dateCreated datePublished" datetime="2025-10-11T19:23:58+08:00">2025-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-12 10:04:18" itemprop="dateModified" datetime="2025-10-12T10:04:18+08:00">2025-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Liunx/" itemprop="url" rel="index"><span itemprop="name">Liunx</span></a>
+        </span>
     </span>
 
   
@@ -228,73 +300,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>Liunx 学习笔记</h1>
-<h4 id="文件的赋权">文件的赋权</h4>
-<p>在Liunx 中 给文件赋权主要通过chmod 命令实现。以下是详细的使用方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> [选项] 权重 文件名</span><br></pre></td></tr></table></figure>
-<p>权限表示方法:</p>
-<ul>
-<li>
-<ol>
-<li>数字表示法:</li>
-</ol>
-<ul>
-<li><strong>r = 4</strong>     # 读 100</li>
-<li><strong>w = 2</strong>     # 写 010</li>
-<li><strong>x = 1</strong>     # 执行 001</li>
-</ul>
-</li>
-<li>
-<ol start="2">
-<li>符号表示法:</li>
-</ol>
-<ul>
-<li>用户类别:
-<ul>
-<li><strong>u</strong> 文件的所有者</li>
-<li><strong>g</strong> 所属组的用户</li>
-<li><strong>o</strong> 其他用户</li>
-<li><strong>a</strong> 所有用户</li>
-</ul>
-</li>
-<li>操作符
-<ul>
-<li><strong>+</strong> 添加权限</li>
-<li><strong>-</strong> 移除权限</li>
-<li><strong>=</strong>  覆盖权限</li>
-</ul>
-</li>
-<li>权限类型
-<ul>
-<li><strong>r</strong> 读权限</li>
-<li><strong>w</strong> 写权限</li>
-<li><strong>x</strong> 执行权限</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>常用选项:</p>
-<ul>
-<li><strong>-R</strong> 递归处理目录以及其子目录</li>
-<li><strong>-v</strong> 显示权限变更信息</li>
-<li><strong>-c</strong> 只有变更时显示信息</li>
-</ul>
-<p>实操:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数字表示法</span></span><br><span class="line"><span class="built_in">chmod</span> 755 filename  <span class="comment"># 所有者：rwx，组用户：r-x，其他用户：r-x</span></span><br><span class="line"><span class="built_in">chmod</span> 644 filename  <span class="comment"># 所有者：rw-，组用户：r--，其他用户：r--</span></span><br><span class="line"><span class="built_in">chmod</span> 777 filename  <span class="comment"># 所有用户都有rwx权限（不推荐）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> u=rw file       <span class="comment"># 设置所有者只有读写权限</span></span><br><span class="line"><span class="built_in">chmod</span> g=r file        <span class="comment"># 设置组用户只有读权限</span></span><br><span class="line"><span class="built_in">chmod</span> o= file         <span class="comment"># 设置其他用户无任何权限</span></span><br><span class="line"><span class="built_in">chmod</span> u=rwx,g=rx,o= file  <span class="comment"># 组合设置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归给目录下所有文件添加执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> -R a+X directory/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归设置目录权限</span></span><br><span class="line"><span class="built_in">chmod</span> -R u=rwx,g=rx,o= directory/</span><br></pre></td></tr></table></figure>
-<h4 id="如何运行可执行文件">如何运行可执行文件</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 直接运行</span><br><span class="line">./script.sh</span><br><span class="line">./script_bin</span><br><span class="line"></span><br><span class="line"># 指定运行方式</span><br><span class="line">bash ./script.sh</span><br><span class="line">python3 ./script_py.py</span><br></pre></td></tr></table></figure>
-<h4 id="递归删除">递归删除</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 递归删除目录及其所有内容</span><br><span class="line">rm -r dir_name</span><br><span class="line"></span><br><span class="line">rm -rf dir_name  # 强制递归删除</span><br><span class="line">rm -ri dir_name  # 递归删除，但是逐个提示</span><br></pre></td></tr></table></figure>
-<h4 id="find-和-grep-命令">find 和 grep 命令</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">find [路径] [选项] [操作]</span><br><span class="line"></span><br><span class="line">grep [选项] <span class="string">&quot;模式&quot;</span> [文件]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在当前目录查找文件</span></span><br><span class="line">find . -name <span class="string">&quot;filename.txt&quot;</span></span><br><span class="line">find . -name <span class="string">&quot;*.txt&quot;</span>           <span class="comment"># 通配符查找</span></span><br><span class="line">find . -name <span class="string">&quot;*.log&quot;</span> -<span class="built_in">type</span> f   <span class="comment"># 只找文件</span></span><br><span class="line">find . -name <span class="string">&quot;src&quot;</span> -<span class="built_in">type</span> d     <span class="comment"># 只找目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 不区分大小写</span></span><br><span class="line">find . -iname <span class="string">&quot;readme*&quot;</span></span><br><span class="line"></span><br><span class="line">find . -<span class="built_in">type</span> f                 <span class="comment"># 普通文件</span></span><br><span class="line">find . -<span class="built_in">type</span> d                 <span class="comment"># 目录</span></span><br><span class="line">find . -<span class="built_in">type</span> l                 <span class="comment"># 符号链接</span></span><br><span class="line">find . -<span class="built_in">type</span> s                 <span class="comment"># 套接字文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按修改时间</span></span><br><span class="line">find . -mtime -7              <span class="comment"># 7天内修改的文件</span></span><br><span class="line">find . -mtime +30             <span class="comment"># 30天前修改的文件</span></span><br><span class="line">find . -mmin -60              <span class="comment"># 60分钟内修改的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按访问时间</span></span><br><span class="line">find . -atime -1              <span class="comment"># 1天内访问的文件</span></span><br><span class="line">find . -ctime +90             <span class="comment"># 90天前状态改变的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照大小</span></span><br><span class="line">find . -size +100M            <span class="comment"># 大于100MB的文件</span></span><br><span class="line">find . -size -1G              <span class="comment"># 小于1GB的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照权限</span></span><br><span class="line">find . -perm 644              <span class="comment"># 权限精确为644的文件</span></span><br><span class="line">find . -perm -u=x             <span class="comment"># 用户有执行权限的文件</span></span><br><span class="line">find . -perm /g=w             <span class="comment"># 组用户有写权限的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在文件中搜索</span></span><br><span class="line">grep <span class="string">&quot;error&quot;</span> logfile.txt</span><br><span class="line">grep <span class="string">&quot;TODO&quot;</span> *.py              <span class="comment"># 在多个文件中搜索</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归搜索</span></span><br><span class="line">grep -r <span class="string">&quot;function&quot;</span> src/       <span class="comment"># 递归搜索目录</span></span><br><span class="line">grep -r <span class="string">&quot;config&quot;</span> . --include=<span class="string">&quot;*.js&quot;</span>  <span class="comment"># 只搜索js文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示行号</span></span><br><span class="line">grep -n <span class="string">&quot;pattern&quot;</span> file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基本正则</span></span><br><span class="line">grep <span class="string">&quot;^start&quot;</span> file.txt        <span class="comment"># 以start开头的行</span></span><br><span class="line">grep <span class="string">&quot;end$&quot;</span> file.txt          <span class="comment"># 以end结尾的行</span></span><br><span class="line">grep <span class="string">&quot;a.b&quot;</span> file.txt           <span class="comment"># a任意字符b</span></span><br><span class="line"></span><br><span class="line">grep -i <span class="string">&quot;pattern&quot;</span> file.txt    <span class="comment"># 忽略大小写</span></span><br><span class="line">grep -v <span class="string">&quot;pattern&quot;</span> file.txt    <span class="comment"># 反向匹配（不包含的行）</span></span><br><span class="line">grep -c <span class="string">&quot;pattern&quot;</span> file.txt    <span class="comment"># 统计匹配行数</span></span><br><span class="line">grep -l <span class="string">&quot;pattern&quot;</span> *.txt       <span class="comment"># 只显示包含匹配的文件名</span></span><br><span class="line">grep -L <span class="string">&quot;pattern&quot;</span> *.txt       <span class="comment"># 显示不包含匹配的文件名</span></span><br><span class="line">grep -A 3 <span class="string">&quot;pattern&quot;</span> file.txt  <span class="comment"># 显示匹配行后3行</span></span><br><span class="line">grep -B 2 <span class="string">&quot;pattern&quot;</span> file.txt  <span class="comment"># 显示匹配行前2行</span></span><br><span class="line">grep -C 2 <span class="string">&quot;pattern&quot;</span> file.txt  <span class="comment"># 显示匹配行前后各2行</span></span><br></pre></td></tr></table></figure>
-<h4 id="创建软连接">创建软连接</h4>
-<p>可以将Liunx 近似为Windows 的快捷方式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s 源文件或目录 链接名称</span><br></pre></td></tr></table></figure>
-<p>如何识别软链接:</p>
-<p>使用 <strong>ls -l</strong> 查看文件权限，软连接文件总是lrwxrwxrwx<br>
-同理通过第一位 如果为 <strong>s</strong>rwxrwxrwx 则为套接字文件</p>
-
+          <p>Liunx 学习笔记1</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/10/11/day3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -356,7 +370,16 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-10-11 12:45:56" itemprop="dateModified" datetime="2025-10-11T12:45:56+08:00">2025-10-11</time>
+      <time title="修改时间：2025-10-12 13:45:20" itemprop="dateModified" datetime="2025-10-12T13:45:20+08:00">2025-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
+        </span>
     </span>
 
   
@@ -369,40 +392,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="MeoCtf-题目-吃豆人">MeoCtf 题目 <a target="_blank" rel="noopener" href="https://ctf.xidian.edu.cn/training/18?challenge=820">吃豆人</a></h2>
-<h3 id="标签-Mini-L-CTF-2025-Web">标签 Mini_L-CTF_2025 Web</h3>
-<p>在进入靶机地址后得到如下画面<br>
-<img src="/images/day2/1.png" alt="图片1"><br>
-然后通过F12 打开开发者工具的时候分析<strong>game.js</strong> 文件分析胜利检查代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 胜利检测</span></span><br><span class="line">   <span class="keyword">if</span> (score &gt;= <span class="number">5000</span> &amp;&amp; !hasGotFlag) &#123;</span><br><span class="line">       <span class="title function_">fetch</span>(<span class="string">&#x27;/submit_score&#x27;</span>, &#123;</span><br><span class="line">           <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">           <span class="attr">headers</span>: &#123; <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span> &#125;,</span><br><span class="line">           <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="attr">score</span>: score &#125;)</span><br><span class="line">       &#125;)</span><br><span class="line">           .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">json</span>())</span><br><span class="line">           .<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (data.<span class="property">flag</span>) &#123;</span><br><span class="line">                   <span class="title function_">alert</span>(<span class="string">&quot;🎉 恭喜！你的flag是：&quot;</span> + data.<span class="property">flag</span>);</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   <span class="title function_">alert</span>(<span class="string">&quot;未达到指定分数！&quot;</span>);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;);</span><br><span class="line">       hasGotFlag = <span class="literal">true</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>得知获得flag的条件是 全局变量score &gt;= 5000, 同时分析发现函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">initGame</span>(<span class="params"></span>) &#123;</span><br><span class="line">    people = [&#123; <span class="attr">x</span>: <span class="number">200</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;];</span><br><span class="line">    dx = box;</span><br><span class="line">    dy = <span class="number">0</span>;</span><br><span class="line">    score = <span class="number">0</span>;</span><br><span class="line">    isGameOver = <span class="literal">false</span>;</span><br><span class="line">    hasGotFlag = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    redBallCount = <span class="number">1000</span>;</span><br><span class="line">    blueBallCount = <span class="number">1</span>;</span><br><span class="line">    balls = [];</span><br><span class="line"></span><br><span class="line">    <span class="title function_">spawnBalls</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (game) <span class="built_in">clearInterval</span>(game);</span><br><span class="line">    game = <span class="built_in">setInterval</span>(draw, <span class="number">150</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>会在游戏开始时初始化score变量， 所以修改score的初始化值为5000<br>
-就能得到flag:miniLCTF{tH1S_g4Me_so-eA5Y-rIghT?6083a665}</p>
-<h2 id="MeoCtf-题目-麦霸评分">MeoCtf 题目 <a target="_blank" rel="noopener" href="https://ctf.xidian.edu.cn/training/18?challenge=836">麦霸评分</a></h2>
-<h3 id="标签-Mini-L-CTF-2025-Web-2">标签 Mini_L_-CTF_2025 Web</h3>
-<p>在进入靶机地址后得到如下画面<br>
-<img src="/images/day2/2.png" alt="图片2"><br>
-将网页保存到本地<br>
-分析发现 整个代码中有4个API</p>
-<h5 id="主要API接口：">主要API接口：</h5>
-<ul>
-<li>prepare-recording          // 准备录音</li>
-<li>compare-recording          // 上传并比较录音（POST）</li>
-<li>get-original-audio         // 获取原始音频URL</li>
-<li>clean-recording/{filename} // 清理特定录音文件（DELETE）</li>
-<li>clean-all-recordings       // 清理所有录音文件（DELETE）</li>
-</ul>
-<p>从 stopRecording 中分析可以看出在停止录音后将处理好的音频数据 传入处理 uploadRecording<br>
-其中 uploadRecording 作用是 调用API compare-recording 将音频上传至服务并返回 分数和flag<br>
-其中传回来的数据如下</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flag: null</span><br><span class="line">message: &quot;很不错诶，继续加油，你就是明日之星&quot;</span><br><span class="line">originalAudioUrl: &quot;/original.wav&quot;</span><br><span class="line">similarity: &quot;11.46&quot;</span><br><span class="line">success: false</span><br></pre></td></tr></table></figure>
-<p>所以只需要利用这个API 就可以获得本题的 flag<br>
-故将 实例文件下载到本地 并在文件末尾添加如下代码:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在页面中添加文件选择按钮</span></span><br><span class="line"><span class="keyword">const</span> fileInput = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;input&#x27;</span>);</span><br><span class="line">fileInput.<span class="property">type</span> = <span class="string">&#x27;file&#x27;</span>;</span><br><span class="line">fileInput.<span class="property">accept</span> = <span class="string">&#x27;audio/wav&#x27;</span>;</span><br><span class="line">fileInput.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;none&#x27;</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(fileInput);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加上传按钮</span></span><br><span class="line"><span class="keyword">const</span> uploadBtn = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line">uploadBtn.<span class="property">textContent</span> = <span class="string">&#x27;上传本地WAV文件&#x27;</span>;</span><br><span class="line">uploadBtn.<span class="property">className</span> = <span class="string">&#x27;button&#x27;</span>;</span><br><span class="line">uploadBtn.<span class="property">onclick</span> = <span class="function">() =&gt;</span> fileInput.<span class="title function_">click</span>();</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.controls&#x27;</span>).<span class="title function_">appendChild</span>(uploadBtn);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件选择处理</span></span><br><span class="line">fileInput.<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> file = e.<span class="property">target</span>.<span class="property">files</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (file &amp;&amp; file.<span class="property">type</span> === <span class="string">&#x27;audio/wav&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">// 显示预览</span></span><br><span class="line">        recordedAudio.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(file);</span><br><span class="line">        recordingContainer.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;block&#x27;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 直接上传</span></span><br><span class="line">        <span class="title function_">uploadRecording</span>(file);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><img src="/images/day2/3.png" alt="图片3"><br>
-得到flag: miniLCTF{Y0u-@rE_4-t41ENt3D-slngEr376fddc2}</p>
-
+          <p>写了两道题目</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/10/10/day2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -456,9 +454,24 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-10-09 08:58:52 / 修改时间：20:28:41" itemprop="dateCreated datePublished" datetime="2025-10-09T08:58:52+08:00">2025-10-09</time>
+      <time title="创建时间：2025-10-09 08:58:52" itemprop="dateCreated datePublished" datetime="2025-10-09T08:58:52+08:00">2025-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-12 13:45:48" itemprop="dateModified" datetime="2025-10-12T13:45:48+08:00">2025-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ctf/" itemprop="url" rel="index"><span itemprop="name">ctf</span></a>
+        </span>
     </span>
 
   
@@ -471,56 +484,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="CTF-题目1-Sign-in">CTF+ 题目1 <a target="_blank" rel="noopener" href="https://www.ctfplus.cn/problem-detail/1975492169263222784/description" title="Sign_in">Sign_in</a></h2>
-<h4 id="标签-Misc-0xgame2025">标签: Misc 0xgame2025</h4>
-<p>由题目发现信息: MGhRa3dve0dvdm0wd29fZDBfMGhRNHczXzJ5MjVfQHhuX3JAbXVfUHliX3BlWH0=<br>
-显然为Base64编码 解码后发现信息 0hQkwo{Govm0wo_d0_0hQ4w3_2y25_@xn_r@mu_Pyb_peX}<br>
-但是仍然不符合flag的格式，通过观察发现疑似凯撒密码 通过 “2y25” 猜测 应为 “2o25” 位移量为10<br>
-解得: 0xGame{Welc0me_t0_0xG4m3_2o25_@nd_h@ck_For_fuN} 获得flag</p>
-<h2 id="CTF-题目2-Vigenere">CTF+ 题目2 <a target="_blank" rel="noopener" href="https://www.ctfplus.cn/problem-detail/1975492206248595456/description">Vigenere</a></h2>
-<h4 id="标签-CRYPTO-0xgame2025">标签 CRYPTO 0xgame2025</h4>
-<p>附件提供python 代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters, punctuation</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">key = <span class="string">&quot;Welcome-2025-0xGame&quot;</span></span><br><span class="line">alphabet = digits + ascii_letters + punctuation</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">vigenere_encrypt</span>(<span class="params">plaintext, key</span>):</span><br><span class="line">    ciphertext = <span class="string">&quot;&quot;</span></span><br><span class="line">    key_index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> plaintext:</span><br><span class="line">        bias = alphabet.index(key[key_index])</span><br><span class="line">        char_index = alphabet.index(char)</span><br><span class="line">        new_index = (char_index + bias) % <span class="built_in">len</span>(alphabet)</span><br><span class="line">        ciphertext += alphabet[new_index]</span><br><span class="line">        key_index = (key_index + <span class="number">1</span>) % <span class="built_in">len</span>(key)</span><br><span class="line">    <span class="keyword">return</span> ciphertext</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(vigenere_encrypt(flag, key))</span><br><span class="line"></span><br><span class="line"><span class="comment"># WL&quot;mKAaequ&#123;q_aY$oz8`wBqLAF_&#123;cku|eYAczt!pmoqAh+</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>发现为一段维吉尼亚密码的加密程序 其中flag库不存在<br>
-但是该维吉尼亚密码提供了密钥，且发现该维吉尼亚字母表与常规不一样存在数字和符号<br>
-故完整的字母表为</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\]^_`&#123;|&#125;~</span><br></pre></td></tr></table></figure>
-<p>所以根据维吉尼亚密码的公式:</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>C</mi><mi>i</mi></msup><mo>=</mo><msup><mi>P</mi><mi>i</mi></msup><mo>+</mo><msup><mi>K</mi><mi>i</mi></msup><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mi>L</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C^i = P^i + K^i (mod L) 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8746639999999999em;"></span><span class="strut bottom" style="height:1.1246639999999999em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mathit">L</span><span class="mclose">)</span></span></span></span></span></p>
-<br>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>P</mi><mi>i</mi></msup><mo>=</mo><msup><mi>C</mi><mi>i</mi></msup><mo>−</mo><msup><mi>K</mi><mi>i</mi></msup><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mi>L</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">P^i = C^i - K^i (mod L) 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8746639999999999em;"></span><span class="strut bottom" style="height:1.1246639999999999em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">−</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">m</span><span class="mord mathit">o</span><span class="mord mathit">d</span><span class="mord mathit">L</span><span class="mclose">)</span></span></span></span></span></p>
-<br>
-其中 L 为 字母表的长度
-<p>得到解密代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters, punctuation</span><br><span class="line"></span><br><span class="line">key = <span class="string">&quot;Welcome-2025-0xGame&quot;</span></span><br><span class="line">alphabet = digits + ascii_letters + punctuation</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">vigenere_decrypt</span>(<span class="params">ciphertext, key</span>):</span><br><span class="line">    plaintext = <span class="string">&quot;&quot;</span></span><br><span class="line">    key_index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> ciphertext:</span><br><span class="line">        <span class="keyword">if</span> char <span class="keyword">in</span> alphabet:</span><br><span class="line">            bias = alphabet.index(key[key_index])</span><br><span class="line">            char_index = alphabet.index(char)</span><br><span class="line">            new_index = (char_index - bias) % <span class="built_in">len</span>(alphabet)</span><br><span class="line">            plaintext += alphabet[new_index]</span><br><span class="line">            key_index = (key_index + <span class="number">1</span>) % <span class="built_in">len</span>(key)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            plaintext += char  <span class="comment"># 保留不在字母表中的字符</span></span><br><span class="line">    <span class="keyword">return</span> plaintext</span><br><span class="line"></span><br><span class="line">ciphertext = <span class="string">&#x27;WL&quot;mKAaequ&#123;q_aY$oz8`wBqLAF_&#123;cku|eYAczt!pmoqAh+&#x27;</span></span><br><span class="line">result = vigenere_decrypt(ciphertext, key)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
-<p>得到flag: 0xGame{you_learned_vigenere_cipher_2df4b1c2e3}</p>
-<h2 id="Liunx-笔记">Liunx 笔记</h2>
-<h4 id="touch-的使用">touch 的使用</h4>
-<p>touch 命令主要用于创建空文件和修改文件的时间戳</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建单个文件</span></span><br><span class="line"><span class="built_in">touch</span> filename.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建多个文件</span></span><br><span class="line"><span class="built_in">touch</span> file1.txt file2.txt file3.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只修改访问时间</span></span><br><span class="line"><span class="built_in">touch</span> -a filename.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改访问时间为指定时间</span></span><br><span class="line"><span class="built_in">touch</span> -a -t 202312251430.00 filename.txt</span><br><span class="line"><span class="comment"># 格式：YYYYMMDDhhmm.ss</span></span><br></pre></td></tr></table></figure>
-<p>注意除了可以用touch 创建命令还可以使用文件重定向符号来创建文件如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo 输出的hellohello 将会被重定向到file1.txt 中</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello_world&quot;</span> &gt; file1.txt</span><br></pre></td></tr></table></figure>
-<h4 id="如何修改用户的密码">如何修改用户的密码</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用passwd 命令</span></span><br><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<h4 id="如何切换账户">如何切换账户</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用su命令</span></span><br><span class="line">su        <span class="comment"># 切换为 root 账号但是保留当前环境</span></span><br><span class="line"></span><br><span class="line">su -      <span class="comment"># 切换为 root 账号</span></span><br><span class="line"></span><br><span class="line">su - [目标用户名] <span class="comment"># 切换为目标用户账号 同时回到该用户的 home 路径</span></span><br><span class="line"></span><br><span class="line">su -c <span class="built_in">command</span>    <span class="comment"># 使用</span></span><br></pre></td></tr></table></figure>
-<h4 id="如何压缩解压文件">如何压缩解压文件</h4>
-<h5 id="使用-tar">使用 tar</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">tar [选项] [文件名] [文件或目录...]</span><br><span class="line"></span><br><span class="line"><span class="comment"># .tar.gz gzip 压缩</span></span><br><span class="line">tar -czvf 压缩包名.tar.gz 要压缩的文件或目录</span><br><span class="line"></span><br><span class="line"><span class="comment"># bzip 压缩</span></span><br><span class="line">tar -cjvf 压缩包名.tar.bz2 要压缩的文件或目录</span><br><span class="line"></span><br><span class="line"><span class="comment"># xz 压缩</span></span><br><span class="line">tar -cJvf 压缩包名.tar.xz 要压缩的文件或目录</span><br><span class="line"></span><br><span class="line"><span class="comment"># 速度优先用 gzip，压缩率优先用 xz，平衡选择用 bzip2。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -xzvf 压缩包名.tar.gz</span><br><span class="line">tar -xjvf 压缩包名.tar.bz2</span><br><span class="line">tar -xJvf 压缩包名.tar.xz</span><br><span class="line"></span><br><span class="line">tar -xvf filename.tar.*    <span class="comment"># 适用于所有格式</span></span><br></pre></td></tr></table></figure>
-<h4 id="如何查看基本日志">如何查看基本日志</h4>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 系统主日志文件</span><br><span class="line">/var/log/syslog          # Ubuntu/Debian 系统日志</span><br><span class="line">/var/log/messages        # CentOS/RHEL 系统日志</span><br><span class="line"></span><br><span class="line"># 认证相关日志</span><br><span class="line">/var/log/auth.log        # 认证日志（Ubuntu/Debian）</span><br><span class="line">/var/log/secure          # 认证日志（CentOS/RHEL）</span><br><span class="line"></span><br><span class="line"># 内核日志</span><br><span class="line">/var/log/kern.log        # 内核消息</span><br><span class="line"></span><br><span class="line"># 启动日志</span><br><span class="line">/var/log/boot.log        # 系统启动日志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 包管理器日志</span><br><span class="line">/var/log/dpkg.log        # Debian/Ubuntu 包安装日志</span><br><span class="line"></span><br><span class="line"># 系统服务日志</span><br><span class="line">/var/log/cron            # 计划任务日志</span><br><span class="line">/var/log/mail.log        # 邮件服务日志</span><br><span class="line">/var/log/faillog         # 失败登录尝试</span><br></pre></td></tr></table></figure>
-<h5 id="使用-journalctl-查看完整的系统日志">使用 journalctl 查看完整的系统日志</h5>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># 查看完整的系统日志</span><br><span class="line">journalctl</span><br><span class="line"></span><br><span class="line"># 查看实时日志（类似 tail -f）</span><br><span class="line">journalctl -f</span><br><span class="line"></span><br><span class="line"># 查看最近日志</span><br><span class="line">journalctl -n 20         # 最后20行</span><br><span class="line">journalctl --since &quot;1 hour ago&quot;</span><br><span class="line"></span><br><span class="line"># 按服务查看日志</span><br><span class="line">journalctl -u nginx.service</span><br><span class="line">journalctl -u ssh.service</span><br><span class="line"></span><br><span class="line"># 按优先级过滤</span><br><span class="line">journalctl -p err        # 只看错误</span><br><span class="line">journalctl -p warning    # 只看警告</span><br><span class="line">journalctl -p info       # 只看信息</span><br><span class="line"></span><br><span class="line"># 优先级级别：emerg(0), alert(1), crit(2), err(3), warning(4), notice(5), info(6), debug(7)</span><br><span class="line"></span><br><span class="line"># 按时间查看</span><br><span class="line">journalctl --since &quot;2024-01-15 09:00:00&quot;</span><br><span class="line">journalctl --since yesterday</span><br><span class="line">journalctl --since &quot;1 hour ago&quot;</span><br><span class="line">journalctl --until &quot;30 minutes ago&quot;</span><br><span class="line"></span><br><span class="line"># 查看特定时间段的日志</span><br><span class="line">journalctl --since &quot;09:00&quot; --until &quot;10:00&quot;</span><br><span class="line"></span><br><span class="line"># 使用 less 查看日志（推荐）</span><br><span class="line">less /var/log/syslog</span><br><span class="line"></span><br><span class="line"># 在 less 中的常用操作：</span><br><span class="line"># - 空格键：向下翻页</span><br><span class="line"># - b：向上翻页</span><br><span class="line"># - /关键词：搜索</span><br><span class="line"># - n：下一个匹配项</span><br><span class="line"># - N：上一个匹配项</span><br><span class="line"># - g：跳到文件开头</span><br><span class="line"># - G：跳到文件结尾</span><br><span class="line"># - q：退出</span><br></pre></td></tr></table></figure>
-<h4 id="Liunx-常用二进制文件目录">Liunx 常用二进制文件目录:</h4>
-<ul>
-<li>/bin 系统基本命令二进制文件目录 -&gt; ls cp mv rm …</li>
-<li>/sbin 系统管理二进制文件    -&gt; fdisk …</li>
-<li>/usr/bin 用户命令二进制文件 -&gt; python vim gcc tar …</li>
-<li>/usr/local/bin 第三方软件二进制库 …</li>
-</ul>
-
+          <p>写了两道题目</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/10/09/day1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -636,8 +608,10 @@
     </span>
     <span class="author" itemprop="copyrightHolder">超级玉米人</span>
   </div>
+
+<!--
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
+  </div> -->
 
     </div>
   </footer>
@@ -649,10 +623,6 @@
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
