@@ -1295,7 +1295,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #79ff40;
+    background: #86671a;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2855,6 +2855,20 @@ body {
   #sidebar-digital-clock .clock-container .clock-weekday {
     font-size: 0.8em;
   }
+}
+@media (max-width: 767px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem !important;
+  }
+  .hero-arrow {
+    font-size: 2rem !important;
+  }
+}
+[data-theme="dark"] #particles-js {
+  background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%) !important;
 }
 @keyframes octocat-wave {
   0%, 100% {
