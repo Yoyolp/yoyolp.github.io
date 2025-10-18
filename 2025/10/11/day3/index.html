@@ -29,7 +29,7 @@
 <meta property="og:description" content="Liunx 学习笔记1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-11T11:23:58.438Z">
-<meta property="article:modified_time" content="2025-10-13T11:39:17.482Z">
+<meta property="article:modified_time" content="2025-10-18T00:33:00.524Z">
 <meta property="article:author" content="超级玉米人">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
@@ -228,7 +228,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Liunx 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#touch-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">touch 的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">如何修改用户的密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E8%B4%A6%E6%88%B7"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">如何切换账户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">如何压缩解压文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-tar"><span class="nav-number">1.0.0.4.1.</span> <span class="nav-text">使用 tar</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E5%9F%BA%E6%9C%AC%E6%97%A5%E5%BF%97"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">如何查看基本日志</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-journalctl-%E6%9F%A5%E7%9C%8B%E5%AE%8C%E6%95%B4%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97"><span class="nav-number">1.0.0.5.1.</span> <span class="nav-text">使用 journalctl 查看完整的系统日志</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Liunx-%E5%B8%B8%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">Liunx 常用二进制文件目录:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E8%B5%8B%E6%9D%83"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">文件的赋权</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">如何运行可执行文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%88%A0%E9%99%A4"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">递归删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-%E5%92%8C-grep-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">find 和 grep 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">创建软连接</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Liunx 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#touch-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">touch 的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">如何修改用户的密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2%E8%B4%A6%E6%88%B7"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">如何切换账户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">如何压缩解压文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-tar"><span class="nav-number">1.0.0.4.1.</span> <span class="nav-text">使用 tar</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E5%9F%BA%E6%9C%AC%E6%97%A5%E5%BF%97"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">如何查看基本日志</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-journalctl-%E6%9F%A5%E7%9C%8B%E5%AE%8C%E6%95%B4%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97"><span class="nav-number">1.0.0.5.1.</span> <span class="nav-text">使用 journalctl 查看完整的系统日志</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Liunx-%E5%B8%B8%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">Liunx 常用二进制文件目录:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E8%B5%8B%E6%9D%83"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">文件的赋权</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">如何运行可执行文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%88%A0%E9%99%A4"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">递归删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find-%E5%92%8C-grep-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">find 和 grep 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">创建软连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">进程相关</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -243,7 +243,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -362,7 +362,7 @@ setTimeout(initClock, 100);
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-10-13 19:39:17" itemprop="dateModified" datetime="2025-10-13T19:39:17+08:00">2025-10-13</time>
+      <time title="修改时间：2025-10-18 08:33:00" itemprop="dateModified" datetime="2025-10-18T08:33:00+08:00">2025-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -474,6 +474,8 @@ setTimeout(initClock, 100);
 <p>如何识别软链接:</p>
 <p>使用 <strong>ls -l</strong> 查看文件权限，软连接文件总是lrwxrwxrwx<br>
 同理通过第一位 如果为 <strong>s</strong>rwxrwxrwx 则为套接字文件</p>
+<h4 id="进程相关">进程相关</h4>
+<p>ps</p>
 
 
         <div>

@@ -21,28 +21,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content=";cd …&#x2F;run&#x2F;secrets;ls ;cd …&#x2F;run&#x2F;secrets;head kubernetes.io">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://example.com/categories/index.html">
+    <meta name="description" content="Ghidra 是一个由美国国家安全局（NSA）开发并开源，的逆向安全工具,是一个软件逆向工程（SRE）框架 包含:  反汇编器：将机器代码转换为汇编代码 反编译器：将机器代码转换为 C-like 伪代码 图形化分析工具：数据可视化、控制流分析等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这是一个Ghidra工具的入门">
+<meta property="og:url" content="http://example.com/2025/10/18/Ghidra01/index.html">
 <meta property="og:site_name" content="超级玉米人的博客">
-<meta property="og:description" content=";cd …&#x2F;run&#x2F;secrets;ls ;cd …&#x2F;run&#x2F;secrets;head kubernetes.io">
+<meta property="og:description" content="Ghidra 是一个由美国国家安全局（NSA）开发并开源，的逆向安全工具,是一个软件逆向工程（SRE）框架 包含:  反汇编器：将机器代码转换为汇编代码 反编译器：将机器代码转换为 C-like 伪代码 图形化分析工具：数据可视化、控制流分析等">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-16T13:25:33.938Z">
-<meta property="article:modified_time" content="2025-10-16T13:25:33.938Z">
+<meta property="og:image" content="http://example.com/images/Ghidra/01/fake_c.png">
+<meta property="og:image" content="http://example.com/images/Ghidra/01/asm_c.png">
+<meta property="og:image" content="http://example.com/images/Ghidra/01/fake_c2.png">
+<meta property="og:image" content="http://example.com/images/Ghidra/01/fake_c3.png">
+<meta property="article:published_time" content="2025-10-18T11:45:54.328Z">
+<meta property="article:modified_time" content="2025-10-18T14:01:35.830Z">
 <meta property="article:author" content="超级玉米人">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/Ghidra/01/fake_c.png">
 
 
-<link rel="canonical" href="http://example.com/categories/">
+<link rel="canonical" href="http://example.com/2025/10/18/Ghidra01/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://example.com/categories/index.html","path":"categories/index.html","title":"categories"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/18/Ghidra01/","path":"2025/10/18/Ghidra01/","title":"这是一个Ghidra工具的入门"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>categories | 超级玉米人的博客
-</title>
+<title>这是一个Ghidra工具的入门 | 超级玉米人的博客</title>
   
 
 
@@ -216,7 +220,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -229,6 +233,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">示例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83-Window11-Ghidra12-1-llvm-mingw-20250613-msvcrt-i686"><span class="nav-number">1.0.1.</span> <span class="nav-text">环境: Window11, Ghidra12.1, llvm-mingw-20250613-msvcrt-i686</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -315,42 +320,146 @@ setTimeout(initClock, 100);
 
     </div>
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/18/Ghidra01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="这是一个Ghidra工具的入门 | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          这是一个Ghidra工具的入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-10-18 19:45:54 / 修改时间：22:01:35" itemprop="dateCreated datePublished" datetime="2025-10-18T19:45:54+08:00">2025-10-18</time>
+    </span>
+
+  
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      
-      <div class="post-body"><div class="category-all-page">
-  <div class="category-all-title">
-    目前共计 5 个分类
-  </div>
-  <div class="category-all">
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ctf/">ctf</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ctf/note/">note</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/liunx/">liunx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/note/">note</a><span class="category-list-count">1</span></li></ul></li></ul>
-  </div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Ghidra 是一个由美国国家安全局（NSA）开发并开源，的逆向安全工具,是一个软件逆向工程（SRE）框架 包含:</p>
+<ul>
+<li>反汇编器：将机器代码转换为汇编代码</li>
+<li>反编译器：将机器代码转换为 C-like 伪代码</li>
+<li>图形化分析工具：数据可视化、控制流分析等</li>
+</ul>
+<span id="more"></span>
+<p>基本工作流程:</p>
+<ol>
+<li>创建项目</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File → New Project → Non-Shared Project</span><br><span class="line">→ 输入项目名称 → 选择存储位置</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>导入二进制文件</li>
+</ol>
+<ul>
+<li>拖拽文件到项目窗口，或</li>
+<li>File → Import File</li>
+<li>选择正确的文件格式（ELF、PE、Mach-O 等）</li>
+</ul>
+<ol start="3">
+<li>反编译并分析代码</li>
+</ol>
+<h2 id="示例：">示例：</h2>
+<h4 id="环境-Window11-Ghidra12-1-llvm-mingw-20250613-msvcrt-i686">环境: Window11, Ghidra12.1, llvm-mingw-20250613-msvcrt-i686</h4>
+<p>编写一个简单的C语言程序 <strong>Hello.c</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;Hello World\n&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// gcc ./Hello.c -o ./Hello.exe -s</span></span><br></pre></td></tr></table></figure>
+<p>在反编译后的结果:</p>
+<p>伪C代码<br>
+<img src="/images/Ghidra/01/fake_c.png" alt="fake_C"></p>
+<p>汇编<br>
+<img src="/images/Ghidra/01/asm_c.png" alt="asm_c"></p>
+<p>接下来尝试稍微复杂点的算法，以如下冒泡排序算法(<strong>sort.c</strong>)实现为例子:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_SIZE 64</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是一个简易的冒泡排序实现</span></span><br><span class="line"><span class="type">int</span>* <span class="title function_">bsort_int</span><span class="params">(<span class="type">const</span> <span class="type">int</span> *<span class="built_in">list</span>, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">  <span class="type">int</span> *arr = (<span class="type">int</span>*)<span class="built_in">malloc</span>(size * <span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (arr == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">    arr[i] = <span class="built_in">list</span>[i];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">while</span> (flag) &#123;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size - <span class="number">1</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[i] &lt; arr[i + <span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="type">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[i + <span class="number">1</span>];</span><br><span class="line">        arr[i + <span class="number">1</span>] = temp;</span><br><span class="line">        flag = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> numbers[MAX_SIZE];</span><br><span class="line">  <span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;请输入数字最多 %d 个&quot;</span>, MAX_SIZE);</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (n &gt; MAX_SIZE || n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;输入数量无效\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;请输入 %d 个数字: \n&quot;</span>, n);</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;numbers[i]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;接下来进行排序...\n&quot;</span>);</span><br><span class="line">  <span class="type">int</span>* num_sorted = bsort_int(numbers, n);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\t&quot;</span>, num_sorted[i]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// gcc ./sort.c -o ./sort.exe</span></span><br></pre></td></tr></table></figure>
+<p>反编译结果：<br>
+<img src="/images/Ghidra/01/fake_c2.png" alt="fake_c"><br>
+<img src="/images/Ghidra/01/fake_c3.png" alt="fake_c"></p>
+<p>伪C代码中的各种类型：</p>
+<ul>
+<li><strong>undefined</strong> 为未知类型 1 Byte</li>
+<li><strong>undefined1</strong> 为1Byte的未知类型</li>
+<li><strong>undefined2</strong> 为2Byte的未知类型</li>
+<li><strong>undefined4</strong> 为4Byte的未知类型</li>
+<li>…</li>
+<li>uint           无符号整型</li>
+<li>ulong          无符号长整型</li>
+<li>…</li>
+</ul>
+
+
+        <div>
+          
+            <div>
+  
+    <div style="text-align: center; color: #ccc; font-size: 14px; margin: 20px 0;">
+      ---------- 已经到底了啦！ (*/ω＼*) ----------
+    </div>
+  
 </div>
-
-      </div>
-      
-      
-      
+          
+        </div>
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/18/Liunx-%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8/" rel="prev" title="Liunx 指令速查表">
+                  <i class="fa fa-angle-left"></i> Liunx 指令速查表
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>
