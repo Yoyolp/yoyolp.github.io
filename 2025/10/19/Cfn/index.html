@@ -21,27 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="今天我使用hexo 搭建了一个个人博客blog 然后将其部署到github上用于记录我的学习过程 hexo 的常用指令 创建一个新的文章 1$ hexo new &quot;My New Post&quot; More info: Writing 启动服务器 1$ hexo server More info: Server 生成静态文件 1$ hexo generate More info: Ge">
+    <meta name="description" content="C function Table">
 <meta property="og:type" content="article">
-<meta property="og:title" content="这是我的第一篇文章">
-<meta property="og:url" content="http://example.com/2025/10/08/this_is_my_first_blog/index.html">
+<meta property="og:title" content="C语言常用函数速查">
+<meta property="og:url" content="http://example.com/2025/10/19/Cfn/index.html">
 <meta property="og:site_name" content="超级玉米人的博客">
-<meta property="og:description" content="今天我使用hexo 搭建了一个个人博客blog 然后将其部署到github上用于记录我的学习过程 hexo 的常用指令 创建一个新的文章 1$ hexo new &quot;My New Post&quot; More info: Writing 启动服务器 1$ hexo server More info: Server 生成静态文件 1$ hexo generate More info: Ge">
+<meta property="og:description" content="C function Table">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-08T11:37:55.088Z">
-<meta property="article:modified_time" content="2025-10-08T12:17:48.731Z">
+<meta property="article:published_time" content="2025-10-19T08:56:25.947Z">
+<meta property="article:modified_time" content="2025-10-19T12:03:27.094Z">
 <meta property="article:author" content="超级玉米人">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2025/10/08/this_is_my_first_blog/">
+<link rel="canonical" href="http://example.com/2025/10/19/Cfn/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/08/this_is_my_first_blog/","path":"2025/10/08/this_is_my_first_blog/","title":"这是我的第一篇文章"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/19/Cfn/","path":"2025/10/19/Cfn/","title":"C语言常用函数速查"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>这是我的第一篇文章 | 超级玉米人的博客</title>
+<title>C语言常用函数速查 | 超级玉米人的博客</title>
   
 
 
@@ -215,7 +215,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -228,7 +228,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-%E7%9A%84%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">hexo 的常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%96%87%E7%AB%A0"><span class="nav-number">1.1.</span> <span class="nav-text">创建一个新的文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%AB%99%E7%82%B9"><span class="nav-number">1.4.</span> <span class="nav-text">部署到远程站点</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -326,7 +325,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/08/this_is_my_first_blog/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/19/Cfn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -339,12 +338,12 @@ setTimeout(initClock, 100);
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="这是我的第一篇文章 | 超级玉米人的博客">
+      <meta itemprop="name" content="C语言常用函数速查 | 超级玉米人的博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          这是我的第一篇文章
+          C语言常用函数速查
         </h1>
 
         <div class="post-meta-container">
@@ -356,7 +355,7 @@ setTimeout(initClock, 100);
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-10-08 19:37:55 / 修改时间：20:17:48" itemprop="dateCreated datePublished" datetime="2025-10-08T19:37:55+08:00">2025-10-08</time>
+      <time title="创建时间：2025-10-19 16:56:25 / 修改时间：20:03:27" itemprop="dateCreated datePublished" datetime="2025-10-19T16:56:25+08:00">2025-10-19</time>
     </span>
 
   
@@ -368,20 +367,54 @@ setTimeout(initClock, 100);
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>今天我使用hexo 搭建了一个个人博客blog 然后将其部署到github上用于记录我的学习过程</p>
-<h2 id="hexo-的常用指令">hexo 的常用指令</h2>
-<h3 id="创建一个新的文章">创建一个新的文章</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="启动服务器">启动服务器</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="生成静态文件">生成静态文件</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="部署到远程站点">部署到远程站点</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <div class="post-body" itemprop="articleBody"><p>C function Table</p>
+<span id="more"></span>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数名字</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">函数原型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">printf</td>
+<td style="text-align:left">格式化输出</td>
+<td style="text-align:left">int printf(const char *format, …);</td>
+</tr>
+<tr>
+<td style="text-align:left">scanf</td>
+<td style="text-align:left">获取用户输入</td>
+<td style="text-align:left">int scanf(const char *format, …);</td>
+</tr>
+<tr>
+<td style="text-align:left">getch</td>
+<td style="text-align:left">从控制台获取一个字符但是不回显到屏幕上，不需要按回车键立刻读取(不是标准库函数，通常Windows)</td>
+<td style="text-align:left">int getch(void);</td>
+</tr>
+<tr>
+<td style="text-align:left">memset</td>
+<td style="text-align:left">是 C 语言标准库中的一个内存操作函数，用于将内存块的每个字节设置为特定的值 memset 将 ptr 指向的内存块的前 num 个字节每个都设置为 value 的值。</td>
+<td style="text-align:left">void *memset(void *ptr, int value, size_t num);</td>
+</tr>
+<tr>
+<td style="text-align:left">strcpy</td>
+<td style="text-align:left">strcpy 用于将 源字符串 复制到 目标字符串，包括字符串的结束符 \0。 返回指向目标字符串的指针</td>
+<td style="text-align:left">char *strcpy(char *destination, const char *source);</td>
+</tr>
+<tr>
+<td style="text-align:left">strcmp</td>
+<td style="text-align:left">比较字符串 =0 相等 &lt;0 1小于2 &gt;0 1大于3</td>
+<td style="text-align:left">int strcmp(const char *str1, const char *str2);</td>
+</tr>
+<tr>
+<td style="text-align:left">strcat</td>
+<td style="text-align:left">将源字符串 src 连接到目标字符串 dest 的末尾目标字符串必须有足够的空间容纳连接后的结果 源字符串的 \0 会被覆盖，并在新字符串末尾添加 \0。</td>
+<td style="text-align:left">char *strcat(char *dest, const char *src);</td>
+</tr>
+</tbody>
+</table>
 
 
         <div>
@@ -407,11 +440,11 @@ setTimeout(initClock, 100);
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2025/10/19/c01/" rel="prev" title="C语言学习笔记">
+                  <i class="fa fa-angle-left"></i> C语言学习笔记
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/10/09/day1/" rel="next" title="day1">
-                  day1 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
