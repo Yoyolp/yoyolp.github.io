@@ -21,31 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="函数得调用约定，缓冲区溢出">
+    <meta name="description" content="文件概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言学习笔记02">
-<meta property="og:url" content="http://example.com/2025/10/20/c02/index.html">
+<meta property="og:title" content="C语言学习笔记05">
+<meta property="og:url" content="http://example.com/2025/10/25/c05/index.html">
 <meta property="og:site_name" content="超级玉米人的博客">
-<meta property="og:description" content="函数得调用约定，缓冲区溢出">
+<meta property="og:description" content="文件概念">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/c/02/c_func01.png">
-<meta property="og:image" content="http://example.com/images/c/02/c_stack01.jpg">
-<meta property="og:image" content="http://example.com/images/c/02/c_stack01.jpg">
-<meta property="article:published_time" content="2025-10-20T11:21:50.206Z">
-<meta property="article:modified_time" content="2025-10-22T06:52:35.937Z">
+<meta property="article:published_time" content="2025-10-25T12:54:26.658Z">
+<meta property="article:modified_time" content="2025-10-25T14:07:34.121Z">
 <meta property="article:author" content="超级玉米人">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/c/02/c_func01.png">
 
 
-<link rel="canonical" href="http://example.com/2025/10/20/c02/">
+<link rel="canonical" href="http://example.com/2025/10/25/c05/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/20/c02/","path":"2025/10/20/c02/","title":"C语言学习笔记02"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/25/c05/","path":"2025/10/25/c05/","title":"C语言学习笔记05"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>C语言学习笔记02 | 超级玉米人的博客</title>
+<title>C语言学习笔记05 | 超级玉米人的博客</title>
   
 
 
@@ -232,7 +228,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">函数调用约定(calling convention)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%BE%97%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text">调用得约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">调用约定类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.</span> <span class="nav-text">调用约定:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cdecl-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A-%E6%98%AFC%E8%AF%AD%E8%A8%80%E7%BC%BA%E7%9C%81%E5%BE%97%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A-%E4%BB%96%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9F%9F%E8%AF%AD%E6%B3%95%E6%98%AF"><span class="nav-number">1.3.1.</span> <span class="nav-text">cdecl 调用约定 是C语言缺省得调用约定 他的定义域语法是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stdcall-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">stdcall 调用约定:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastcall-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.3.</span> <span class="nav-text">fastcall 调用约定:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x64-%E5%92%8C-x86-%E7%9A%84fastcall-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">x64 和 x86 的fastcall 的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">1.4.</span> <span class="nav-text">缓冲区溢出-栈溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#note-ret-%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%EF%BC%8C-ebp-%E6%A0%88%E5%B8%A7%E6%8C%87%E9%92%88-esp-%E6%A0%88%E9%A1%B6%E6%8C%87%E9%92%88"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">note: ret 返回地址， ebp 栈帧指针, esp 栈顶指针</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">文件分类:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E7%A0%81"><span class="nav-number">1.0.1.</span> <span class="nav-text">常见文本文件的编码:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">文件系统：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E4%B8%8E%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">文本文件与二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%EF%BC%88%E6%89%93%E5%BC%80%EF%BC%89%E5%92%8C%E5%85%B3%E9%97%AD"><span class="nav-number">4.</span> <span class="nav-text">文件创建（打开）和关闭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">写入文件</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -330,7 +326,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/20/c02/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/25/c05/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -343,12 +339,12 @@ setTimeout(initClock, 100);
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="C语言学习笔记02 | 超级玉米人的博客">
+      <meta itemprop="name" content="C语言学习笔记05 | 超级玉米人的博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C语言学习笔记02
+          C语言学习笔记05
         </h1>
 
         <div class="post-meta-container">
@@ -358,15 +354,9 @@ setTimeout(initClock, 100);
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2025-10-20 19:21:50" itemprop="dateCreated datePublished" datetime="2025-10-20T19:21:50+08:00">2025-10-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-10-22 14:52:35" itemprop="dateModified" datetime="2025-10-22T14:52:35+08:00">2025-10-22</time>
+      <time title="创建时间：2025-10-25 20:54:26 / 修改时间：22:07:34" itemprop="dateCreated datePublished" datetime="2025-10-25T20:54:26+08:00">2025-10-25</time>
     </span>
 
   
@@ -378,70 +368,69 @@ setTimeout(initClock, 100);
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>函数得调用约定，缓冲区溢出</p>
-<!-- inline, static,  函数设计常见问题与注意事项，指针，二级指针 -->
+    <div class="post-body" itemprop="articleBody"><p>文件概念</p>
 <span id="more"></span>
-<h1>函数调用约定(<strong>calling convention</strong>)</h1>
-<p>调用者与被调用者关于栈上参数传递和清理得一个约定</p>
-<h2 id="调用得约定">调用得约定</h2>
+<h2 id="文件分类">文件分类:</h2>
 <ul>
-<li>参数传递</li>
-<li>栈平衡(参数占用的栈空间清理)</li>
+<li>普通文件</li>
+<li>设备文件 ： 把外部设备也看做一个一个文件来进行管理，把他们的输入，输出等同于对磁盘文件的读和写</li>
+<li>文件夹</li>
 </ul>
-<h2 id="调用约定类型">调用约定类型</h2>
+<h4 id="常见文本文件的编码">常见文本文件的编码:</h4>
 <ul>
-<li>cdecl (C 语言默认)</li>
-<li>stdcall (Windows API, 内核驱动)</li>
-<li>fastcall (x64)</li>
-<li>thiscall (C++)</li>
-<li>nakedcall (底层HOOK)</li>
+<li>unicode: ff fe</li>
+<li>unicode-big: fe ff      &lt;- 小段序</li>
+<li>utf-8: ef bb bf</li>
 </ul>
-<h2 id="调用约定">调用约定:</h2>
-<h3 id="cdecl-调用约定-是C语言缺省得调用约定-他的定义域语法是">cdecl 调用约定 是C语言缺省得调用约定 他的定义域语法是</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">int</span> __cdecl <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br></pre></td></tr></table></figure>
-<p>该调用遵循下面的调用规则：</p>
-<ul>
-<li>还原入栈顺序: 从右到左</li>
-<li>还原栈者: 调用者修改栈，所以可以支持<strong>变参函数</strong>，因为可以恢复平衡</li>
-</ul>
-<h3 id="stdcall-调用约定">stdcall 调用约定:</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __stdcall <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br></pre></td></tr></table></figure>
-<p>该调用遵循以下规则：</p>
-<ul>
-<li>参数入栈顺序： 从右向左压入栈</li>
-<li>还原栈者：被调用函数自身修改栈</li>
-</ul>
-<h3 id="fastcall-调用约定">fastcall 调用约定:</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>)</span></span><br></pre></td></tr></table></figure>
-<p>该调用遵循下面规则:</p>
-<ul>
-<li>还原入栈顺序： 函数得第一个和第二个参数通过<strong>ecx</strong> 和 <strong>edx</strong> 传递，剩余参数从右到左入栈</li>
-<li>还原栈者：被调用者修改栈</li>
-</ul>
-<p>调用约定例子:<br>
-<img src="/images/c/02/c_func01.png" alt="c_func01"></p>
-<h4 id="x64-和-x86-的fastcall-的区别">x64 和 x86 的fastcall 的区别</h4>
-<ul>
-<li>比ecx(rcx),dex(rdx) 寄存器多了两个r8,r9</li>
-<li>参数入栈，会对齐到8个字节</li>
-<li>函数的前4个参数存放到了rcx,rdx,r8,r9 四个寄存器</li>
-<li>但栈上也会预留4个空间</li>
-<li>调用者来负责栈的平衡</li>
-<li>栈整体要被16整除</li>
-<li>局部变量空间的分配和初始化由调用者完成</li>
-</ul>
-<h2 id="缓冲区溢出-栈溢出">缓冲区溢出-栈溢出</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">char</span> x, y, z;</span><br><span class="line">  <span class="type">int</span> i;</span><br><span class="line">  <span class="type">int</span> a[<span class="number">16</span>];</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= <span class="number">16</span>; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    a[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>假设该程序得内存如图所示<br>
-<img src="/images/c/02/c_stack01.jpg" alt="c_stack"></p>
-<h4 id="note-ret-返回地址，-ebp-栈帧指针-esp-栈顶指针">note: ret 返回地址， ebp 栈帧指针, esp 栈顶指针</h4>
-<p>a 数组发生溢出将恰好占据变量 <strong>i</strong> 所在地址 此时 <strong>a[i] = 0</strong> 就是令 <strong>i = 0</strong><br>
-导致死循环发生,(虽然现代编译器可能会对于这种情况做出预警和优化)</p>
-<p>观察如下代码;</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">msg_display</span><span class="params">(<span class="type">char</span>* buf)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> msg[<span class="number">200</span>];</span><br><span class="line">  <span class="built_in">strcpy</span>(msg, buf);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>假设该程序内存分布如下:<br>
-<img src="/images/c/02/c_stack01.jpg" alt="c_stack"></p>
-<p>此时如果多拷贝8个Byte得数据那么，将会把<strong>ret</strong> 的地址覆盖, 此时如果将最后4个字节设计成一段其他代码的地址那么程序将不会停止而是直接跳转到这段地址继续执行,这就是栈溢出漏洞的基本原理</p>
+<h2 id="文件系统：">文件系统：</h2>
+<p>文件系统指的是操作系统中用于组织和管理磁盘上文件的方法以及数据结构。文件系统负责为用户建立文件，存入。读出修改转储，控制等等</p>
+<h2 id="文本文件与二进制文件">文本文件与二进制文件</h2>
+<p>文本文件基于字符编码，以固定长度的二进制序列以固定长度的二进制序列进行编码和解码，而二进制文件是基于值编码的文件，二进制文件是边长的，具体长度是由具体的格式决定的</p>
+<p>，EXE or EMP 二进制文件夹</p>
+<h2 id="文件创建（打开）和关闭">文件创建（打开）和关闭</h2>
+<p>我可以使用fopen())床架一个新的文件或者打开一个已有的文件，这个调用会初始化类型FILE 的一个对象，类型FILE 包含的用来控制流的必要信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FILE *<span class="title function_">fopen</span><span class="params">( <span class="type">const</span> <span class="type">char</span> *filename, <span class="type">const</span> <span class="type">char</span> *mode )</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>表述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>打开一个已有的文本文件，允许读取文件</td>
+</tr>
+<tr>
+<td>w</td>
+<td>打开一个文本文件，允许写入文件，如果文件不存在，则会创建一个新文件，在这里，您的程序会从文件的开头写入内容</td>
+</tr>
+<tr>
+<td>a</td>
+<td>打开一个文本文件，以追加模式写入文件，如果文件不存在，则会创建一个新的文件，在这里，你的程序会在已有的文件中追加内容</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>打开一个文本文件，允许读写文件</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>打开一个文本文件，允许读写文件。如果我呢见已经存在，则文件会被阶段为零长度，如果文件不存在，则会创建一个新的文件</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>打开一个文本文件，允许读写文件。如果文件不存在，则会创建一个新的文件。读取会从文件的开头开始，写入则只能是追加模式</td>
+</tr>
+</tbody>
+</table>
+<p>如果处理的是二进制文件，则需要使用下面的访问模式来取代上卖弄的访问模式</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;rb&quot;</span>, <span class="string">&quot;wb&quot;</span>, <span class="string">&quot;ab&quot;</span>, <span class="string">&quot;rb+&quot;</span>, <span class="string">&quot;r+b&quot;</span>, <span class="string">&quot;wb+&quot;</span>, <span class="string">&quot;w+b&quot;</span>, <span class="string">&quot;ab+&quot;</span>, <span class="string">&quot;a+b&quot;</span></span><br></pre></td></tr></table></figure>
+<p>为了关闭文件请使用fclose() 函数。函数的使用原型如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fclose</span><span class="params">(FILE *fp)</span>;</span><br></pre></td></tr></table></figure>
+<p>如果成功关闭文件，fclose() 函数返回0，如果关闭文件时发生错误，函数返回EOF。这个函数实际上，会清空缓冲区中的数据，关闭我呢见，并释放该文件中的所有内存</p>
+<p>。EOF 是一个定义在头文件stdio.h 中的常量。</p>
+<h3 id="写入文件">写入文件</h3>
 
 
         <div>
@@ -467,14 +456,11 @@ setTimeout(initClock, 100);
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/10/19/Cfn/" rel="prev" title="C语言常用函数速查">
-                  <i class="fa fa-angle-left"></i> C语言常用函数速查
+                <a href="/2025/10/25/ework01/" rel="prev" title="考核错题">
+                  <i class="fa fa-angle-left"></i> 考核错题
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/10/20/cformatTable/" rel="next" title="C 格式转义符">
-                  C 格式转义符 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
