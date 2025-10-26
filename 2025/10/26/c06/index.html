@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flat-top.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言学习笔记06">
+<meta property="og:url" content="http://example.com/2025/10/26/c06/index.html">
+<meta property="og:site_name" content="超级玉米人的博客">
+<meta property="og:description" content="a">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/c/06/dat01.png">
+<meta property="og:image" content="http://example.com/images/c/06/dat02.png">
+<meta property="article:published_time" content="2025-10-26T08:00:39.059Z">
+<meta property="article:modified_time" content="2025-10-26T13:11:34.365Z">
+<meta property="article:author" content="超级玉米人">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/c/06/dat01.png">
+
+
+<link rel="canonical" href="http://example.com/2025/10/26/c06/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/26/c06/","path":"2025/10/26/c06/","title":"C语言学习笔记06"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C语言学习笔记06 | 超级玉米人的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<!-- GitHub 丝带 -->
+<a href="https://github.com/Yoyolp/blog_recouse" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
+
+
+<!-- particles.js 粒子库 -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- 引入 typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+<style>
+  /* 原有的封面样式保持不变 */
+  #particles-js {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    min-height: 1.8em; /* 防止布局抖动 */
+  }
+
+  /* 打字机光标样式 */
+  .typed-cursor {
+    font-size: 1.5rem;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-arrow {
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-7px);
+    }
+  }
+</style>
+
+<div id="particles-js" style="display: none;">
+  <div class="hero-content">
+    <div class="hero-title">超级玉米人的博客</div>
+    <div class="hero-subtitle">
+      <span id="typed-text"></span>
+    </div>
+    <div class="hero-arrow">↓</div>
+  </div>
+</div>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">超级玉米人的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">时间Cia不多llo~(∠・ω< )⌒★</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">文件的其他相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E6%8C%87%E9%92%88%E6%8E%A7%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">读写指针控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%88%9D%E5%A7%8B%E6%8C%87%E9%92%88%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.1.1.</span> <span class="nav-text">文件打开模式与初始指针位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%8C%87%E9%92%88%E5%AE%9A%E4%BD%8D%E7%BD%AE%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">文件指针定位置函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93io%E5%92%8C%E4%BC%98%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">结构体io和优化</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="超级玉米人"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">超级玉米人</p>
+  <div class="site-description" itemprop="description">一个基于Hexo的技术博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yoyolp" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yoyolp" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+<div id="sidebar-digital-clock" class="site-overview-item">
+    <div class="clock-container">
+        <div class="clock-time">00:00:00</div>
+        <div class="clock-date">2024-01-01</div>
+        <div class="clock-weekday">星期一</div>
+    </div>
+</div>
+
+<script>
+// 简化版电子钟，避免复杂的 JS
+function initClock() {
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const weekday = weekdays[now.getDay()];
+        
+        const clockElement = document.getElementById('sidebar-digital-clock');
+        if (clockElement) {
+            clockElement.querySelector('.clock-time').textContent = hours + ':' + minutes + ':' + seconds;
+            clockElement.querySelector('.clock-date').textContent = year + '-' + month + '-' + day;
+            clockElement.querySelector('.clock-weekday').textContent = weekday;
+        }
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000);
+}
+
+// 延迟初始化，确保 DOM 加载完成
+setTimeout(initClock, 100);
+</script>
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/26/c06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C语言学习笔记06 | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C语言学习笔记06
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-10-26 16:00:39 / 修改时间：21:11:34" itemprop="dateCreated datePublished" datetime="2025-10-26T16:00:39+08:00">2025-10-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>a</p>
+<span id="more"></span>
+<h2 id="文件的其他相关操作">文件的其他相关操作</h2>
+<h3 id="读写指针控制">读写指针控制</h3>
+<p>在C 语言中，文件的读写指针（文件位置指针）用于跟踪文件中的当前位置，决定了下一次读写操作的位置</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FILE* fp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="文件打开模式与初始指针位置">文件打开模式与初始指针位置</h4>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+<th>初始指针位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>只读</td>
+<td>文件开头</td>
+</tr>
+<tr>
+<td>w</td>
+<td>只写（清空原内容）</td>
+<td>文件开头</td>
+</tr>
+<tr>
+<td>a</td>
+<td>追加</td>
+<td>文件末尾</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>读写</td>
+<td>文件开头</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>读写 （清空原内容）</td>
+<td>文件开头</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>读写（追加）</td>
+<td>文件末尾</td>
+</tr>
+</tbody>
+</table>
+<h4 id="文件指针定位置函数">文件指针定位置函数</h4>
+<p>设置文件位置;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fseek</span><span class="params">(FILE *stream, <span class="type">long</span> offset, <span class="type">int</span> whence)</span>;</span><br></pre></td></tr></table></figure>
+<p>whence 参数：</p>
+<ul>
+<li>SEEK_SET - 从文件开头开始</li>
+<li>SEEK_CUR - 从当前位置开始</li>
+<li>SEEK_END - 从文件末尾开始</li>
+</ul>
+<p>实例:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    FILE *fp = fopen(<span class="string">&quot;example.txt&quot;</span>, <span class="string">&quot;r+&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;文件打开失败&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 移动到文件开头后第10个字节</span></span><br><span class="line">    fseek(fp, <span class="number">10</span>, SEEK_SET);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 从当前位置向前移动5个字节</span></span><br><span class="line">    fseek(fp, <span class="number">5</span>, SEEK_CUR);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 移动到文件末尾前20个字节</span></span><br><span class="line">    fseek(fp, <span class="number">-20</span>, SEEK_END);</span><br><span class="line">  </span><br><span class="line">    fclose(fp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取当前文件位置</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">ftell</span><span class="params">(FILE *stream)</span>;</span><br></pre></td></tr></table></figure>
+<p>实例:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    FILE *fp = fopen(<span class="string">&quot;example.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;文件打开失败&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 读取一些数据后获取当前位置</span></span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    fread(buffer, <span class="number">1</span>, <span class="number">50</span>, fp);</span><br><span class="line">  </span><br><span class="line">    <span class="type">long</span> position = ftell(fp);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;当前文件位置: %ld\n&quot;</span>, position);</span><br><span class="line">  </span><br><span class="line">    fclose(fp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重置文件指针到开头</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">rewind</span><span class="params">(FILE *stream)</span>;</span><br></pre></td></tr></table></figure>
+<p>实例:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    FILE *fp = fopen(<span class="string">&quot;example.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (fp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;文件打开失败&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 读取文件内容</span></span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    fread(buffer, <span class="number">1</span>, <span class="number">100</span>, fp);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 重置指针到开头，重新读取</span></span><br><span class="line">    rewind(fp);</span><br><span class="line">    fread(buffer, <span class="number">1</span>, <span class="number">100</span>, fp);</span><br><span class="line">  </span><br><span class="line">    fclose(fp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="结构体io和优化">结构体io和优化</h2>
+<p>当出现对于结构体的存储问题。我们可以使用 文件的二进制读写，来将结构体这一数据结构进行存储</p>
+<p>有如下结构体</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">record</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="type">char</span> name[<span class="number">128</span>]</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">&#125; record;</span><br></pre></td></tr></table></figure>
+<p>我们可以编写如下写入和读取的函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 写入文件s</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">writeRecord</span><span class="params">(FILE* fp)</span></span><br><span class="line">&#123;</span><br><span class="line">  record r = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please Input the age:\n&quot;</span>);</span><br><span class="line">    scanf_s(<span class="string">&quot;%d&quot;</span>, &amp;r.age);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(r.age == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please Input the name:\n&quot;</span>);</span><br><span class="line">    scanf_s(<span class="string">&quot;%s&quot;</span>, &amp;r.name, MAXLEN);</span><br><span class="line">    fwrite(&amp;r, <span class="keyword">sizeof</span>(r), <span class="number">1</span>, fp);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取文件</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">readRecord</span><span class="params">(FILE* fp)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">while</span>(!feof(fp))</span><br><span class="line">  &#123;</span><br><span class="line">    record r = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="type">int</span> count = fread(&amp;r, <span class="keyword">sizeof</span>(r), <span class="number">1</span>, fp);</span><br><span class="line">    <span class="keyword">if</span>(count == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;age:%d, name:%s \n&quot;</span>, r.age, r.name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接将程序以二进制形式存储</p>
+<p>有如下主程序 和如下输入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span>* filePath = <span class="string">&quot;.\\struct_bin.dat&quot;</span>;</span><br><span class="line">  FILE* fp = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="type">errno_t</span> err = fopen_s(&amp;fp, filePath, <span class="string">&quot;wb&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span>(err != <span class="number">0</span> || fp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  writeRecord(fp);</span><br><span class="line"></span><br><span class="line">  fclose(fp);</span><br><span class="line"></span><br><span class="line">  fp = <span class="literal">NULL</span>;</span><br><span class="line">  err = fopen_s(&amp;fp, filePath, <span class="string">&quot;rb&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span>(err != <span class="number">0</span> || fp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  readRecord(fp);</span><br><span class="line">  fclose(fp);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">18</span><br><span class="line">XiaoMing</span><br><span class="line"></span><br><span class="line">17</span><br><span class="line">XiaoMei</span><br><span class="line"></span><br><span class="line">19</span><br><span class="line">ZhangSan</span><br><span class="line"></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>可以发现成功实现了程序的读写，但是通过观察生成的文件 <strong>struct_bin.dat</strong> 发现<br>
+<img src="/images/c/06/dat01.png" alt="dat"></p>
+<p>文件中有大量的 <strong>00</strong> 空白区，分析发现是结构体中的 name 有128字节的空间，其中大量的字节没有使用造成的浪费<br>
+所以我们可以 尝试改变结构体的存储方式，改为 名字长度 + 名字 + 年龄 的形式 比如8XiaoMing18</p>
+<p>所以修改读取文件为如下代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">optwriteRecord</span><span class="params">(FILE* fp)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    record r = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please Input the age:\n&quot;</span>);</span><br><span class="line">    scanf_s(<span class="string">&quot;%d&quot;</span>, &amp;r.age);</span><br><span class="line">    <span class="keyword">if</span>(r.age == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please Input the age:\n&quot;</span>);</span><br><span class="line">    scanf_s(<span class="string">&quot;%s&quot;</span>, &amp;r.name, MAXLEN);</span><br><span class="line">    </span><br><span class="line">    <span class="type">size_t</span> len = <span class="built_in">strlen</span>(r.name);</span><br><span class="line">    fwrite(&amp;len, <span class="keyword">sizeof</span>(len), <span class="number">1</span>, fp);</span><br><span class="line">    fwrite(r.name, len, <span class="number">1</span>, fp);</span><br><span class="line">    fwrite(&amp;r.age, <span class="keyword">sizeof</span>(r.age), <span class="number">1</span>, fp);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">optreadRecord</span><span class="params">(FILE* fp)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">while</span>(!feof(fp)) &#123;</span><br><span class="line">    record r = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> cnt =  fread(&amp;len, <span class="keyword">sizeof</span>(len), <span class="number">1</span>, fp);</span><br><span class="line">    <span class="keyword">if</span>(cnt == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    fread(r.name, len, <span class="number">1</span>, fp);</span><br><span class="line">    fread(&amp;r.age, <span class="keyword">sizeof</span>(r.age), <span class="number">1</span>, fp);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;age:%d, name:%s \n&quot;</span>, r.age, r.name); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优化后的 <strong>struct_bin.dat</strong> 文件结构如图<br>
+<img src="/images/c/06/dat02.png" alt="dat2"></p>
+<p>明显发现占用空间减小</p>
+
+
+        <div>
+          
+            <div>
+  
+    <div style="text-align: center; color: #ccc; font-size: 14px; margin: 20px 0;">
+      ---------- 已经到底了啦！ (*/ω＼*) ----------
+    </div>
+  
+</div>
+          
+        </div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/25/c05/" rel="prev" title="C语言学习笔记05">
+                  <i class="fa fa-angle-left"></i> C语言学习笔记05
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">超级玉米人</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<!-- particles.js 配置和初始化 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 立即滚动到顶部
+  window.scrollTo(0, 0);
+  
+  function isHomePage() {
+    const path = window.location.pathname;
+    return path === '/' || path === '/index.html' || path === '/archives/' || path.endsWith('/index.html');
+  }
+
+  if (isHomePage()) {
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+      particlesContainer.style.display = 'block';
+      
+      // 初始化打字机效果
+      initTypedEffect();
+      
+      // 初始化 particles.js
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out"
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 200,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // 向下滚动箭头点击事件
+      document.querySelector('.hero-arrow')?.addEventListener('click', function() {
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  // 打字机效果初始化函数
+  function initTypedEffect() {
+    // 获取博客副标题，如果没有则使用默认文本
+    const subtitle = "时间Cia不多llo~(∠・ω< )⌒★" || "Welcome to my blog";
+    
+    // 可以设置多个文本循环打字，或者只使用副标题
+    const strings = [
+      subtitle,
+      "Hello World!",  // 可以添加更多文本
+      "来往下滑吧~~~~",
+      "接下来我也不知到要写什么了"
+    ];
+
+    // 初始化 Typed.js
+    new Typed('#typed-text', {
+      strings: strings,
+      typeSpeed: 70,        // 打字速度
+      backSpeed: 40,        // 回退速度
+      backDelay: 2000,      // 回退前的延迟
+      startDelay: 500,      // 开始前的延迟
+      loop: true,           // 循环播放
+      showCursor: true,     // 显示光标
+      cursorChar: '|',      // 光标字符
+      autoInsertCss: true   // 自动插入CSS
+    });
+  }
+});
+
+
+
+
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.8,"opacityDefault":0.8},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
