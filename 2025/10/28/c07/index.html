@@ -21,25 +21,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="一个基于Hexo的技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="超级玉米人的博客">
-<meta property="og:url" content="http://example.com/archives/2025/10/page/2/index.html">
+    <meta name="description" content="PE ELF 格式介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言学习笔记07">
+<meta property="og:url" content="http://example.com/2025/10/28/c07/index.html">
 <meta property="og:site_name" content="超级玉米人的博客">
-<meta property="og:description" content="一个基于Hexo的技术博客">
+<meta property="og:description" content="PE ELF 格式介绍">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/c/07_1.png">
+<meta property="og:image" content="http://example.com/images/c/07_1.png">
+<meta property="article:published_time" content="2025-10-28T12:53:14.384Z">
+<meta property="article:modified_time" content="2025-10-28T14:04:42.323Z">
 <meta property="article:author" content="超级玉米人">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/c/07_1.png">
 
 
-<link rel="canonical" href="http://example.com/archives/2025/10/page/2/">
+<link rel="canonical" href="http://example.com/2025/10/28/c07/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2025/10/page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/28/c07/","path":"2025/10/28/c07/","title":"C语言学习笔记07"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 超级玉米人的博客</title>
+<title>C语言学习笔记07 | 超级玉米人的博客</title>
   
 
 
@@ -186,7 +191,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">超级玉米人的博客</h1>
+      <p class="site-title">超级玉米人的博客</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">时间Cia不多llo~(∠・ω< )⌒★</p>
@@ -213,7 +218,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -226,6 +231,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pe-%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text"> PE 格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dos%E9%83%A8%E9%A6%96"><span class="nav-number">1.1.</span> <span class="nav-text"> DOS部首</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pe-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="nav-number">1.2.</span> <span class="nav-text"> pe 文件头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#voffset"><span class="nav-number">1.3.</span> <span class="nav-text"> VOFFSET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roffset"><span class="nav-number">1.4.</span> <span class="nav-text"> ROFFSET</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E5%B8%83"><span class="nav-number">2.</span> <span class="nav-text"> 系统内存布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#elf-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text"> ELF 文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#elf%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text"> ELF文件结构</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -312,232 +318,195 @@ setTimeout(initClock, 100);
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 23 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/c07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C语言学习笔记07 | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C语言学习笔记07
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2025<span class="collection-year-count">23</span></span>
+
+      <time title="创建时间：2025-10-28 20:53:14 / 修改时间：22:04:42" itemprop="dateCreated datePublished" datetime="2025-10-28T20:53:14+08:00">2025-10-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>PE ELF 格式介绍</p>
+<span id="more"></span>
+<h2 id="pe-格式"><a class="markdownIt-Anchor" href="#pe-格式"></a> PE 格式</h2>
+<p>一种规范和标准，里面包含了程序执行的代码，数据和资源等<br />
+Win:.exe/.dll/.sys =&gt; pe</p>
+<p>如图为pe文件的结构</p>
+<p><img src="/images/c/07_1.png" alt="c07_1" /></p>
+<h3 id="dos部首"><a class="markdownIt-Anchor" href="#dos部首"></a> DOS部首</h3>
+<p>pe 文件的开始部分 e_magic:“MZ” 0x5a4d</p>
+<p>DOS stub -&gt; “This program Cannot be run in DOS mode”</p>
+<p>这是dos 部首的结构<br />
+<img src="/images/c/07_1.png" alt="c07_1" /></p>
+<h3 id="pe-文件头"><a class="markdownIt-Anchor" href="#pe-文件头"></a> pe 文件头</h3>
+<p>&quot;PE&quot;0,0</p>
+<p>导入表 -&gt; 引用的外部函数</p>
+<p>导出表-&gt; 自身定义的表</p>
+<h3 id="voffset"><a class="markdownIt-Anchor" href="#voffset"></a> VOFFSET</h3>
+<p>相对于基地址 IMAGE_BASE 的偏移(内存中)</p>
+<h3 id="roffset"><a class="markdownIt-Anchor" href="#roffset"></a> ROFFSET</h3>
+<p>在磁盘中 相对于文件头的地址</p>
+<p>程序 EXE 与进程 线程</p>
+<p>程序是指令和数据的有序集合，其本身没有任何运行的含义，是一个静态的概念。把程序存放在磁盘上的EXE 程序文件是映像文件(ImageFile)</p>
+<p>进程是程序在处理机的一次执行过程，他是一个动态的概念，拥有一个完整的生命周期。进程的实质是程曦在系统中的一次执行过程，进程是动态产生的，动态消亡的。一个程序在不同的数据集里就构成不同的进程</p>
+<p>进程的三个状态:</p>
+<ol>
+<li>就绪状态（Ready）：进程已经获得除处理器外的所需资源，等待奉陪处理器资源。就绪进程可以按斗个优先级来划分队列。例如当进程由I/O 操作完成而进入就绪状态时，排入低优先级队。</li>
+<li>运行状态（Running）：进程占用处理器资源，在没有其他进程可以执行时（如果所有进程都在阻塞状态），通常会自动执行系统的空闲进程</li>
+<li>阻塞状态（Blocked）：由于进程等待某种条件（如I/O操作或进程同步），在条件满足前无法继续执行。该时间发生前即使把处理器资源分配给进程，也无法运行</li>
+</ol>
+<p>线程的引入，是为了提高系统并发的度。一个程序至少有一个进程，而一个进程至少有一个线程，进程是资源分配的基本单位，线程是调度的基本单位。</p>
+<h2 id="系统内存布"><a class="markdownIt-Anchor" href="#系统内存布"></a> 系统内存布</h2>
+<ol>
+<li>用户空间（应用，C Library）</li>
+<li>Kernel Space（内核空间），操作系统</li>
+<li>硬件平台</li>
+</ol>
+<h2 id="elf-文件格式"><a class="markdownIt-Anchor" href="#elf-文件格式"></a> ELF 文件格式</h2>
+<p>ELF（<strong>E</strong>xecutable and <strong>L</strong>inkable <strong>F</strong>ormat，可执行与可链接格式）是一种用于二进制文件（如可执行程序、目标代码、共享库和核心转储）的标准文件格式。它最初由 UNIX 系统实验室开发，现在已成为类 Unix 系统（如 Linux、BSD）以及许多嵌入式系统上最主流的文件格式。</p>
+<p>ELF 的核心思想是 <strong>提供一种灵活的方式来描述文件的内容和组织结构，使其既能被链接器（用于创建程序）理解，也能被加载器（用于运行程序）理解</strong> 。为了实现这一点，ELF 文件使用了一个“节”和“段”的两级视图。</p>
+<h3 id="elf文件结构"><a class="markdownIt-Anchor" href="#elf文件结构"></a> ELF文件结构</h3>
+<ol>
+<li>
+<p>ELF 文件头</p>
+<ul>
+<li>位于文件开头，是整个文件的路线图</li>
+<li>包含信息:
+<ul>
+<li>魔数：标识这是一个 ELF 文件（<code>0x7F ‘E’ ‘L’ ‘F’</code>）。</li>
+<li>文件类型，（可执行文件，共享库，目标文件）</li>
+<li>目标机器架构 x86-64 ARM</li>
+<li>程序头标在文件中的起始位置和表项大小</li>
+<li>节头表中字符串表的索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>程序头标</p>
+<ul>
+<li>仅在可执行文件和共享库中存在，目标文件（<code>.o</code>）通常没有。</li>
+<li>它定义了如何将文件内容映射到进程的内存空间。</li>
+<li>常见的段类型：
+<ul>
+<li><code>PT_LOAD</code>：需要被加载到内存的段。一个可执行文件通常至少有两个 <code>LOAD</code> 段：一个用于代码和只读数据（权限为 R+X），另一个用于可读写数据（权限为 R+W）。</li>
+<li><code>PT_INTERP</code>：指定程序解释器（动态链接器）的路径，例如 <code>/lib64/ld-linux-x86-64.so.2</code>。</li>
+<li><code>PT_DYNAMIC</code>：包含动态链接信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>节</p>
+<ul>
+<li>文件的实际内容被组织在不同的节中。</li>
+<li>常见的节：
+<ul>
+<li><code>.text</code>：存放已编译程序的 <strong>机器代码</strong> 。</li>
+<li><code>.data</code>：存放 <strong>已初始化的全局变量和静态变量</strong> 。</li>
+<li><code>.bss</code>：存放 <strong>未初始化的全局变量和静态变量</strong> 。这个节在文件中不占空间，但加载到内存时会分配空间并初始化为0</li>
+<li><code>.rodata</code>：存放 <strong>只读数据</strong> ，如字符串常量。</li>
+<li><code>.symtab</code>： <strong>符号表</strong> ，存放函数和变量名等信息。</li>
+<li><code>.strtab</code>： <strong>字符串表</strong> ，存放 <code>.symtab</code> 等节中使用的字符串。</li>
+<li><code>.shstrtab</code>： <strong>节头字符串表</strong> ，存放所有节的名称。</li>
+<li><code>.dynamic</code>：动态链接信息。</li>
+<li><code>.dynsym</code>：动态链接符号表。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>节头表</p>
+<ul>
+<li>描述了文件中所有节的信息。每个表项对应一个节，描述了该节的名称、类型、在文件中的偏移量、大小、内存地址、访问权限等。</li>
+</ul>
+</li>
+</ol>
+
+
+        <div>
+          
+            <div>
+  
+    <div style="text-align: center; color: #ccc; font-size: 14px; margin: 20px 0;">
+      ---------- 已经到底了啦！ (*/ω＼*) ----------
+    </div>
+  
+</div>
+          
+        </div>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-19T16:56:25+08:00"
-              content="2025-10-19">
-          10-19
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/19/Cfn/" itemprop="url">
-            <span itemprop="name">C语言常用函数速查</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/28/ida02/" rel="prev" title="ida02">
+                  <i class="fa fa-angle-left"></i> ida02
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-19T14:13:14+08:00"
-              content="2025-10-19">
-          10-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/19/c01/" itemprop="url">
-            <span itemprop="name">C语言学习笔记</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-18T19:45:54+08:00"
-              content="2025-10-18">
-          10-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/18/Ghidra01/" itemprop="url">
-            <span itemprop="name">这是一个Ghidra工具的入门</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-18T14:48:51+08:00"
-              content="2025-10-18">
-          10-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/18/Liunx-%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8/" itemprop="url">
-            <span itemprop="name">Liunx 指令速查表</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-17T19:08:42+08:00"
-              content="2025-10-17">
-          10-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/17/day7-Pwn01/" itemprop="url">
-            <span itemprop="name">这是一个Pwn的入门</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-15T21:32:07+08:00"
-              content="2025-10-15">
-          10-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/15/regexTable/" itemprop="url">
-            <span itemprop="name">正则表达式速查表</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-14T19:02:30+08:00"
-              content="2025-10-14">
-          10-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/14/day6/" itemprop="url">
-            <span itemprop="name">day6</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-13T20:57:09+08:00"
-              content="2025-10-13">
-          10-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/13/day5/" itemprop="url">
-            <span itemprop="name">day5</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-12T17:00:17+08:00"
-              content="2025-10-12">
-          10-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/12/day4/" itemprop="url">
-            <span itemprop="name">day4</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-10-11T19:23:58+08:00"
-              content="2025-10-11">
-          10-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/10/11/day3/" itemprop="url">
-            <span itemprop="name">day3</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/archives/2025/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2025/10/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2025/10/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/archives/2025/10/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+
+
+
 
 </div>
   </main>

@@ -232,7 +232,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">函数调用约定(calling convention)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%BE%97%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text">调用得约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">调用约定类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.</span> <span class="nav-text">调用约定:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cdecl-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A-%E6%98%AFC%E8%AF%AD%E8%A8%80%E7%BC%BA%E7%9C%81%E5%BE%97%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A-%E4%BB%96%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9F%9F%E8%AF%AD%E6%B3%95%E6%98%AF"><span class="nav-number">1.3.1.</span> <span class="nav-text">cdecl 调用约定 是C语言缺省得调用约定 他的定义域语法是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stdcall-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">stdcall 调用约定:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastcall-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.3.</span> <span class="nav-text">fastcall 调用约定:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x64-%E5%92%8C-x86-%E7%9A%84fastcall-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">x64 和 x86 的fastcall 的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">1.4.</span> <span class="nav-text">缓冲区溢出-栈溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#note-ret-%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%EF%BC%8C-ebp-%E6%A0%88%E5%B8%A7%E6%8C%87%E9%92%88-esp-%E6%A0%88%E9%A1%B6%E6%8C%87%E9%92%88"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">note: ret 返回地址， ebp 栈帧指针, esp 栈顶指针</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9Acalling-convention"><span class="nav-number">1.</span> <span class="nav-text"> 函数调用约定(calling convention)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%BE%97%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text"> 调用得约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text"> 调用约定类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.</span> <span class="nav-text"> 调用约定:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cdecl-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A-%E6%98%AFc%E8%AF%AD%E8%A8%80%E7%BC%BA%E7%9C%81%E5%BE%97%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A-%E4%BB%96%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9F%9F%E8%AF%AD%E6%B3%95%E6%98%AF"><span class="nav-number">1.3.1.</span> <span class="nav-text"> cdecl 调用约定 是C语言缺省得调用约定 他的定义域语法是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stdcall-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text"> stdcall 调用约定:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastcall-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.3.3.</span> <span class="nav-text"> fastcall 调用约定:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x64-%E5%92%8C-x86-%E7%9A%84fastcall-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.3.1.</span> <span class="nav-text"> x64 和 x86 的fastcall 的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">1.4.</span> <span class="nav-text"> 缓冲区溢出-栈溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#note-ret-%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80-ebp-%E6%A0%88%E5%B8%A7%E6%8C%87%E9%92%88-esp-%E6%A0%88%E9%A1%B6%E6%8C%87%E9%92%88"><span class="nav-number">1.4.0.1.</span> <span class="nav-text"> note: ret 返回地址， ebp 栈帧指针, esp 栈顶指针</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -247,7 +247,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -381,14 +381,14 @@ setTimeout(initClock, 100);
     <div class="post-body" itemprop="articleBody"><p>函数得调用约定，缓冲区溢出</p>
 <!-- inline, static,  函数设计常见问题与注意事项，指针，二级指针 -->
 <span id="more"></span>
-<h1>函数调用约定(<strong>calling convention</strong>)</h1>
+<h1 id="函数调用约定calling-convention"><a class="markdownIt-Anchor" href="#函数调用约定calling-convention"></a> 函数调用约定(<strong>calling convention</strong>)</h1>
 <p>调用者与被调用者关于栈上参数传递和清理得一个约定</p>
-<h2 id="调用得约定">调用得约定</h2>
+<h2 id="调用得约定"><a class="markdownIt-Anchor" href="#调用得约定"></a> 调用得约定</h2>
 <ul>
 <li>参数传递</li>
 <li>栈平衡(参数占用的栈空间清理)</li>
 </ul>
-<h2 id="调用约定类型">调用约定类型</h2>
+<h2 id="调用约定类型"><a class="markdownIt-Anchor" href="#调用约定类型"></a> 调用约定类型</h2>
 <ul>
 <li>cdecl (C 语言默认)</li>
 <li>stdcall (Windows API, 内核驱动)</li>
@@ -396,31 +396,31 @@ setTimeout(initClock, 100);
 <li>thiscall (C++)</li>
 <li>nakedcall (底层HOOK)</li>
 </ul>
-<h2 id="调用约定">调用约定:</h2>
-<h3 id="cdecl-调用约定-是C语言缺省得调用约定-他的定义域语法是">cdecl 调用约定 是C语言缺省得调用约定 他的定义域语法是</h3>
+<h2 id="调用约定"><a class="markdownIt-Anchor" href="#调用约定"></a> 调用约定:</h2>
+<h3 id="cdecl-调用约定-是c语言缺省得调用约定-他的定义域语法是"><a class="markdownIt-Anchor" href="#cdecl-调用约定-是c语言缺省得调用约定-他的定义域语法是"></a> cdecl 调用约定 是C语言缺省得调用约定 他的定义域语法是</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">int</span> __cdecl <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br></pre></td></tr></table></figure>
 <p>该调用遵循下面的调用规则：</p>
 <ul>
 <li>还原入栈顺序: 从右到左</li>
 <li>还原栈者: 调用者修改栈，所以可以支持<strong>变参函数</strong>，因为可以恢复平衡</li>
 </ul>
-<h3 id="stdcall-调用约定">stdcall 调用约定:</h3>
+<h3 id="stdcall-调用约定"><a class="markdownIt-Anchor" href="#stdcall-调用约定"></a> stdcall 调用约定:</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __stdcall <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br></pre></td></tr></table></figure>
 <p>该调用遵循以下规则：</p>
 <ul>
 <li>参数入栈顺序： 从右向左压入栈</li>
 <li>还原栈者：被调用函数自身修改栈</li>
 </ul>
-<h3 id="fastcall-调用约定">fastcall 调用约定:</h3>
+<h3 id="fastcall-调用约定"><a class="markdownIt-Anchor" href="#fastcall-调用约定"></a> fastcall 调用约定:</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>)</span></span><br></pre></td></tr></table></figure>
 <p>该调用遵循下面规则:</p>
 <ul>
 <li>还原入栈顺序： 函数得第一个和第二个参数通过<strong>ecx</strong> 和 <strong>edx</strong> 传递，剩余参数从右到左入栈</li>
 <li>还原栈者：被调用者修改栈</li>
 </ul>
-<p>调用约定例子:<br>
-<img src="/images/c/02/c_func01.png" alt="c_func01"></p>
-<h4 id="x64-和-x86-的fastcall-的区别">x64 和 x86 的fastcall 的区别</h4>
+<p>调用约定例子:<br />
+<img src="/images/c/02/c_func01.png" alt="c_func01" /></p>
+<h4 id="x64-和-x86-的fastcall-的区别"><a class="markdownIt-Anchor" href="#x64-和-x86-的fastcall-的区别"></a> x64 和 x86 的fastcall 的区别</h4>
 <ul>
 <li>比ecx(rcx),dex(rdx) 寄存器多了两个r8,r9</li>
 <li>参数入栈，会对齐到8个字节</li>
@@ -430,17 +430,17 @@ setTimeout(initClock, 100);
 <li>栈整体要被16整除</li>
 <li>局部变量空间的分配和初始化由调用者完成</li>
 </ul>
-<h2 id="缓冲区溢出-栈溢出">缓冲区溢出-栈溢出</h2>
+<h2 id="缓冲区溢出-栈溢出"><a class="markdownIt-Anchor" href="#缓冲区溢出-栈溢出"></a> 缓冲区溢出-栈溢出</h2>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">char</span> x, y, z;</span><br><span class="line">  <span class="type">int</span> i;</span><br><span class="line">  <span class="type">int</span> a[<span class="number">16</span>];</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= <span class="number">16</span>; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    a[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>假设该程序得内存如图所示<br>
-<img src="/images/c/02/c_stack01.jpg" alt="c_stack"></p>
-<h4 id="note-ret-返回地址，-ebp-栈帧指针-esp-栈顶指针">note: ret 返回地址， ebp 栈帧指针, esp 栈顶指针</h4>
-<p>a 数组发生溢出将恰好占据变量 <strong>i</strong> 所在地址 此时 <strong>a[i] = 0</strong> 就是令 <strong>i = 0</strong><br>
+<p>假设该程序得内存如图所示<br />
+<img src="/images/c/02/c_stack01.jpg" alt="c_stack" /></p>
+<h4 id="note-ret-返回地址-ebp-栈帧指针-esp-栈顶指针"><a class="markdownIt-Anchor" href="#note-ret-返回地址-ebp-栈帧指针-esp-栈顶指针"></a> note: ret 返回地址， ebp 栈帧指针, esp 栈顶指针</h4>
+<p>a 数组发生溢出将恰好占据变量 <strong>i</strong> 所在地址 此时 <strong>a[i] = 0</strong> 就是令 <strong>i = 0</strong><br />
 导致死循环发生,(虽然现代编译器可能会对于这种情况做出预警和优化)</p>
 <p>观察如下代码;</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">msg_display</span><span class="params">(<span class="type">char</span>* buf)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> msg[<span class="number">200</span>];</span><br><span class="line">  <span class="built_in">strcpy</span>(msg, buf);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>假设该程序内存分布如下:<br>
-<img src="/images/c/02/c_stack01.jpg" alt="c_stack"></p>
+<p>假设该程序内存分布如下:<br />
+<img src="/images/c/02/c_stack01.jpg" alt="c_stack" /></p>
 <p>此时如果多拷贝8个Byte得数据那么，将会把<strong>ret</strong> 的地址覆盖, 此时如果将最后4个字节设计成一段其他代码的地址那么程序将不会停止而是直接跳转到这段地址继续执行,这就是栈溢出漏洞的基本原理</p>
 
 
