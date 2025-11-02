@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flat-top.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="gdb 的使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASM 02">
+<meta property="og:url" content="http://example.com/2025/11/02/asm02/index.html">
+<meta property="og:site_name" content="超级玉米人的博客">
+<meta property="og:description" content="gdb 的使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-02T01:28:24.266Z">
+<meta property="article:modified_time" content="2025-11-02T14:41:03.793Z">
+<meta property="article:author" content="超级玉米人">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/11/02/asm02/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/11/02/asm02/","path":"2025/11/02/asm02/","title":"ASM 02"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ASM 02 | 超级玉米人的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<!-- GitHub 丝带 -->
+<a href="https://github.com/Yoyolp/blog_recouse" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
+
+
+<!-- particles.js 粒子库 -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- 引入 typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+<style>
+  /* 原有的封面样式保持不变 */
+  #particles-js {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    min-height: 1.8em; /* 防止布局抖动 */
+  }
+
+  /* 打字机光标样式 */
+  .typed-cursor {
+    font-size: 1.5rem;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-arrow {
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-7px);
+    }
+  }
+</style>
+
+<div id="particles-js" style="display: none;">
+  <div class="hero-content">
+    <div class="hero-title">超级玉米人的博客</div>
+    <div class="hero-subtitle">
+      <span id="typed-text"></span>
+    </div>
+    <div class="hero-arrow">↓</div>
+  </div>
+</div>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">超级玉米人的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">时间Cia不多llo~(∠・ω< )⌒★</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gdb"><span class="nav-number">1.</span> <span class="nav-text"> GDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb-%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text"> GDB 能做什么？（主要功能）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text"> gdb 基础命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set%E5%91%BD%E4%BB%A4%E8%B0%83%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">1.3.</span> <span class="nav-text"> set命令调用技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.</span> <span class="nav-text"> X 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BD%8Dsize%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.4.1.</span> <span class="nav-text"> 单位（Size）详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8Fformat%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.4.2.</span> <span class="nav-text"> 格式（Format）详解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%B1%87%E7%BC%96%E5%B9%B6%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="nav-number">1.5.</span> <span class="nav-text"> 直接汇编并执行代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layout-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text"> layout 常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8gdb-%E8%B0%83%E8%AF%95%E6%B1%87%E7%BC%96"><span class="nav-number">1.7.</span> <span class="nav-text"> 如何使用gdb 调试汇编</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#liunx-syscall-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text"> Liunx syscall 调用约定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E8%A1%A8"><span class="nav-number">2.1.</span> <span class="nav-text"> 常用的系统调用表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text"> loop指令使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%BD%BF%E7%94%A8jnz-%E6%8C%87%E4%BB%A4"><span class="nav-number">3.1.</span> <span class="nav-text"> 其他循环的实现，使用jnz 指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E4%BB%A3%E7%A0%81%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%A0%88-stack"><span class="nav-number">4.</span> <span class="nav-text"> 在代码中使用栈 Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A7%E6%8C%87%E9%92%88-vs-%E6%A0%88%E6%8C%87%E9%92%88"><span class="nav-number">4.1.</span> <span class="nav-text"> 帧指针 vs 栈指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.2.</span> <span class="nav-text"> 总结：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5"><span class="nav-number">4.3.</span> <span class="nav-text"> 实践：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call-ret-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text"> CALL &amp; RET 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#callret-%E8%AF%AD%E6%B3%95%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text"> call&amp;ret 语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">5.2.</span> <span class="nav-text"> 总结:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5-2"><span class="nav-number">5.3.</span> <span class="nav-text"> 实践：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="超级玉米人"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">超级玉米人</p>
+  <div class="site-description" itemprop="description">一个基于Hexo的技术博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yoyolp" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yoyolp" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+<div id="sidebar-digital-clock" class="site-overview-item">
+    <div class="clock-container">
+        <div class="clock-time">00:00:00</div>
+        <div class="clock-date">2024-01-01</div>
+        <div class="clock-weekday">星期一</div>
+    </div>
+</div>
+
+<script>
+// 简化版电子钟，避免复杂的 JS
+function initClock() {
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const weekday = weekdays[now.getDay()];
+        
+        const clockElement = document.getElementById('sidebar-digital-clock');
+        if (clockElement) {
+            clockElement.querySelector('.clock-time').textContent = hours + ':' + minutes + ':' + seconds;
+            clockElement.querySelector('.clock-date').textContent = year + '-' + month + '-' + day;
+            clockElement.querySelector('.clock-weekday').textContent = weekday;
+        }
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000);
+}
+
+// 延迟初始化，确保 DOM 加载完成
+setTimeout(initClock, 100);
+</script>
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/02/asm02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ASM 02 | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ASM 02
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-02 09:28:24 / 修改时间：22:41:03" itemprop="dateCreated datePublished" datetime="2025-11-02T09:28:24+08:00">2025-11-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>gdb 的使用</p>
+<span id="more"></span>
+<h2 id="gdb"><a class="markdownIt-Anchor" href="#gdb"></a> GDB</h2>
+<p><strong>GDB</strong> 全称是  <strong>GNU Debugger</strong> ，是 GNU 软件系统的一部分。它是一个功能强大的 <strong>程序调试工具</strong> 。</p>
+<p>简单来说，GDB 就像一个程序的“手术刀”和“X光机”，它允许你深入到程序内部，观察其运行时的每一个细节。你可以让程序在任何你指定的地方暂停，然后检查当时的状态（比如变量的值、内存的内容、函数的调用关系等），也可以一步一步地执行代码，看程序究竟是如何运行的。</p>
+<h3 id="gdb-能做什么主要功能"><a class="markdownIt-Anchor" href="#gdb-能做什么主要功能"></a> GDB 能做什么？（主要功能）</h3>
+<ol>
+<li><strong>控制程序的运行</strong>
+<ul>
+<li>可以让程序从指定位置开始运行，或者在任何你希望的地方暂停。</li>
+<li>可以逐行执行代码，精确跟踪执行流程。</li>
+</ul>
+</li>
+<li><strong>设置断点</strong>
+<ul>
+<li>这是最核心的功能。你可以在特定的 <strong>行号</strong> 、<strong>函数名</strong>甚至满足某个<strong>条件</strong>时设置断点。程序运行到断点处就会自动暂停，让你进行观察。</li>
+</ul>
+</li>
+<li><strong>检查程序状态</strong>
+<ul>
+<li>当程序暂停时，你可以查看 <strong>变量的值</strong> 、 <strong>寄存器的内容</strong> 、<strong>内存数据</strong>等。</li>
+<li>可以查看程序正在执行哪一段代码。</li>
+</ul>
+</li>
+<li><strong>动态改变程序</strong>
+<ul>
+<li>你可以在调试过程中 <strong>修改变量的值</strong> ，或者强制调用某个函数。这可以用于测试不同输入对程序行为的影响，而无需重新编译。</li>
+</ul>
+</li>
+<li><strong>分析程序崩溃</strong>
+<ul>
+<li>当程序发生<strong>段错误（Segmentation Fault）</strong> 等严重错误而崩溃时，GDB 可以连接到程序产生的<strong>核心转储（Core Dump）</strong> 文件，告诉你程序在崩溃时正在执行什么代码，调用栈是什么，从而快速定位问题根源。</li>
+</ul>
+</li>
+<li><strong>多线程/多进程调试</strong>
+<ul>
+<li>支持调试多线程程序和多个进程，可以查看所有线程的状态，并在特定线程中设置断点。</li>
+</ul>
+</li>
+</ol>
+<h3 id="gdb-基础命令"><a class="markdownIt-Anchor" href="#gdb-基础命令"></a> gdb 基础命令</h3>
+<ol>
+<li><strong>基本运行和断点命令</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简写</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>run</code></td>
+<td><code>r</code></td>
+<td><strong>开始运行程序</strong> ，可以带参数</td>
+<td><code>(gdb) run arg1 arg2</code></td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td></td>
+<td>开始运行程序，并在 <code>main</code> 函数开头暂停</td>
+<td><code>(gdb) start</code></td>
+</tr>
+<tr>
+<td><code>break</code></td>
+<td><code>b</code></td>
+<td><strong>设置断点</strong></td>
+<td><code>(gdb) b main</code> (在函数处)<code>(gdb) b 10</code> (在行号处)<code>(gdb) b file.c:15</code> (在指定文件行号)</td>
+</tr>
+<tr>
+<td><code>info breakpoints</code></td>
+<td><code>i b</code></td>
+<td>查看所有已设置的断点信息</td>
+<td><code>(gdb) i b</code></td>
+</tr>
+<tr>
+<td><code>delete</code></td>
+<td><code>d</code></td>
+<td><strong>删除断点</strong> （接断点编号）</td>
+<td><code>(gdb) d 1</code> (删除 1 号断点)<code>(gdb) d</code> (删除所有断点)</td>
+</tr>
+<tr>
+<td><code>disablevar</code></td>
+<td><code>dis</code></td>
+<td>禁用断点（接断点编号）</td>
+<td><code>(gdb) dis 1</code></td>
+</tr>
+<tr>
+<td><code>enable</code></td>
+<td><code>en</code></td>
+<td>启用断点（接断点编号）</td>
+<td><code>(gdb) en 1</code></td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td><code>c</code></td>
+<td><strong>从当前断点继续运行到下一个断点</strong></td>
+<td><code>(gdb) c</code></td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td><code>s</code></td>
+<td><strong>单步执行</strong> ，<strong>会进入函数内部</strong></td>
+<td><code>(gdb) s</code></td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td><code>n</code></td>
+<td><strong>单步执行</strong> ， <strong>不会进入函数</strong> ，将其视为一个整体</td>
+<td><code>(gdb) n</code></td>
+</tr>
+<tr>
+<td><code>finish</code></td>
+<td><code>fin</code></td>
+<td><strong>执行完当前函数，并返回到调用它的地方</strong></td>
+<td><code>(gdb) fin</code></td>
+</tr>
+<tr>
+<td><code>until</code></td>
+<td><code>u</code></td>
+<td>运行直到退出当前循环或到达指定行</td>
+<td><code>(gdb) u 20</code> (运行到第20行)</td>
+</tr>
+<tr>
+<td><code>kill</code></td>
+<td><code>k</code></td>
+<td>终止正在调试的程序，但不退出 GDB</td>
+<td><code>(gdb) k</code></td>
+</tr>
+<tr>
+<td><code>quit</code></td>
+<td><code>q</code></td>
+<td><strong>退出 GDB</strong></td>
+<td><code>(gdb) q</code></td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li><strong>查看代码与信息</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简写</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list</code></td>
+<td><code>l</code></td>
+<td><strong>列出源代码</strong></td>
+<td><code>(gdb) l</code> (当前行附近)<code>(gdb) l 10</code> (第10行附近)<code>(gdb) l main</code> (main函数附近)</td>
+</tr>
+<tr>
+<td><code>backtrace</code></td>
+<td><code>bt</code></td>
+<td><strong>显示函数调用栈</strong> （非常有用！）</td>
+<td><code>(gdb) bt</code></td>
+</tr>
+<tr>
+<td><code>frame</code></td>
+<td><code>f</code></td>
+<td>选择栈帧（接栈帧编号）</td>
+<td><code>(gdb) f 0</code> (切换到 0 号栈帧)</td>
+</tr>
+<tr>
+<td><code>info registers</code></td>
+<td><code>i r</code></td>
+<td>查看寄存器的值</td>
+<td><code>(gdb) i r</code></td>
+</tr>
+<tr>
+<td><code>info args</code></td>
+<td><code>i a</code></td>
+<td>查看当前函数的参数</td>
+<td><code>(gdb) i a</code></td>
+</tr>
+<tr>
+<td><code>info locals</code></td>
+<td><code>i lo</code></td>
+<td>查看当前函数的局部变量</td>
+<td><code>(gdb) i lo</code></td>
+</tr>
+<tr>
+<td><code>info variables</code></td>
+<td><code>i va</code></td>
+<td>查看所有全局/静态变量</td>
+<td><code>(gdb) i va</code></td>
+</tr>
+<tr>
+<td><code>layout</code></td>
+<td></td>
+<td>文本用户界面模式</td>
+<td><code>(gdb) layout src </code> <code>（源代码视图 -g）</code></td>
+</tr>
+</tbody>
+</table>
+<p>或者 使用gdb -tui 也可以直接进入用户界面</p>
+<ol start="3">
+<li><strong>查看与修改变量</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简写</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>print</code></td>
+<td><code>p</code></td>
+<td><strong>打印变量或表达式的值</strong></td>
+<td><code>(gdb) p variable``(gdb) p *ptr``(gdb) p array[5]@10</code> (打印数组10个元素)</td>
+</tr>
+<tr>
+<td><code>display</code></td>
+<td><code>disp</code></td>
+<td><strong>每次程序暂停时，自动打印指定表达式的值</strong></td>
+<td><code>(gdb) display variable</code></td>
+</tr>
+<tr>
+<td><code>info display</code></td>
+<td><code>i disp</code></td>
+<td>查看所有自动显示项</td>
+<td><code>(gdb) i disp</code></td>
+</tr>
+<tr>
+<td><code>undisplay</code></td>
+<td></td>
+<td>取消自动显示（接显示编号）</td>
+<td><code>(gdb) undisplay 1</code></td>
+</tr>
+<tr>
+<td><code>set variable</code></td>
+<td><code>set</code></td>
+<td><strong>修改变量的值</strong></td>
+<td><code>(gdb) set var i=10``(gdb) set var ptr=0x0</code></td>
+</tr>
+<tr>
+<td><code>whatis</code></td>
+<td></td>
+<td>查看变量的类型</td>
+<td><code>(gdb) whatis variable</code></td>
+</tr>
+<tr>
+<td><code>ptype</code></td>
+<td></td>
+<td>更详细地查看变量的类型定义</td>
+<td><code>(gdb) ptype struct_name</code></td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li><strong>高级功能与多进程/线程调试</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简写</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>watch</code></td>
+<td></td>
+<td><strong>设置观察点</strong> ，当变量被<strong>写入</strong>时中断</td>
+</tr>
+<tr>
+<td><code>rwatch</code></td>
+<td></td>
+<td>设置观察点，当变量被<strong>读取</strong>时中断</td>
+</tr>
+<tr>
+<td><code>awatch</code></td>
+<td></td>
+<td>设置观察点，当变量被<strong>读写</strong>时中断</td>
+</tr>
+<tr>
+<td><code>thread apply all bt</code></td>
+<td></td>
+<td><strong>打印所有线程的调用栈</strong> （排查死锁/卡顿时极其有用）</td>
+</tr>
+<tr>
+<td><code>thread &lt;id&gt;</code></td>
+<td></td>
+<td>切换到指定 ID 的线程</td>
+</tr>
+<tr>
+<td><code>info threads</code></td>
+<td><code>i th</code></td>
+<td>查看所有线程信息</td>
+</tr>
+<tr>
+<td><code>attach &lt;pid&gt;</code></td>
+<td></td>
+<td>附加到正在运行的进程（接进程PID）</td>
+</tr>
+<tr>
+<td><code>detach</code></td>
+<td></td>
+<td>从已附加的进程分离</td>
+</tr>
+<tr>
+<td><code>shell</code></td>
+<td></td>
+<td>在 GDB 中执行 Shell 命令</td>
+</tr>
+</tbody>
+</table>
+<h3 id="set命令调用技巧"><a class="markdownIt-Anchor" href="#set命令调用技巧"></a> <code>set</code>命令调用技巧</h3>
+<ol>
+<li>修改普通变量，指针指向的值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set var a = 20</span><br><span class="line">set a = 20</span><br><span class="line"></span><br><span class="line">set var *ptr = 100</span><br><span class="line">set var ptr = 0x0</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改数组元素</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set var arr[0] = 99</span><br><span class="line">set var set[1] = &#x27;H&#x27;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>直接修改内存地址</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 修改单个字节</span><br><span class="line">set *(char *)0x7fffffffe24c = 0x41</span><br><span class="line">set *(char *)(0x7fffffffe250 + 1) = &#x27;Y&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="x-命令"><a class="markdownIt-Anchor" href="#x-命令"></a> X 命令</h3>
+<blockquote>
+<p>x/[数量][格式][单位] [内存地址或者表达式]<br />
+参数说明：</p>
+</blockquote>
+<ul>
+<li>数量：要显示的内存单元数量</li>
+<li>格式：显示数据的格式 （10进制）</li>
+<li>单位：每个内存单元的大小</li>
+<li>地址：要查看的内存地址，如果省略则继续查看上次查看的位置</li>
+</ul>
+<h4 id="单位size详解"><a class="markdownIt-Anchor" href="#单位size详解"></a> 单位（Size）详解</h4>
+<table>
+<thead>
+<tr>
+<th>单位字符</th>
+<th>含义</th>
+<th>字节数</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>b</code></td>
+<td>byte</td>
+<td>1字节</td>
+<td><code>x/4xb</code></td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>halfword</td>
+<td>2字节</td>
+<td><code>x/4xh</code></td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>word</td>
+<td>4字节</td>
+<td><code>x/4xw</code></td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>giant</td>
+<td>8字节</td>
+<td><code>x/4xg</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong> ：单位大小可能因架构而异，上述是 x86/x86_64 的典型值。</p>
+<h4 id="格式format详解"><a class="markdownIt-Anchor" href="#格式format详解"></a> 格式（Format）详解</h4>
+<table>
+<thead>
+<tr>
+<th>格式字符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>十六进制</td>
+<td><code>x/4xw</code></td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>有符号十进制</td>
+<td><code>x/4dw</code></td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>无符号十进制</td>
+<td><code>x/4uw</code></td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>八进制</td>
+<td><code>x/4ow</code></td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>二进制</td>
+<td><code>x/4tw</code></td>
+</tr>
+<tr>
+<td><code>f</code></td>
+<td>浮点数</td>
+<td><code>x/4fw</code></td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>地址</td>
+<td><code>x/4aw</code></td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>指令（反汇编）</td>
+<td><code>x/4i</code></td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>字符串</td>
+<td><code>x/s</code></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>字符</td>
+<td><code>x/10cb</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="直接汇编并执行代码"><a class="markdownIt-Anchor" href="#直接汇编并执行代码"></a> 直接汇编并执行代码</h3>
+<p>使用assemble 命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">assemble $code_addr</span><br><span class="line">mov $0x1, %eax</span><br><span class="line">ret</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">disassemble main 查看 main 函数的反汇编指令</span><br></pre></td></tr></table></figure>
+<h3 id="layout-常用命令"><a class="markdownIt-Anchor" href="#layout-常用命令"></a> layout 常用命令</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">tui disable/enable          # 关闭启用</span><br><span class="line"></span><br><span class="line">(gdb) layout next    # 切换到下一个布局</span><br><span class="line">(gdb) layout prev    # 切换到上一个布局</span><br><span class="line"></span><br><span class="line">(gdb) focus cmd      # 焦点切换到命令窗口</span><br><span class="line">(gdb) focus src      # 焦点切换到源代码窗口</span><br><span class="line">(gdb) focus asm      # 焦点切换到汇编窗口</span><br><span class="line">(gdb) focus reg      # 焦点切换到寄存器窗口</span><br><span class="line"></span><br><span class="line">(gdb) backtrace full # 查看完整调用栈</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 重置显示 当出现异常的时候</span><br><span class="line">(gdb) refresh</span><br><span class="line"># 或</span><br><span class="line">Ctrl + l</span><br><span class="line">快速切换</span><br><span class="line">Ctrl + x, a</span><br></pre></td></tr></table></figure>
+<h3 id="如何使用gdb-调试汇编"><a class="markdownIt-Anchor" href="#如何使用gdb-调试汇编"></a> 如何使用gdb 调试汇编</h3>
+<blockquote>
+<p>环境：ubuntu-gcc13.3.0, WSL-Ubuntu, gdb15.0.50</p>
+</blockquote>
+<p>存在如下汇编文件 <code>hello.s</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.data</span><br><span class="line">msg:</span><br><span class="line">  .ascii &quot;Hello_World!\n&quot;</span><br><span class="line">  len = . - msg</span><br><span class="line"></span><br><span class="line">.text</span><br><span class="line">  .global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">  # 写入</span><br><span class="line">  mov rax, 1 # 系统调用 - write</span><br><span class="line">  mov rdi, 1</span><br><span class="line">  lea rsi, [msg]</span><br><span class="line">  mov rdx, len</span><br><span class="line">  syscall</span><br><span class="line"></span><br><span class="line">  # exit</span><br><span class="line">  mov rax, 60</span><br><span class="line">  mov rdi, 0</span><br><span class="line">  syscall</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>as ./hello.s -o ./hello.o<br />
+ld -g ./hello.o -o ./hello</p>
+</blockquote>
+<p>使用 <code>info files</code> 查看文件所拥有的段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(gdb) info files</span><br><span class="line">Symbols from <span class="string">&quot;/home/yoyo/yoyo_dir/myobject/aboutPwn/hello&quot;</span>.</span><br><span class="line">Local <span class="built_in">exec</span> file:</span><br><span class="line">        `/home/yoyo/yoyo_dir/myobject/aboutPwn/hello<span class="string">&#x27;, file type elf64-x86-64.</span></span><br><span class="line"><span class="string">        Entry point: 0x401000</span></span><br><span class="line"><span class="string">        0x0000000000401000 - 0x000000000040102f is .text</span></span><br><span class="line"><span class="string">        0x0000000000402000 - 0x000000000040200d is .data</span></span><br><span class="line"><span class="string">(gdb)</span></span><br></pre></td></tr></table></figure>
+<p>发现存在 代码段 <code>.text</code>和初始化数据段 <code>.data</code><br />
+使用 <code>shell objdump -t ./hello</code> 查看./hello 具有哪些标识<br />
+进入_start</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">disas _start</span><br><span class="line"># 或者</span><br><span class="line">disas 0x401000, 0x40102f</span><br></pre></td></tr></table></figure>
+<p>得到</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Dump of assembler code from <span class="number">0x401000</span> to <span class="number">0x40200d</span>:</span><br><span class="line">   <span class="number">0x0000000000401000</span> &lt;_start+<span class="number">0</span>&gt;:       <span class="keyword">mov</span>    <span class="number">$0</span>x1,%rax</span><br><span class="line">   <span class="number">0x0000000000401007</span> &lt;_start+<span class="number">7</span>&gt;:       <span class="keyword">mov</span>    <span class="number">$0</span>x1,%rdi</span><br><span class="line">   <span class="number">0x000000000040100e</span> &lt;_start+<span class="number">14</span>&gt;:      <span class="keyword">lea</span>    <span class="number">0x402000</span>,%rsi</span><br><span class="line">   <span class="number">0x0000000000401016</span> &lt;_start+<span class="number">22</span>&gt;:      <span class="keyword">mov</span>    <span class="number">$0</span>xd,%rdx</span><br><span class="line">   <span class="number">0x000000000040101d</span> &lt;_start+<span class="number">29</span>&gt;:      <span class="keyword">syscall</span></span><br><span class="line">   <span class="number">0x000000000040101f</span> &lt;_start+<span class="number">31</span>&gt;:      <span class="keyword">mov</span>    <span class="number">$0</span>x3c,%rax</span><br><span class="line">   <span class="number">0x0000000000401026</span> &lt;_start+<span class="number">38</span>&gt;:      <span class="keyword">mov</span>    <span class="number">$0</span>x0,%rdi</span><br><span class="line">   <span class="number">0x000000000040102d</span> &lt;_start+<span class="number">45</span>&gt;:      <span class="keyword">syscall</span></span><br><span class="line">   <span class="number">0x000000000040102f</span>:</span><br></pre></td></tr></table></figure>
+<p>可以看出 在 <code>0x40100e</code> 出调用了指向 <code>.data</code>中的msg的地址也就是helloworld 这个字符串<br />
+使用 <code>x/10s 0x402000</code> 最近10行的字符串信息</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(gdb) x/10s <span class="number">0x402000</span></span><br><span class="line"><span class="number">0x402000</span>:       <span class="string">&quot;Hello_World!\n&quot;</span>&lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br><span class="line"><span class="number">0x40200d</span>:       &lt;error: Cannot access memory <span class="meta">at</span> address <span class="number">0x40200d</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>在 <code>0x401000</code> 设置断点 <code>b *0x401000</code> 或者 <code>b _start</code><br />
+使用 <code>stepi</code> <code>nexti</code> 或者 <code>si</code> <code>ni</code> 开始调试</p>
+<h2 id="liunx-syscall-调用约定"><a class="markdownIt-Anchor" href="#liunx-syscall-调用约定"></a> Liunx syscall 调用约定</h2>
+<p>在 Linux 系统中，系统调用（syscall）的约定根据架构不同而有所差异。以下以x86-64 架构系统调用约定为例子</p>
+<ol>
+<li><strong>系统调用约定</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>用途</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>rax</strong></td>
+<td>系统调用号</td>
+<td>指定要调用的系统调用</td>
+</tr>
+<tr>
+<td><strong>rdi</strong></td>
+<td>第一个参数</td>
+<td>arg0</td>
+</tr>
+<tr>
+<td><strong>rsi</strong></td>
+<td>第二个参数</td>
+<td>arg1</td>
+</tr>
+<tr>
+<td><strong>rdx</strong></td>
+<td>第三个参数</td>
+<td>arg2</td>
+</tr>
+<tr>
+<td><strong>r10</strong></td>
+<td>第四个参数</td>
+<td>arg3</td>
+</tr>
+<tr>
+<td><strong>r8</strong></td>
+<td>第五个参数</td>
+<td>arg4</td>
+</tr>
+<tr>
+<td><strong>r9</strong></td>
+<td>第六个参数</td>
+<td>arg5</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li><strong>系统调用指令</strong></li>
+</ol>
+<blockquote>
+<p>syscall</p>
+</blockquote>
+<ol start="3">
+<li><strong>返回值</strong></li>
+</ol>
+<ul>
+<li>成功：<code>rax</code> 包含返回值</li>
+<li>错误：<code>rax</code> 包含负的错误码</li>
+</ul>
+<h3 id="常用的系统调用表"><a class="markdownIt-Anchor" href="#常用的系统调用表"></a> 常用的系统调用表</h3>
+<table>
+<thead>
+<tr>
+<th>系统调用</th>
+<th>编号</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>read</strong></td>
+<td>0</td>
+<td>rdi=fd, rsi=buf, rdx=count</td>
+<td>读取数据</td>
+</tr>
+<tr>
+<td><strong>write</strong></td>
+<td>1</td>
+<td>rdi=fd, rsi=buf, rdx=count</td>
+<td>写入数据</td>
+</tr>
+<tr>
+<td><strong>open</strong></td>
+<td>2</td>
+<td>rdi=filename, rsi=flags, rdx=mode</td>
+<td>打开文件</td>
+</tr>
+<tr>
+<td><strong>close</strong></td>
+<td>3</td>
+<td>rdi=fd</td>
+<td>关闭文件</td>
+</tr>
+<tr>
+<td><strong>exit</strong></td>
+<td>60</td>
+<td>rdi=status</td>
+<td>退出进程</td>
+</tr>
+<tr>
+<td><strong>brk</strong></td>
+<td>12</td>
+<td>rdi=addr</td>
+<td>调整堆指针</td>
+</tr>
+<tr>
+<td><strong>mmap</strong></td>
+<td>9</td>
+<td>复杂参数</td>
+<td>内存映射</td>
+</tr>
+<tr>
+<td><strong>munmap</strong></td>
+<td>11</td>
+<td>rdi=addr, rsi=length</td>
+<td>取消内存映射</td>
+</tr>
+</tbody>
+</table>
+<h2 id="loop指令使用"><a class="markdownIt-Anchor" href="#loop指令使用"></a> <code>loop</code>指令使用</h2>
+<p>loop 指令 使用 rcx/ecx/cx 作为迭代器，在使用loop进行循环的时候需要注意防止syscall等破坏rcx 导致错误</p>
+<p>下列是一个实例</p>
+<blockquote>
+<p>使用环境：ubuntu-gcc13.3.0, WSL-Ubuntu 下同</p>
+</blockquote>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">.intel_syntax</span> noprefix</span><br><span class="line"><span class="meta">.data</span></span><br><span class="line"><span class="symbol">msg:</span></span><br><span class="line"><span class="meta">  .ascii</span> <span class="string">&quot;Hello_World\n&quot;</span></span><br><span class="line">  len = . - msg</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">.text</span></span><br><span class="line"><span class="meta">  .global</span> _start</span><br><span class="line">  # <span class="keyword">loop</span>循环设置</span><br><span class="line"><span class="symbol">_start:</span></span><br><span class="line">  # 循环<span class="number">5</span>次</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rcx</span>, <span class="number">5</span>  </span><br><span class="line"><span class="symbol">print_loop:</span></span><br><span class="line">    # print</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">lea</span> <span class="built_in">rsi</span>, [msg]</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdx</span>, len</span><br><span class="line">  </span><br><span class="line">  # 防止系统调用破坏<span class="built_in">rcx</span> 导致死循环</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">r12</span>, <span class="built_in">rcx</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">syscall</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rcx</span>, <span class="built_in">r12</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">r12</span>, <span class="number">0</span></span><br><span class="line">  <span class="keyword">loop</span> print_loop</span><br><span class="line"></span><br><span class="line">  # return <span class="number">0</span><span class="comment">;</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">60</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">0</span></span><br><span class="line">  <span class="keyword">syscall</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他循环的实现使用jnz-指令"><a class="markdownIt-Anchor" href="#其他循环的实现使用jnz-指令"></a> 其他循环的实现，使用jnz 指令</h3>
+<p>某些指令比如 <code>add</code>,<code>sub</code>,<code>or</code>,<code>and</code>,<code>xor</code>,<code>dec</code>,<code>inc</code> ,等会影响 <code>ZF</code>(零标志指令)，而 <code>jnz</code> 通过判断ZF 来决定是否跳转,所以可以通过这种方法来进行循环的实现</p>
+<p>修改之前的循环代码</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">.intel_syntax</span> noprefix</span><br><span class="line"><span class="meta">.data</span></span><br><span class="line"><span class="symbol">msg:</span></span><br><span class="line"><span class="meta">  .ascii</span> <span class="string">&quot;Hello_World\n&quot;</span></span><br><span class="line">  len = . - msg</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">.text</span></span><br><span class="line"><span class="meta">  .global</span> _start</span><br><span class="line">  # <span class="keyword">loop</span>循环设置</span><br><span class="line"><span class="symbol">_start:</span></span><br><span class="line">  # 循环<span class="number">5</span>次</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">r12</span>, <span class="number">5</span>  </span><br><span class="line"><span class="symbol">print_loop:</span></span><br><span class="line">  # print</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">lea</span> <span class="built_in">rsi</span>, [msg]</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdx</span>, len</span><br><span class="line">  <span class="keyword">syscall</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">dec</span> <span class="built_in">r12</span></span><br><span class="line">  <span class="keyword">jnz</span> print_loop</span><br><span class="line"></span><br><span class="line">  # return <span class="number">0</span><span class="comment">;</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">60</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">0</span></span><br><span class="line">  <span class="keyword">syscall</span></span><br></pre></td></tr></table></figure>
+<h2 id="在代码中使用栈-stack"><a class="markdownIt-Anchor" href="#在代码中使用栈-stack"></a> 在代码中使用栈 <code>Stack</code></h2>
+<p>栈是一种先进后出的数据结构，在内存中专门用于：</p>
+<ul>
+<li>函数的调用管理</li>
+<li>局部变量的存储</li>
+<li>寄存器的保存</li>
+<li>参数的传递</li>
+</ul>
+<h3 id="帧指针-vs-栈指针"><a class="markdownIt-Anchor" href="#帧指针-vs-栈指针"></a> 帧指针 vs 栈指针</h3>
+<p>栈指针寄存器：<code>rsp</code> / <code>esp</code></p>
+<p>栈帧指针：<code>rbp</code> /<code>ebp</code></p>
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>名称</th>
+<th>作用</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ESP/RSP</strong></td>
+<td>栈指针</td>
+<td>指向栈顶</td>
+<td>动态变化</td>
+</tr>
+<tr>
+<td><strong>EBP/RBP</strong></td>
+<td>帧指针</td>
+<td>指向当前栈帧基址</td>
+<td>相对固定</td>
+</tr>
+</tbody>
+</table>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结：</h3>
+<p>程序栈是管理汇编编程的核心概念</p>
+<ul>
+<li>管理函数调用：返回地址，帧指针</li>
+<li>数据存储：局部变量，临时数据</li>
+<li>状态保存：寄存器保护</li>
+<li>必须小心管理：栈指针平衡，对齐要求</li>
+<li>性能要求：栈操作速度较快</li>
+</ul>
+<h3 id="实践"><a class="markdownIt-Anchor" href="#实践"></a> 实践：</h3>
+<p>栈的使用通过指令 <code>pop</code>, <code>push</code> 来决定</p>
+<p>下面是一个使用栈的例子</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">.intel_syntax</span> noprefix</span><br><span class="line"><span class="meta">.data</span></span><br><span class="line"><span class="symbol">msg_1:</span></span><br><span class="line"><span class="meta">  .ascii</span> <span class="string">&quot;PUSH NUMBER IN TO STACK!\n&quot;</span></span><br><span class="line">  len_1 = . - msg_1</span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">char_buf:</span> .byte <span class="number">0</span>, <span class="number">0x0A</span> # 字符缓冲区域</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">.text</span></span><br><span class="line"><span class="meta">  .global</span> _start</span><br><span class="line"><span class="symbol">_start:</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">lea</span> <span class="built_in">rsi</span>, [msg_1]</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdx</span>, len_1</span><br><span class="line">  <span class="keyword">syscall</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">r12</span>, len_1</span><br><span class="line"><span class="symbol">stack_push_loop:</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, [msg_1 + <span class="built_in">r12</span> - <span class="number">1</span>]</span><br><span class="line">  <span class="keyword">push</span> <span class="built_in">rax</span></span><br><span class="line">  <span class="keyword">dec</span> <span class="built_in">r12</span></span><br><span class="line">  <span class="keyword">jnz</span> stack_push_loop</span><br><span class="line"></span><br><span class="line">  # 打印栈中字符串</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">r12</span>, len_1</span><br><span class="line"><span class="symbol">print_stack_str_loop:</span></span><br><span class="line">  <span class="keyword">pop</span> <span class="built_in">rax</span></span><br><span class="line">  <span class="keyword">mov</span> [char_buf], <span class="built_in">al</span>      # 由于汇编语言没有自动截断功能，所以必须使用低位的寄存器 <span class="built_in">al</span> 是 <span class="built_in">ax</span> 的低位</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">lea</span> <span class="built_in">rsi</span>, [char_buf]</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdx</span>, <span class="number">2</span></span><br><span class="line">  <span class="keyword">syscall</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">dec</span> <span class="built_in">r12</span></span><br><span class="line">  <span class="keyword">jnz</span> print_stack_str_loop</span><br><span class="line"></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">60</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">0</span></span><br><span class="line">  <span class="keyword">syscall</span></span><br></pre></td></tr></table></figure>
+<p>这段代码实现了将字符串倒序压入栈中，然后通过循环拿出这一功能，注意 栈不能无限制压入数据一般来说Liunx 栈的大小为 <strong>8MB</strong></p>
+<h2 id="call-ret-指令"><a class="markdownIt-Anchor" href="#call-ret-指令"></a> CALL &amp; RET 指令</h2>
+<p><code>call</code> 和 <code>ret</code>指令都是转移指令，都修改rip / eip / ip 等 他们经常杯共同用来实现子程序的设计，可以把它们理解为类似于高级语言的函数调用</p>
+<h3 id="callret-语法格式"><a class="markdownIt-Anchor" href="#callret-语法格式"></a> call&amp;ret 语法格式</h3>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> target      # 直接调用</span><br><span class="line"><span class="keyword">call</span> [<span class="built_in">rax</span>]       # 间接调用（通过寄存器）</span><br><span class="line"><span class="keyword">call</span> [<span class="built_in">rsp</span>+<span class="number">8</span>]     # 间接调用（通过内存）</span><br><span class="line"></span><br><span class="line"><span class="keyword">ret</span>           # 简单返回</span><br><span class="line"><span class="keyword">ret</span> imm16     # 返回并调整栈指针</span><br></pre></td></tr></table></figure>
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结:</h3>
+<ul>
+<li><strong><code>call</code></strong> ：保存返回地址 + 跳转到函数</li>
+<li><strong><code>ret</code></strong> ：恢复返回地址 + 返回调用者</li>
+<li><strong>必须保持栈平衡</strong> ：push/pop 数量匹配</li>
+<li><strong>性能关键</strong> ：影响函数调用开销</li>
+<li><strong>调试友好</strong> ：正确的帧指针管理便于调试</li>
+</ul>
+<h3 id="实践-2"><a class="markdownIt-Anchor" href="#实践-2"></a> 实践：</h3>
+<p>下面是一个使用 <code>call</code> &amp; <code>ret</code> 的例子:</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">.intel_syntax</span> noprefix</span><br><span class="line"><span class="meta">.data</span></span><br><span class="line"><span class="symbol">msg:</span></span><br><span class="line"><span class="meta">  .ascii</span> <span class="string">&quot;This is a MSG!\n&quot;</span></span><br><span class="line">  msg_len = . - msg  </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">.text</span></span><br><span class="line"><span class="meta">  .global</span> _start</span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">_start:</span></span><br><span class="line">  <span class="keyword">call</span> _func_print_msg</span><br><span class="line"></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">60</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">0</span></span><br><span class="line">  <span class="keyword">syscall</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">_func_print_msg:</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdi</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">lea</span> <span class="built_in">rsi</span>, [msg]</span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">rdx</span>, msg_len</span><br><span class="line">  <span class="keyword">syscall</span></span><br><span class="line">  <span class="keyword">ret</span></span><br></pre></td></tr></table></figure>
+
+
+        <div>
+          
+            <div>
+  
+    <div style="text-align: center; color: #ccc; font-size: 14px; margin: 20px 0;">
+      ---------- 已经到底了啦！ (*/ω＼*) ----------
+    </div>
+  
+</div>
+          
+        </div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/11/01/asm01/" rel="prev" title="ASM 01">
+                  <i class="fa fa-angle-left"></i> ASM 01
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">超级玉米人</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<!-- particles.js 配置和初始化 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 立即滚动到顶部
+  window.scrollTo(0, 0);
+  
+  function isHomePage() {
+    const path = window.location.pathname;
+    return path === '/' || path === '/index.html' || path === '/archives/' || path.endsWith('/index.html');
+  }
+
+  if (isHomePage()) {
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+      particlesContainer.style.display = 'block';
+      
+      // 初始化打字机效果
+      initTypedEffect();
+      
+      // 初始化 particles.js
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out"
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 200,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // 向下滚动箭头点击事件
+      document.querySelector('.hero-arrow')?.addEventListener('click', function() {
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  // 打字机效果初始化函数
+  function initTypedEffect() {
+    // 获取博客副标题，如果没有则使用默认文本
+    const subtitle = "时间Cia不多llo~(∠・ω< )⌒★" || "Welcome to my blog";
+    
+    // 可以设置多个文本循环打字，或者只使用副标题
+    const strings = [
+      subtitle,
+      "Hello World!",  // 可以添加更多文本
+      "来往下滑吧~~~~",
+      "接下来我也不知到要写什么了"
+    ];
+
+    // 初始化 Typed.js
+    new Typed('#typed-text', {
+      strings: strings,
+      typeSpeed: 70,        // 打字速度
+      backSpeed: 40,        // 回退速度
+      backDelay: 2000,      // 回退前的延迟
+      startDelay: 500,      // 开始前的延迟
+      loop: true,           // 循环播放
+      showCursor: true,     // 显示光标
+      cursorChar: '|',      // 光标字符
+      autoInsertCss: true   // 自动插入CSS
+    });
+  }
+});
+
+
+
+
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.8,"opacityDefault":0.8},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
