@@ -21,27 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="今天我使用hexo 搭建了一个个人博客blog 然后将其部署到github上用于记录我的学习过程  hexo 的常用指令  创建一个新的文章 1$ hexo new &quot;My New Post&quot; More info: Writing  启动服务器 1$ hexo server More info: Server  生成静态文件 1$ hexo generate More info">
+    <meta name="description" content="跳转指令 CMP, JNC, JC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="这是我的第一篇文章">
-<meta property="og:url" content="http://example.com/2025/10/08/this_is_my_first_blog/index.html">
+<meta property="og:title" content="ASM 05">
+<meta property="og:url" content="http://example.com/2025/11/06/asm05/index.html">
 <meta property="og:site_name" content="超级玉米人的博客">
-<meta property="og:description" content="今天我使用hexo 搭建了一个个人博客blog 然后将其部署到github上用于记录我的学习过程  hexo 的常用指令  创建一个新的文章 1$ hexo new &quot;My New Post&quot; More info: Writing  启动服务器 1$ hexo server More info: Server  生成静态文件 1$ hexo generate More info">
+<meta property="og:description" content="跳转指令 CMP, JNC, JC">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-08T11:37:55.088Z">
-<meta property="article:modified_time" content="2025-10-08T12:17:48.731Z">
+<meta property="article:published_time" content="2025-11-06T11:29:38.520Z">
+<meta property="article:modified_time" content="2025-11-06T12:48:22.664Z">
 <meta property="article:author" content="超级玉米人">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2025/10/08/this_is_my_first_blog/">
+<link rel="canonical" href="http://example.com/2025/11/06/asm05/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/10/08/this_is_my_first_blog/","path":"2025/10/08/this_is_my_first_blog/","title":"这是我的第一篇文章"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/11/06/asm05/","path":"2025/11/06/asm05/","title":"ASM 05"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>这是我的第一篇文章 | 超级玉米人的博客</title>
+<title>ASM 05 | 超级玉米人的博客</title>
   
 
 
@@ -228,7 +228,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-%E7%9A%84%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text"> hexo 的常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E6%96%87%E7%AB%A0"><span class="nav-number">1.1.</span> <span class="nav-text"> 创建一个新的文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text"> 启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text"> 生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%AB%99%E7%82%B9"><span class="nav-number">1.4.</span> <span class="nav-text"> 部署到远程站点</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cmp-%E6%AF%94%E8%BE%83%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text"> cmp - 比较指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%B1%E5%93%8D%E7%9A%84%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="nav-number">1.1.</span> <span class="nav-text"> 影响的标志位</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#je-jz-jne-jnz-jns-jo-jno-jp-jnp-jbjnaejc-jnbjaejnc"><span class="nav-number">2.</span> <span class="nav-text"> je, jz, jne, jnz, jns, jo, jno, jp, jnp, jb&#x2F;jnae&#x2F;jc, jnb&#x2F;jae&#x2F;jnc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#div%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text"> div指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mul-%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text"> mul 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%BF%97%E4%BD%8D%E5%BD%B1%E5%93%8D"><span class="nav-number">4.1.</span> <span class="nav-text"> 标志位影响</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -326,7 +326,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/08/this_is_my_first_blog/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/06/asm05/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -339,12 +339,12 @@ setTimeout(initClock, 100);
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="这是我的第一篇文章 | 超级玉米人的博客">
+      <meta itemprop="name" content="ASM 05 | 超级玉米人的博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          这是我的第一篇文章
+          ASM 05
         </h1>
 
         <div class="post-meta-container">
@@ -356,7 +356,7 @@ setTimeout(initClock, 100);
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-10-08 19:37:55 / 修改时间：20:17:48" itemprop="dateCreated datePublished" datetime="2025-10-08T19:37:55+08:00">2025-10-08</time>
+      <time title="创建时间：2025-11-06 19:29:38 / 修改时间：20:48:22" itemprop="dateCreated datePublished" datetime="2025-11-06T19:29:38+08:00">2025-11-06</time>
     </span>
 
   
@@ -368,20 +368,90 @@ setTimeout(initClock, 100);
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>今天我使用hexo 搭建了一个个人博客blog 然后将其部署到github上用于记录我的学习过程</p>
-<h2 id="hexo-的常用指令"><a class="markdownIt-Anchor" href="#hexo-的常用指令"></a> hexo 的常用指令</h2>
-<h3 id="创建一个新的文章"><a class="markdownIt-Anchor" href="#创建一个新的文章"></a> 创建一个新的文章</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="启动服务器"><a class="markdownIt-Anchor" href="#启动服务器"></a> 启动服务器</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="生成静态文件"><a class="markdownIt-Anchor" href="#生成静态文件"></a> 生成静态文件</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="部署到远程站点"><a class="markdownIt-Anchor" href="#部署到远程站点"></a> 部署到远程站点</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <div class="post-body" itemprop="articleBody"><p>跳转指令 CMP, JNC, JC</p>
+<span id="more"></span>
+<h2 id="cmp-比较指令"><a class="markdownIt-Anchor" href="#cmp-比较指令"></a> cmp - 比较指令</h2>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">cmp</span> &lt;src&gt;, &lt;dest&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">cmp</span> <span class="built_in">rax</span>, <span class="number">10</span></span><br><span class="line">==&gt;</span><br><span class="line"><span class="keyword">sub</span> <span class="built_in">rax</span>, <span class="number">10</span>  # 但是 <span class="built_in">rax</span> 不保存结果</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">15</span></span><br><span class="line"><span class="keyword">cmp</span> <span class="built_in">rax</span>, <span class="number">10</span>    # <span class="number">15</span> - <span class="number">10</span> = <span class="number">5</span> (正数)</span><br><span class="line"># 结果：ZF=<span class="number">0</span>, CF=<span class="number">0</span>, SF=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">5</span></span><br><span class="line"><span class="keyword">cmp</span> <span class="built_in">rax</span>, <span class="number">10</span>    # <span class="number">5</span> - <span class="number">10</span> = -<span class="number">5</span> (需要借位)</span><br><span class="line"># 结果：ZF=<span class="number">0</span>, CF=<span class="number">1</span>, SF=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">10</span></span><br><span class="line"><span class="keyword">cmp</span> <span class="built_in">rax</span>, <span class="number">10</span>    # <span class="number">10</span> - <span class="number">10</span> = <span class="number">0</span></span><br><span class="line"># 结果：ZF=<span class="number">1</span>, CF=<span class="number">0</span>, SF=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h3 id="影响的标志位"><a class="markdownIt-Anchor" href="#影响的标志位"></a> 影响的标志位</h3>
+<ul>
+<li><strong>ZF (零标志)</strong> ：如果结果为 0，则置 1 (<code>destination == source</code>)</li>
+<li><strong>CF (进位标志)</strong> ：如果发生借位/进位，则置 1 (<code>destination &lt; source</code> 无符号比较时)</li>
+<li><strong>SF (符号标志)</strong> ：如果结果为负，则置 1</li>
+<li><strong>OF (溢出标志)</strong> ：如果发生有符号溢出，则置 1</li>
+</ul>
+<h2 id="je-jz-jne-jnz-jns-jo-jno-jp-jnp-jbjnaejc-jnbjaejnc"><a class="markdownIt-Anchor" href="#je-jz-jne-jnz-jns-jo-jno-jp-jnp-jbjnaejc-jnbjaejnc"></a> je, jz, jne, jnz, jns, jo, jno, jp, jnp, jb/jnae/jc, jnb/jae/jnc</h2>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+<th>测试条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>je/jz</td>
+<td>相等，结果为0</td>
+<td>ZF = 1</td>
+</tr>
+<tr>
+<td>jne/jnz</td>
+<td>不等/结果不为0</td>
+<td>ZF = 0</td>
+</tr>
+<tr>
+<td>js</td>
+<td>结果为负</td>
+<td>SF = 1</td>
+</tr>
+<tr>
+<td>jns</td>
+<td>结果非负</td>
+<td>SP = 0</td>
+</tr>
+<tr>
+<td>jo</td>
+<td>结果没有溢出</td>
+<td>OF = 1</td>
+</tr>
+<tr>
+<td>jno</td>
+<td>结果溢出</td>
+<td>OF = 0</td>
+</tr>
+<tr>
+<td>jp</td>
+<td>奇偶位为1</td>
+<td>PF = 1</td>
+</tr>
+<tr>
+<td>jnp</td>
+<td>奇偶位不为1</td>
+<td>PF = 0</td>
+</tr>
+<tr>
+<td>jb/jnae/jc</td>
+<td>低于/不高于/不等于/有借位</td>
+<td>CF = 1</td>
+</tr>
+<tr>
+<td>jnb/jae/jnc</td>
+<td>不低于/高于等于/无借位</td>
+<td>CF = 0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="div指令"><a class="markdownIt-Anchor" href="#div指令"></a> div指令</h2>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">64</span>位除法：<span class="built_in">RDX</span>:<span class="built_in">RAX</span> / <span class="built_in">RCX</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rdx</span>, <span class="number">0</span>       # 被除数高<span class="number">64</span>位</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">100</span>     # 被除数低<span class="number">64</span>位</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rcx</span>, <span class="number">3</span>       # 除数</span><br><span class="line"><span class="keyword">div</span> <span class="built_in">rcx</span>          # 结果：<span class="built_in">RAX</span>=商, <span class="built_in">RDX</span>=余数</span><br><span class="line"># <span class="built_in">RAX</span> = <span class="number">33</span>, <span class="built_in">RDX</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>在使用div 指令的时候效率比较低，不过假如除数为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">2^x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span>的形式的话，那么他的余数显然是这个除数的低位 我们可以使用 访问这个被除数的低位来获取余数</p>
+<h2 id="mul-指令"><a class="markdownIt-Anchor" href="#mul-指令"></a> mul 指令</h2>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">.intel_syntax</span> noprefix</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">10000000000</span>   # <span class="built_in">RAX</span> = <span class="number">10</span>,<span class="number">000</span>,<span class="number">000</span>,<span class="number">000</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rbx</span>, <span class="number">300</span>           # <span class="built_in">RBX</span> = <span class="number">300</span></span><br><span class="line"><span class="keyword">mul</span> <span class="built_in">rbx</span>                # <span class="built_in">RDX</span>:<span class="built_in">RAX</span> = <span class="number">10</span>,<span class="number">000</span>,<span class="number">000</span>,<span class="number">000</span> * <span class="number">300</span> = <span class="number">3</span>,<span class="number">000</span>,<span class="number">000</span>,<span class="number">000</span>,<span class="number">000</span></span><br></pre></td></tr></table></figure>
+<h3 id="标志位影响"><a class="markdownIt-Anchor" href="#标志位影响"></a> 标志位影响</h3>
+<p><code>mul</code> 指令会影响以下标志位：</p>
+<ul>
+<li><strong>CF（进位标志）</strong> ：如果结果的高半部分（DX/EDX/RDX）不为0，则CF=1</li>
+<li><strong>OF（溢出标志）</strong> ：与CF相同</li>
+</ul>
 
 
         <div>
@@ -407,11 +477,11 @@ setTimeout(initClock, 100);
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2025/11/05/asm04/" rel="prev" title="ASM04">
+                  <i class="fa fa-angle-left"></i> ASM04
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/10/09/day1/" rel="next" title="day1">
-                  day1 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

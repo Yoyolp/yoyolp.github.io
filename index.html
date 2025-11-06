@@ -240,7 +240,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -322,6 +322,83 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/06/asm05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/11/06/asm05/" class="post-title-link" itemprop="url">ASM 05</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-06 19:29:38 / 修改时间：20:48:22" itemprop="dateCreated datePublished" datetime="2025-11-06T19:29:38+08:00">2025-11-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>跳转指令 CMP, JNC, JC</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/11/06/asm05/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/05/asm04/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -350,9 +427,15 @@ setTimeout(initClock, 100);
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-11-05 19:09:01 / 修改时间：22:49:17" itemprop="dateCreated datePublished" datetime="2025-11-05T19:09:01+08:00">2025-11-05</time>
+      <time title="创建时间：2025-11-05 19:09:01" itemprop="dateCreated datePublished" datetime="2025-11-05T19:09:01+08:00">2025-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-06 19:23:43" itemprop="dateModified" datetime="2025-11-06T19:23:43+08:00">2025-11-06</time>
     </span>
 
   
@@ -365,216 +448,15 @@ setTimeout(initClock, 100);
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-<h2 id="寄存器的使用约定"><a class="markdownIt-Anchor" href="#寄存器的使用约定"></a> 寄存器的使用约定</h2>
-<table>
-<thead>
-<tr>
-<th>寄存器</th>
-<th>主要用途</th>
-<th>调用约定</th>
-<th>特殊指令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>RAX</strong></td>
-<td>返回值、系统调用、算术运算</td>
-<td>调用者保存</td>
-<td><code>mul</code>, <code>div</code>, <code>in</code>, <code>out</code></td>
-</tr>
-<tr>
-<td><strong>RBX</strong></td>
-<td>基地址、数据存储</td>
-<td>被调用者保存</td>
-<td>无特殊指令</td>
-</tr>
-<tr>
-<td><strong>RCX</strong></td>
-<td>循环计数、字符串计数</td>
-<td>调用者保存</td>
-<td><code>loop</code>, <code>rep</code>, 移位计数</td>
-</tr>
-<tr>
-<td><strong>RDX</strong></td>
-<td>I/O端口、乘除法高位</td>
-<td>调用者保存</td>
-<td><code>mul</code>, <code>div</code>, <code>in</code>, <code>out</code></td>
-</tr>
-<tr>
-<td><strong>RDI</strong></td>
-<td>第一个参数、目标索引</td>
-<td>调用者保存</td>
-<td>字符串指令目标</td>
-</tr>
-<tr>
-<td><strong>RSI</strong></td>
-<td>第二个参数、源索引</td>
-<td>调用者保存</td>
-<td>字符串指令源</td>
-</tr>
-</tbody>
-</table>
-<h2 id="rflags-寄存器"><a class="markdownIt-Anchor" href="#rflags-寄存器"></a> RFLAGS 寄存器</h2>
-<p>这个寄存器用于存储CPU 操作状态和控制信息</p>
-<p>寄存器布局</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">63                32                16    8    0</span><br><span class="line">+-----------------+-----------------+-----+-----+</span><br><span class="line">|     保留位       |     扩展标志     | FLAGS | 状态标志 |</span><br><span class="line">+-----------------+-----------------+-----+-----+</span><br></pre></td></tr></table></figure>
-<p>常用标志位</p>
-<ol>
-<li>CF - 进位标志</li>
-<li>PF - 奇偶标志</li>
-<li>AF - 辅助进位</li>
-<li>ZF - 零标志</li>
-<li>SF - 符号标志</li>
-<li>OF - 溢出标志</li>
-</ol>
-<h2 id="程序栈"><a class="markdownIt-Anchor" href="#程序栈"></a> 程序栈</h2>
-<p>程序栈（通常简称为&quot;栈&quot;) 是进程内存布局中的一块<strong>连续</strong>区域，用于存储函数的<strong>调用上下文</strong>和 <strong>局部状态</strong> 。它是一种<strong>后进先出</strong> 的数据结构，可以想象成一摞盘子，你总是把新盘子放在最上面（压入），也总是从最上面拿走盘子（弹出）。</p>
-<p>在x86_64 架构中：</p>
-<ul>
-<li>栈的地址从高地址像低地址生长</li>
-<li>栈指针寄存器 <code>rsp</code> 始终指向栈的顶部</li>
-<li>基指针寄存器 <code>rbp</code> 通常用于指向当前函数栈帧的开始，以便稳定地访问参数和局部变量</li>
-</ul>
-<h3 id="程序栈的核心作用"><a class="markdownIt-Anchor" href="#程序栈的核心作用"></a> 程序栈的核心作用</h3>
-<ol>
-<li>控制流管理</li>
-</ol>
-<ul>
-<li><code>call/ret</code> 依靠栈来记住返回地址，实现了函数的嵌套调用和返回</li>
-</ul>
-<ol start="2">
-<li>局部变量存储</li>
-</ol>
-<ul>
-<li>函数的非静态局部变量在栈上分配。当函数返回的时，这些变量占用的空间会被释放</li>
-</ul>
-<ol start="3">
-<li>参数传递：</li>
-</ol>
-<ul>
-<li>在x86_64 的  <em>System V ABI</em> <strong>（1）</strong> 中，前6个整型/指针 参数通过寄存器传递，如果参数多余6个，或某些参数是大型结构体那么额外的参数会通过栈传递</li>
-</ul>
-<ol start="4">
-<li>保存调用的上下文：</li>
-</ol>
-<ul>
-<li>在调用一个新函数面前，调用者可能需要将一些&quot;被调用者保存的寄存器&quot;（rbx, r12-r15） 压栈，因此为新函数承诺不会改变这些寄存器的值</li>
-<li>被调用函数也会保存 rbp 等寄存器以便返回时恢复</li>
-</ul>
-<ol start="5">
-<li>提供临时的存储空间：</li>
-</ol>
-<ul>
-<li>编译器可能会使用分配的空间来存储中间计算的结果</li>
-</ul>
-<h3 id="栈的操作与指令"><a class="markdownIt-Anchor" href="#栈的操作与指令"></a> 栈的操作与指令</h3>
-<ol>
-<li><code>push  &lt;src&gt;</code></li>
-</ol>
-<ul>
-<li>机理：先将 <code>rsp</code> 减去 8（在 x86_64 架构中 一个单位的栈空间为 8位）， 然后将操作数存入 <code>[rsp]</code></li>
-<li>等价于</li>
-</ul>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sub</span> <span class="built_in">rsp</span>, <span class="number">8</span></span><br><span class="line"><span class="keyword">mov</span> &lt;src&gt;, <span class="built_in">rsp</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><code>pop &lt;dest&gt;</code></li>
-</ol>
-<ul>
-<li>机理: 先将 <code>[rsp]</code> 的值存入目标操作数，然后将 <code>rsp</code> 加上8</li>
-<li>等价于</li>
-</ul>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> &lt;dest&gt;, <span class="built_in">rsp</span></span><br><span class="line"><span class="keyword">add</span> <span class="built_in">rsp</span>, <span class="number">8</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li><code>call &lt;target&gt;</code></li>
-</ol>
-<ul>
-<li>机理：将下一条指令的地址（返回地址）压栈，然后跳转到目标地址</li>
-<li>等价于：</li>
-</ul>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">push</span> <span class="built_in">rip</span></span><br><span class="line"><span class="keyword">jmp</span> &lt;target&gt;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li><code>ret</code></li>
-</ol>
-<ul>
-<li>机理: 从栈顶弹出返回地址，并跳转到该地址</li>
-<li>等价于：</li>
-</ul>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pop</span> <span class="built_in">rip</span></span><br></pre></td></tr></table></figure>
-<h4 id="栈帧-stack-frame"><a class="markdownIt-Anchor" href="#栈帧-stack-frame"></a> 栈帧 <code>Stack Frame</code></h4>
-<p>每一个函数在栈上占用的区域称为一个栈帧。<code>rbp</code> 和 <code>rsp</code> 共同界定了一个栈帧.</p>
-<h4 id="leave-指令"><a class="markdownIt-Anchor" href="#leave-指令"></a> <code>leave</code> 指令</h4>
-<p>在 <code>x86_64</code> 中 <code>leave</code> 指令是一个符合指令，他的作用等同以下两条指令序列：</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">rsp</span>, <span class="built_in">rbp</span></span><br><span class="line"><span class="keyword">pop</span> <span class="built_in">rbp</span></span><br></pre></td></tr></table></figure>
-<p>在函数执行完毕后，准备返回。在调用ret 之前，需要先将栈恢复到调用前的状态</p>
-<h4 id="标准的函数序言"><a class="markdownIt-Anchor" href="#标准的函数序言"></a> 标准的函数序言</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">my_function:</span><br><span class="line">  # === 函数序言 === </span><br><span class="line">  push %rbp          # 1. 保存旧的帧指针</span><br><span class="line">  mov  %rsp, %rbp    # 2. 建立新的帧指针（新栈帧开始）</span><br><span class="line">  sub  $16, %rsp     # 3. 在栈上为局部变量分配空间</span><br><span class="line"></span><br><span class="line">  # === 函数体 === </span><br><span class="line">  movl $0, -4(%rbp)  # 使用 rbp 偏移量来访问局部变量</span><br><span class="line">  ...                # 函数逻辑</span><br><span class="line"></span><br><span class="line">  # === 函数尾声 === </span><br><span class="line">  leave              # 1. 等效于 `mov rsp, rbp` 和 `pop rbp`</span><br><span class="line">                     #    (这步会销毁当前栈帧，恢复旧的 rbp 和 rsp)</span><br><span class="line">  ret                # 2. 返回到调用者</span><br></pre></td></tr></table></figure>
-<h2 id="system-v-abi"><a class="markdownIt-Anchor" href="#system-v-abi"></a> <strong>System V ABI</strong></h2>
-<p>System B ABI 是一套详尽的规范，其定义了：</p>
-<ol>
-<li>在特定额硬件和操作系统上，编译后的程序应该如何运行</li>
-<li>不同的编译单元之间该如何交互</li>
-</ol>
-<h3 id="system-v-abi包含内容"><a class="markdownIt-Anchor" href="#system-v-abi包含内容"></a> System V ABI包含内容</h3>
-<ol>
-<li>函数调用约定</li>
-</ol>
-<ul>
-<li>
-<p>参数传递（整数/指针）：</p>
-<ul>
-<li>前六个参数按顺序使用以下寄存器传递：
-<ul>
-<li><code>rdi</code>, <code>rsi</code>, <code>rdx</code>, <code>rcx</code>, <code>r8</code>, <code>r9</code></li>
-<li>第七个及以后的参数通过栈来传递</li>
-</ul>
-</li>
-<li>返回值：
-<ul>
-<li>整数或者指针类型的返回值存放在rax寄存器中</li>
-<li>如果返回值是较大的结构体（无法放入寄存器），调用者会分配一块内存，并将地址作为隐藏的第一个参数 通过 <code>rdi</code> 传递</li>
-</ul>
-</li>
-<li>栈对齐：</li>
-</ul>
-<ul>
-<li>寄存器使用约定：
-<ul>
-<li>被调用者保存的寄存器：<code>rbp</code>, <code>rbx</code>, <code>r12</code>, <code>r13</code>, <code>r14</code>, <code>r15</code>
-<ul>
-<li>如果一个函数要使用这些寄存器，他必须在修改他们之前将他的原始值压栈，并在返回前恢复。调用者可以放心认为这些寄存器的值在函数调用前不变</li>
-</ul>
-</li>
-<li>调用者保存的寄存器：<code>rax</code>, <code>rcx</code>, <code>rdx</code>, <code>rsi</code>, <code>rdi</code>, <code>r8</code>, <code>r9</code>, <code>r10</code>, <code>r11</code>
-<ul>
-<li>如果一个函数希望在函数调用后还能使用这些寄存器的值，他必须在调用前自己保存他们，因为被调用者可以随意修改这些寄存器</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="程序寻址基本方式"><a class="markdownIt-Anchor" href="#程序寻址基本方式"></a> 程序寻址基本方式</h2>
-<ol>
-<li>顺序寻址： 指令在内存中的存储顺序执行</li>
-</ol>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">rax</span>, <span class="number">10</span>     <span class="comment">; 指令地址: 0x400100</span></span><br><span class="line"><span class="keyword">add</span> <span class="built_in">rax</span>, <span class="number">20</span>     <span class="comment">; 指令地址: 0x400107  </span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">rbx</span>, <span class="built_in">rax</span>    <span class="comment">; 指令地址: 0x40010e</span></span><br></pre></td></tr></table></figure>
-<p>机理：</p>
-<ul>
-<li>CPU 通过 <code>rip</code> 指令寄存器跟踪当前指令地址</li>
-<li>执行完每条指令后， <code>rip</code> 自动增加，指向下一条指令</li>
-<li>增加的大小取决于当前指令的长度</li>
-</ul>
-<ol start="2">
-<li>直接跳转寻址： 直接指定目标地址</li>
-</ol>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">jmp</span> <span class="number">0x400150</span>        <span class="comment">; 无条件跳转到绝对地址 0x400150</span></span><br><span class="line"><span class="keyword">call</span> my_function    <span class="comment">; 调用函数（函数名在链接时解析为绝对地址）</span></span><br><span class="line"><span class="keyword">je</span>   error_handler  <span class="comment">; 条件跳转到标签</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>间接跳转寻址：通过寄存器或者内存地址来跳转</li>
-</ol>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">jmp</span> <span class="built_in">rax</span>            <span class="comment">; 跳转到 RAX 寄存器中的地址</span></span><br><span class="line"><span class="keyword">call</span> [<span class="built_in">rsi</span>]         <span class="comment">; 调用 RSI 指向的地址处的函数</span></span><br><span class="line"><span class="keyword">jmp</span> [jump_table + <span class="built_in">rdx</span>*<span class="number">8</span>]  <span class="comment">; 通过跳转表跳转</span></span><br></pre></td></tr></table></figure>
-
+          <p>寄存器得使用约定， RFLAGS寄存器，程序栈得概念，System V ABI， 寻址方式</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/11/05/asm04/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1204,89 +1086,6 @@ setTimeout(initClock, 100);
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/10/27/ida01/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/26/c06/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="超级玉米人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="超级玉米人的博客">
-      <meta itemprop="description" content="一个基于Hexo的技术博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 超级玉米人的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/26/c06/" class="post-title-link" itemprop="url">C语言学习笔记06</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-10-26 16:00:39" itemprop="dateCreated datePublished" datetime="2025-10-26T16:00:39+08:00">2025-10-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-10-30 18:46:28" itemprop="dateModified" datetime="2025-10-30T18:46:28+08:00">2025-10-30</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>文件指针，结构体io优化</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/10/26/c06/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
