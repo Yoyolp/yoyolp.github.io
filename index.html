@@ -240,7 +240,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -322,7 +322,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/06/asm05/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/10/program/program/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -340,7 +340,7 @@ setTimeout(initClock, 100);
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/06/asm05/" class="post-title-link" itemprop="url">ASM 05</a>
+          <a href="/2025/11/10/program/program/" class="post-title-link" itemprop="url">Program01</a>
         </h2>
 
         <div class="post-meta-container">
@@ -350,9 +350,15 @@ setTimeout(initClock, 100);
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-11-06 19:29:38 / 修改时间：20:48:22" itemprop="dateCreated datePublished" datetime="2025-11-06T19:29:38+08:00">2025-11-06</time>
+      <time title="创建时间：2025-11-10 20:27:31" itemprop="dateCreated datePublished" datetime="2025-11-10T20:27:31+08:00">2025-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-11 22:47:30" itemprop="dateModified" datetime="2025-11-11T22:47:30+08:00">2025-11-11</time>
     </span>
 
   
@@ -365,10 +371,295 @@ setTimeout(initClock, 100);
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>跳转指令 CMP, JNC, JC</p>
+          <span id="more"></span>
+<h2 id="内存分配问题"><a class="markdownIt-Anchor" href="#内存分配问题"></a> 内存分配问题</h2>
+<p>在多个程序内存分配上，存在许多内存的分配问题</p>
+<ul>
+<li>地址空间不隔离</li>
+<li>内存使用效率低</li>
+<li>内存运行的地址不稳定</li>
+</ul>
+<h3 id="虚拟地址"><a class="markdownIt-Anchor" href="#虚拟地址"></a> 虚拟地址</h3>
+<p>为了解决 如何将计算机上有限的物理内存分配给多个程序使用。</p>
+<p>即由于计算机内存中的空闲空间地址，不是一成不变的，程序每次运行的时候我们都需要给它从内存中分配一块足够大的空间，<br />
+而在程序编写中，器访问的数据和地址很逗都是固定的，<br />
+所以通过添加中间层，间接访问地址的方式，即将程序给出的地址视为一种<strong>虚拟的地址</strong>，虚拟的地址通过一定的映射方法，转化成实际的物理地址<br />
+就可以保证任意一个程序所能访问的物理内存区域跟另外一个程序选规划不重叠，达到地址空间隔离的效果</p>
+<h3 id="分页"><a class="markdownIt-Anchor" href="#分页"></a> 分页</h3>
+<p>使用虚拟地址的方式，还不能解决内存使用效率低的问题，果果内存不足，被换入和换出到磁盘的都是整个程序，会造成大量访问磁盘的操作，从而严重影响速度</p>
+<p>但是根据程序的局部性原理，当一个程序运行的时候他只是频繁运用到了一小部分数据，于是人们就想到了更小粒度的内存分割和映射的方法，大大提高了内存的使用率，这种放就是分页</p>
+<p>枫叶的基本方法就是把地址空间认为的分成固定大小的页，每一页大小都由硬件决定，或者硬件支持多种大小的页，操作系统决定页的大小。但是在同一个时刻只能选择一种大小，但是目前市面上PC上操作系统<br />
+都使用<strong>4KB</strong>大小的页，如果一个计算机拥有 4GB的内存空间 那么理论上他会拥有大约104W的分页</p>
+<h2 id="原子操作"><a class="markdownIt-Anchor" href="#原子操作"></a> 原子操作</h2>
+<p>单指令操作不会执行一般被调度系统打断，去执行别的代码</p>
+<h2 id="同步与锁"><a class="markdownIt-Anchor" href="#同步与锁"></a> 同步与锁</h2>
+<p>为了避免多个线程同时读写统一数据而产生不可预料的后果，我们需要将各个线程对于同一个数据的访问<strong>同步</strong> ，即一个线程访问数据未结束的时候，其他线程不得对同一个数据进行访问。对数据的访问被原子化了</p>
+<p>同步最常见方法是使用<strong>锁</strong>，锁是一种非强制机制，每一个线程在访问数据或资源之前首先试图获取锁 并在访问结束后释放锁，在锁已经被占用的时候视图获取锁的时候，线程会等待，知道锁重新可用</p>
+<h3 id="二元信号量"><a class="markdownIt-Anchor" href="#二元信号量"></a> 二元信号量</h3>
+<p>是最简单的一种锁，他只有两种状态: 占用与非占用。他事后只能被唯一一个线程独占访问的资源。当二元信号量处于非占用的状态时，第一额获取该二元信号量的线程或获得该锁，并将二元<br />
+信号重置为占用状态，第一个试图获取该二元信号量的线程将会等待，知道该锁被释放</p>
+<p>对于允许多个线程访问的资源，多元信号量简称信号量，他是一个很好的选择。一个初始值为N的信号量允许N个线程并发访问。线程访问资源的时候实现获取信号量，进行如下操作：</p>
+<ul>
+<li>将信号量的值 -1</li>
+<li>如果信号量的值小于0， 则进入等待状态，否则继续执行<br />
+访问完资源后，线程释放信号量，进行如下操作：</li>
+<li>将信号量的值 +1</li>
+<li>如果信号量的值小于1，唤醒一个等待中的线程</li>
+</ul>
+<h3 id="互斥量"><a class="markdownIt-Anchor" href="#互斥量"></a> 互斥量</h3>
+<p>和二元信号量很类似，资源仅同时允许一个线程访问，但是和信号量不同的是，信号量在整个系统中可以被任意线程获取并释放，也就是说，同一个信号量可以被系统中的一个线程获取之后由另一个线程释放，而互斥量要求哪个线程<br />
+获取的互斥量，哪个线程就要负责释放整个锁，其他线程释放这个互斥量是无效的</p>
+<h3 id="临界区"><a class="markdownIt-Anchor" href="#临界区"></a> 临界区</h3>
+<p>是比互斥量更加严格的同步手段，在术语中，把临界区的锁的获取称为离开临界区。临界区的作用范围仅限于本线程，其他的进程无法获取该锁，除此之外临界区有何互斥区相同的性质。</p>
+<h3 id="读写锁"><a class="markdownIt-Anchor" href="#读写锁"></a> 读写锁</h3>
+<p>有两种获取方式：</p>
+<ul>
+<li>共享的</li>
+<li>独占的</li>
+</ul>
+<h3 id="条件变量"><a class="markdownIt-Anchor" href="#条件变量"></a> 条件变量</h3>
+<h2 id="函数重入"><a class="markdownIt-Anchor" href="#函数重入"></a> 函数重入</h2>
+<p>一个函数的重入，表示这个函数没有执行完成，由于外部因素或者内部调用，又一次进入该函数执行。一个韩式要被重入，只有两种情况：</p>
+<ul>
+<li>多个线程同时执行这个函数。</li>
+<li>函数自身（可能式经过多层调用之后）调用自身</li>
+</ul>
+<p>一个函数被重入之后不会产生任何不良后果。举个例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sqr</span><span class="params">(<span class="type">int</span> x)</span> </span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个函数要成为可重入的，必须要具有如下几个特点：</p>
+<ul>
+<li>不使用任何（局部）静态或全局的非 <code>const</code> 变量</li>
+<li>不范围任何（局部）静态或全局的非 <code>const</code> 变量的指针</li>
+<li>仅依赖于调用方提供的参数。</li>
+<li>不依赖任何单个资源的锁</li>
+<li>不调用任何不可重入的函数</li>
+</ul>
+<p>可重入式并发安全的强力保障，一个可重入的函数可以在多线程环境下放心使用</p>
+<h2 id="gcc-编译过程"><a class="markdownIt-Anchor" href="#gcc-编译过程"></a> gcc 编译过程</h2>
+<p>当我们使用 GCC 来编译程序的时候，编译器将会有4中编译的过程</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">预处理 -&gt; 编译 -&gt; 汇编 -&gt; 链接</span><br></pre></td></tr></table></figure>
+<h3 id="预编译"><a class="markdownIt-Anchor" href="#预编译"></a> 预编译</h3>
+<p>预编译过程中主要是处理那些源代码文件中的预编译指令，删除所有注释，保留 #pragma 编译器指令<br />
+经过编译的.i 文件不包含任何宏定义，因为所有宏定义已经被展开，并且包含的文件也被插入到.i 文件中</p>
+<h3 id="编译"><a class="markdownIt-Anchor" href="#编译"></a> 编译</h3>
+<p>编译过程就是将把预处理完的文件进行一系列此法分析语法分析。语义分析以及优化后生产相应的汇编代码文件</p>
+<h3 id="汇编"><a class="markdownIt-Anchor" href="#汇编"></a> 汇编</h3>
+<p>汇编器是将汇编代码转变成机器可以执行的指令，每一个汇编语句几乎都对应一条机器指令</p>
+<h3 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h3>
+<p>找到所有变量和函数的引用所对应的定义。为所有代码和数据分配运行时内存地址，并修正指令中的地址。<br />
+链接库文件， 将库的代码完整赋值到你的最终可执行文件中，即合并目标文件</p>
+<p>链接的过程中主要包括了：地址和空间分配，符号决议，重定位等这些步骤</p>
+<h4 id="重定位"><a class="markdownIt-Anchor" href="#重定位"></a> 重定位</h4>
+<p>由于在编译目标文件的时候编译器不知道变量var的目标地址，所以编译器在没有变法确定地址的情况下会把这个指令的地址福分修改成0x10000.这个地址修正的过程也被叫做重定位</p>
+<h3 id="词法分析"><a class="markdownIt-Anchor" href="#词法分析"></a> 词法分析</h3>
+<p>词法分析产生的记号一般可以分为如下几类：关键字，标识符，字面量（数字。字符串 ）和特殊符号：（+，=），将标识符放到符号表，将数字，字符串常量放到文字表</p>
+<h3 id="语法分析"><a class="markdownIt-Anchor" href="#语法分析"></a> 语法分析</h3>
+<p>对由扫描器产生的记号进行语法分析，从而产生语法树，有语法分析器产生的语法树就是以表达式为节点的数</p>
+<h3 id="语义分析"><a class="markdownIt-Anchor" href="#语义分析"></a> 语义分析</h3>
+<p>进行语法层面的分析，分析语句是否合法，<strong>静态语义</strong> 是指可以在编译期就可以确定的语义，与之相对应的<strong>动态语义</strong></p>
+<p>静态语义通常包括声明和类型的匹配，类型的转化。比如当一个浮点型的表达式赋值给一个整型表达式的时候，其中隐含了一个浮点型到整形的转化过程<br />
+但是如果将一个浮点型赋值给一个指针的时候，语义分析程序会发现这个类型不匹配，编译器将会报错。动态语义一般指指在运行期间出现语义相关的问题，比如将0作为除数</p>
+<h3 id="中间语言的生成"><a class="markdownIt-Anchor" href="#中间语言的生成"></a> 中间语言的生成</h3>
+<p>中间代码使得编译器可以被分为前端和后端。编译器前端负责产生机器无关的中间代码，而编译器后端将中间代码转化成目标机器代码，这样对于一些可以跨平台的编译器而言，他们可以正对不同平台使用同一个前端和针对不同机器平台的数个后端</p>
+<h3 id="目标代码的生成和优化"><a class="markdownIt-Anchor" href="#目标代码的生成和优化"></a> 目标代码的生成和优化</h3>
+<p>源码级优化器产生的中间代码标志着代码标着下面的过程中都属于编辑器的后端。编译器后端只要包括<strong>代码生成器</strong>和<strong>目标代码生成器</strong>。让我们先来看看代码生成器。代码生成器将中间代码转化车目标机器码<br />
+。这个过程十分依赖目标机器，因为不同机器拥有不同的字长，寄存器，整数数据类型和浮点数据类型等。</p>
+<h2 id="目标文件的格式"><a class="markdownIt-Anchor" href="#目标文件的格式"></a> 目标文件的格式</h2>
+<p>现在PC平台流行的可执行文件格式，主要是 Windows 下的PE 和Liunx 下的ELF</p>
+<p>从广义上来看目标文件与可执行文件的格式其实几乎一样的，所以我们可以广义的将目标文件与可执行文件堪称是一种类型的文件</p>
+<p>不光是<strong>可执行文件</strong> 按照可执行文件格式存储。动态链接库（DLL）<em>（Windows 的 .dll; Liunx 的 .so）</em> <em>以及静态链接库(Windows 的lib 和 Linux 的 .so)</em> 文件都按照可执行文件储存</p>
+<table>
+<thead>
+<tr>
+<th>ELF文件类型</th>
+<th>说明</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可重定位文件</td>
+<td>这类文件包含了代码和数据，可以被用个来链接成可执行文件或者共享目标文件，静态链接库也可以归为这一类</td>
+<td>Liunx : .o<br />Windows: .obj</td>
+</tr>
+<tr>
+<td>可执行文件</td>
+<td>这类文件包含了可以直接执行的程序，他的代表就是ELF可执行文件，他们一般都没有扩展名</td>
+<td>Liunx:.so (eg:glibc.so)<br />Windows : DLL</td>
+</tr>
+<tr>
+<td>共享目标文件</td>
+<td>这种文件包含了代码和数据，可以在以下两种情况下使用，一种是连接器可以使用这种文件更其他的可重定位文件和共享目标文件连接<br />产生新的目标文件，<br />第二种是动态连接器可以将即可这种共享目标文件与可执行文件结合，作为进程映像的一部分来运行</td>
+<td>Liunx ： .so (eg: <a target="_blank" rel="noopener" href="http://glibc-2.5.so">glibc-2.5.so</a>)<br />Windows : DLL</td>
+</tr>
+<tr>
+<td>核心转储文件</td>
+<td>当进程意外终止时，系统可以将该进程的地址空间的地址空间的内容以及终止时的一些其他信息转储到核心转储文件</td>
+<td>Liunx下的core dump 中</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以在 Linux 下使用 file 命令来查看相应的文件格式</p>
+<h2 id="目标文件的样式"><a class="markdownIt-Anchor" href="#目标文件的样式"></a> 目标文件的样式</h2>
+<p>程序源代码被编译以后主要分成两种阶段：程序指令和程序数据。代码段（.text）属于程序指令，而数据段 和.bss 段属于程序数据</p>
+<p>指令和数据分开存储的重要原因</p>
+<ul>
+<li>程序装载后，数据和指令分别被映射到两个虚存区域。由于区域对于进程来说是可读写的，而指令区域对于进程来说是只读的，这样可以防止程序的指令被有意或者无意地改写</li>
+<li>对于现代CPU来说，它们拥有极为强大的缓存体系。由于缓存在先到计算机中地位非常重要，错译程序必须提供缓存的命中率。而指令区和数据区的分离有利于程序的局部性</li>
+<li><strong>当系统中运行着多个该程序的副本时，它们的指令都是一样的，所以内存中只需要保存一份该程序的指令部分。</strong></li>
+</ul>
+<h3 id="代码段"><a class="markdownIt-Anchor" href="#代码段"></a> 代码段</h3>
+<p>通过objdump 我们可以通过&quot;-h&quot; 查看object 内部的结构</p>
+<p>.text 主要存放文件的代码</p>
+<p><strong>.bss, 只读数据段(.rodata) ，注释信息段(.comment) 和 堆栈提示段(.note.GUN-stack)</strong>, 段具有 CONTENTS， ALLOC 等表示段的各种属性，其中CONTENTS 表示该段在文件中存在</p>
+<p>如果我们看到一个段没有CONTENTS 这个属性那么 可以表示在实际的ELF 中不存在内容，同时有一种专门的**命令 ** <code>size</code>使得我们可以用来查看ELF 文件的代码段，数据段。和BSS段的长度</p>
+<p>为了挖掘代码段内容，我们可以使用objdump 的 “-s” 参数将所有端的我内容按照十六进制的方式打印出来，“-d” 可以将所有包含指令的段反汇编</p>
+<h3 id="数据段和只读数据段"><a class="markdownIt-Anchor" href="#数据段和只读数据段"></a> 数据段和只读数据段</h3>
+<p>.data 段保存的是那些已经初始化了的全局变量和局部静态变量。 而.rodata  中存放的是只读数据，一般在程序里面的只读变量（如const 修饰的变量）和字符串常量，但是有时候编译器也会将这些数据存放到.data 段中</p>
+<h3 id="bss段"><a class="markdownIt-Anchor" href="#bss段"></a> BSS段</h3>
+<p>.bss 段存放的是未初始化的全局变量和局部静态变量</p>
+<h3 id="其他段"><a class="markdownIt-Anchor" href="#其他段"></a> 其他段</h3>
+<p>这是一些ELF文件中常用的段</p>
+<table>
+<thead>
+<tr>
+<th>常用的段名字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.rodatal</td>
+<td>Read only Data 这种段中存放的只是制度数据，比如字符串常量，全局const 变量 跟 rodata 一样</td>
+</tr>
+<tr>
+<td>.comment</td>
+<td>存放的是编译器版本信息 EG: “GCC:(GUN) 4.2.0”</td>
+</tr>
+<tr>
+<td>.debug</td>
+<td>调试信息</td>
+</tr>
+<tr>
+<td>.dynamic</td>
+<td>动态链接信息</td>
+</tr>
+<tr>
+<td>.hash</td>
+<td>哈希表</td>
+</tr>
+<tr>
+<td>.line</td>
+<td>调试时的行号表，即源代码行号与编译后指令的对应表</td>
+</tr>
+<tr>
+<td>.note</td>
+<td>额外的编辑器信息，比如程序的公司名，发布的版本号</td>
+</tr>
+<tr>
+<td>.strtab</td>
+<td>String Table 字符串表，用于存储ELF 文件中用到的各种字符串</td>
+</tr>
+<tr>
+<td>.symtab</td>
+<td>Symbol Table 符号表</td>
+</tr>
+<tr>
+<td>.shstrtab</td>
+<td>Section String Table 段名表</td>
+</tr>
+<tr>
+<td>.plt<br />.got</td>
+<td>动态链接的跳转表和全局入口表</td>
+</tr>
+<tr>
+<td>.init<br />.fini</td>
+<td>程序的初始化和终结代码段</td>
+</tr>
+</tbody>
+</table>
+<p>这些段的名字是 以&quot;.“作为前缀，表示这些表的名字是系统保留的，应用程序也可以使用一些非系统保留的名字作为段名，但是程序自定义的段名不能够使用”.&quot; 作为前缀否则容易跟系统保留段名冲突。同时一个ELF文件可以拥有几个相同段名的段，比如一个ELF文件中可能由两个或者两个以上的叫做&quot;.text&quot;的段。还有一些保留的段名是因为ELF的历史遗留问题造成的，以前用过的一些名字如.sdata .tdesc . sbss .lit4 .lit8 .reginfo .liblist .conflict 可以不必理会这些段，他们已经被遗弃了</p>
+<h3 id="将二进制文件比如图片mp3-音乐-词典一类的东西作为目标文件中的一个段"><a class="markdownIt-Anchor" href="#将二进制文件比如图片mp3-音乐-词典一类的东西作为目标文件中的一个段"></a> 将二进制文件比如图片，MP3 音乐 词典一类的东西作为目标文件中的一个段</h3>
+<p>可以使用objcopy工具， 比如我们有一个图片文件 “image.jpg” 大小为 0x82100 Bytes</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objcopy -I binary -O elf32-i386 image.jpg image.o</span><br><span class="line">objdump -ht image.o</span><br></pre></td></tr></table></figure>
+<p>符号 _binary_image_jpg_start, _binary_image_jpg_end 和 _binary_image_jpg_size 分别表示该图片文件在内存中的起始位置，结束位置和大小，我们可以在程序里面直接声明并使用他们</p>
+<h3 id="自定义段"><a class="markdownIt-Anchor" href="#自定义段"></a> 自定义段</h3>
+<p>正常情况下， GCC 编译出来的目标文件中，代码会被放到.text 段中，全局变量和静态变量也会放到对应的段中去，但是我们以可以通过 GCC 提供的一个<strong>扩展机制</strong>来指定一个变量所处的段</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__attribute__((section(<span class="string">&quot;FOO&quot;</span>))) <span class="type">int</span> global = <span class="number">42</span>;</span><br><span class="line">__attribute__((section(<span class="string">&quot;BAR&quot;</span>))) <span class="type">void</span> <span class="title function_">foo</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在全局变量或者函数之前加上 <code>__attribute__((section(&quot;name&quot;)))</code> 属性就可以把相应的变量或者函数放到以&quot;name&quot; 作为段名的段中</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/09/c_asm/asm06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/11/09/c_asm/asm06/" class="post-title-link" itemprop="url">ASM06</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-09 14:30:07 / 修改时间：16:18:25" itemprop="dateCreated datePublished" datetime="2025-11-09T14:30:07+08:00">2025-11-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>nop, .rept 指令的使用</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/11/06/asm05/#more" rel="contents">
+              <a class="btn" href="/2025/11/09/c_asm/asm06/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -399,7 +690,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/05/asm04/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/06/c_asm/asm05/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -417,7 +708,84 @@ setTimeout(initClock, 100);
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/05/asm04/" class="post-title-link" itemprop="url">ASM04</a>
+          <a href="/2025/11/06/c_asm/asm05/" class="post-title-link" itemprop="url">ASM 05</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-06 19:29:38 / 修改时间：20:48:22" itemprop="dateCreated datePublished" datetime="2025-11-06T19:29:38+08:00">2025-11-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>跳转指令 CMP, JNC, JC</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/11/06/c_asm/asm05/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/05/c_asm/asm04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/11/05/c_asm/asm04/" class="post-title-link" itemprop="url">ASM04</a>
         </h2>
 
         <div class="post-meta-container">
@@ -451,7 +819,7 @@ setTimeout(initClock, 100);
           <p>寄存器得使用约定， RFLAGS寄存器，程序栈得概念，System V ABI， 寻址方式</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/11/05/asm04/#more" rel="contents">
+              <a class="btn" href="/2025/11/05/c_asm/asm04/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -482,7 +850,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/04/asmxx/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/04/c_asm/asmxx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -500,7 +868,7 @@ setTimeout(initClock, 100);
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/04/asmxx/" class="post-title-link" itemprop="url">ASMXX</a>
+          <a href="/2025/11/04/c_asm/asmxx/" class="post-title-link" itemprop="url">ASMXX</a>
         </h2>
 
         <div class="post-meta-container">
@@ -518,7 +886,7 @@ setTimeout(initClock, 100);
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-11-05 22:12:27" itemprop="dateModified" datetime="2025-11-05T22:12:27+08:00">2025-11-05</time>
+      <time title="修改时间：2025-11-09 14:45:54" itemprop="dateModified" datetime="2025-11-09T14:45:54+08:00">2025-11-09</time>
     </span>
 
   
@@ -532,9 +900,10 @@ setTimeout(initClock, 100);
     
     <div class="post-body" itemprop="articleBody">
           <p>为方便写汇编代码，所以将一些常用的功能封装到 <code>asm_simple_func.s</code> 中， 这是其中的内容</p>
+<p>同时这是 <a target="_blank" rel="noopener" href="https://ftp.gnu.org/old-gnu/Manuals/gas-2.9.1">GAS汇编器</a>文档地址</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/11/04/asmxx/#more" rel="contents">
+              <a class="btn" href="/2025/11/04/c_asm/asmxx/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -565,7 +934,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/03/asm03/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/03/c_asm/asm03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -583,7 +952,7 @@ setTimeout(initClock, 100);
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/03/asm03/" class="post-title-link" itemprop="url">ASM03</a>
+          <a href="/2025/11/03/c_asm/asm03/" class="post-title-link" itemprop="url">ASM03</a>
         </h2>
 
         <div class="post-meta-container">
@@ -617,7 +986,7 @@ setTimeout(initClock, 100);
           <p>GAS 汇编表示偏移地址, .include 伪指令</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/11/03/asm03/#more" rel="contents">
+              <a class="btn" href="/2025/11/03/c_asm/asm03/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -648,7 +1017,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/02/asm02/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/02/c_asm/asm02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -666,7 +1035,7 @@ setTimeout(initClock, 100);
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/02/asm02/" class="post-title-link" itemprop="url">ASM 02</a>
+          <a href="/2025/11/02/c_asm/asm02/" class="post-title-link" itemprop="url">ASM 02</a>
         </h2>
 
         <div class="post-meta-container">
@@ -694,7 +1063,7 @@ setTimeout(initClock, 100);
           <p>gdb 的使用 Liunx syscall 系统调用约定， loop， Call&amp;Ret, Stack栈的使用</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/11/02/asm02/#more" rel="contents">
+              <a class="btn" href="/2025/11/02/c_asm/asm02/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -725,7 +1094,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/01/asm01/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/01/c_asm/asm01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -743,7 +1112,7 @@ setTimeout(initClock, 100);
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/01/asm01/" class="post-title-link" itemprop="url">ASM 01</a>
+          <a href="/2025/11/01/c_asm/asm01/" class="post-title-link" itemprop="url">ASM 01</a>
         </h2>
 
         <div class="post-meta-container">
@@ -777,7 +1146,7 @@ setTimeout(initClock, 100);
           <p>CPU 概念， 寄存器,物理内存 常用指令</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/11/01/asm01/#more" rel="contents">
+              <a class="btn" href="/2025/11/01/c_asm/asm01/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -885,7 +1254,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/c07/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/c_asm/c07/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -903,7 +1272,7 @@ setTimeout(initClock, 100);
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/28/c07/" class="post-title-link" itemprop="url">C语言学习笔记07</a>
+          <a href="/2025/10/28/c_asm/c07/" class="post-title-link" itemprop="url">C语言学习笔记07</a>
         </h2>
 
         <div class="post-meta-container">
@@ -931,167 +1300,7 @@ setTimeout(initClock, 100);
           <p>PE ELF 格式介绍</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/10/28/c07/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/ida02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="超级玉米人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="超级玉米人的博客">
-      <meta itemprop="description" content="一个基于Hexo的技术博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 超级玉米人的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/28/ida02/" class="post-title-link" itemprop="url">ida02</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-10-28 19:42:31 / 修改时间：20:43:46" itemprop="dateCreated datePublished" datetime="2025-10-28T19:42:31+08:00">2025-10-28</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>ida 的使用，和一些练习题</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/10/28/ida02/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/27/ida01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="超级玉米人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="超级玉米人的博客">
-      <meta itemprop="description" content="一个基于Hexo的技术博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 超级玉米人的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/27/ida01/" class="post-title-link" itemprop="url">ida 使用教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-10-27 20:44:13" itemprop="dateCreated datePublished" datetime="2025-10-27T20:44:13+08:00">2025-10-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-10-28 19:31:50" itemprop="dateModified" datetime="2025-10-28T19:31:50+08:00">2025-10-28</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>ida 使用教程</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/10/27/ida01/#more" rel="contents">
+              <a class="btn" href="/2025/10/28/c_asm/c07/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1115,7 +1324,7 @@ setTimeout(initClock, 100);
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
