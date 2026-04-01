@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>超级玉米人的博客</title><description>Ciallo ~</description><link>https://yoyolp.github.io/</link><language>zh_CN</language><item><title>Tcache</title><link>https://yoyolp.github.io/posts/heap/tcache/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/heap/tcache/</guid><description>tecache分析</description><pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Tcache(Local Thread Cache)&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>超级玉米人的博客</title><description>Ciallo ~</description><link>https://yoyolp.github.io/</link><language>zh_CN</language><item><title>Tcache</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/heap/tcache/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/heap/tcache/</guid><description>tecache分析</description><pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Tcache(Local Thread Cache)&lt;/h2&gt;
 &lt;p&gt;在 libc-2.35 中的源代码(__libc_malloc)。其中早就在libc-2.26加入了 Tcache 机制.&lt;/p&gt;
 &lt;p&gt;可以看到，在源代码中tcache 机制的实现在 __int_malloc 前，就导致了 __int_malloc 的很多安全价差都被忽略了.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;
@@ -105,7 +105,7 @@ tcache_put (mchunkptr chunk, size_t tc_idx)
 &lt;li&gt;tcache 为空时，如果 fastbin/smallbin/unsorted bin/子啊 中有size符合的chunk，会先把 fastbin/smallbin/unsorted bin/ 中的chunk房贷 tcache 中，直到填满.之后再从tcache中取；因此chunk在 bin 中的
 的顺序会反过来， 另外在tcache中，大部分指针操作都是依靠用户指针进的.&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>randomBreak</title><link>https://yoyolp.github.io/posts/11/19/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/11/19/</guid><description>伪随机数攻击</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;伪随机&lt;/h2&gt;
+</content:encoded></item><item><title>randomBreak</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/11/19/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/11/19/</guid><description>伪随机数攻击</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;伪随机&lt;/h2&gt;
 &lt;p&gt;现在程序的随机数实现 都是伪随机，即随机数是通过一个 &lt;strong&gt;伪随机数发生器&lt;/strong&gt; 生成的，而这个发生器通常具有以下部分&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;seed&lt;/strong&gt; 整个序列的起点&lt;/li&gt;
@@ -177,7 +177,7 @@ int randd(void)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;总结&lt;/h3&gt;
 &lt;p&gt;遇到这类题目可以通过 伪随机数的特性来进行攻击,注意在远程连接具有延迟问题可能需要多次尝试&lt;/p&gt;
-</content:encoded></item><item><title>asmMaster - ctfPlus</title><link>https://yoyolp.github.io/posts/interestingchall/asmmaster/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/interestingchall/asmmaster/</guid><description>shellcode，汇编, 指令滑板</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;将题目提供的二进制文件拖入ida 得到如下代码&lt;/p&gt;
+</content:encoded></item><item><title>asmMaster - ctfPlus</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/asmmaster/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/asmmaster/</guid><description>shellcode，汇编, 指令滑板</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;将题目提供的二进制文件拖入ida 得到如下代码&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;int __fastcall main(int argc, const char **argv, const char **envp)
 {
   int v4; // [rsp+8h] [rbp-28h]
@@ -262,7 +262,7 @@ p.interactive(
 &lt;li&gt;主要还是算法&lt;/li&gt;
 &lt;li&gt;在很多情况下 &lt;code&gt;pwntool&lt;/code&gt; 自带的asm生成工具有局限性&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Chance Only One - ctfplus</title><link>https://yoyolp.github.io/posts/interestingchall/chanceonlyone/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/interestingchall/chanceonlyone/</guid><description>ret 滑梯， 栈迁移</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Chance Only One - ctfplus&lt;/h2&gt;
+</content:encoded></item><item><title>Chance Only One - ctfplus</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/chanceonlyone/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/chanceonlyone/</guid><description>ret 滑梯， 栈迁移</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Chance Only One - ctfplus&lt;/h2&gt;
 &lt;p&gt;将题目拖入ida 发现如下重要函数&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ssize_t vuln()
 {
@@ -318,7 +318,7 @@ p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;总结&lt;/h2&gt;
 &lt;p&gt;如果是这种收到限制的溢出题目，可能需要重点分析在覆盖末位后栈的结构变化&lt;/p&gt;
-</content:encoded></item><item><title>ncpro - ctfplus</title><link>https://yoyolp.github.io/posts/interestingchall/ncpro/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/interestingchall/ncpro/</guid><description>远程环境，不提供附件，文件fd</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;ncpro - ctfplus&lt;/h2&gt;
+</content:encoded></item><item><title>ncpro - ctfplus</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/ncpro/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/ncpro/</guid><description>远程环境，不提供附件，文件fd</description><pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;ncpro - ctfplus&lt;/h2&gt;
 &lt;p&gt;进入连接之后发现是一个只能使用cat的，把所有特殊字符删掉的cli交互&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;./img/ncpro-1.png&quot; alt=&quot;asm_c&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;通过目录发现可以cat程序所以可以通过 pwntools 抓取程序的二进制文件&lt;/p&gt;
@@ -407,7 +407,7 @@ io.close()
 &lt;p&gt;&lt;img src=&quot;./img/ncpro-2.png&quot; alt=&quot;asm_c&quot; /&gt;&lt;/p&gt;
 &lt;h2&gt;总结&lt;/h2&gt;
 &lt;p&gt;在这一类环境受限的题目中如果存在读取权限可以优先去获取二进制文件，抓取到本地进一步分析漏洞&lt;/p&gt;
-</content:encoded></item><item><title>doubleFree</title><link>https://yoyolp.github.io/posts/heap/doublefree/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/heap/doublefree/</guid><description>一道简单的堆题目, double free</description><pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>doubleFree</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/heap/doublefree/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/heap/doublefree/</guid><description>一道简单的堆题目, double free</description><pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
 &lt;h2&gt;double free&lt;/h2&gt;
 &lt;p&gt;Double Free是指对&lt;em&gt;同一块内存重复调用free()两次或多次&lt;/em&gt;的程序漏洞。由于内存管理器的设计特性，这会导致内存破坏，最终可能实现任意地址读写。&lt;/p&gt;
 &lt;p&gt;chunk的结构&lt;/p&gt;
@@ -561,7 +561,7 @@ p.sendlineafter(b&quot;root@ubuntu&quot;, &quot;4&quot;)
 
 p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>old_rop - ctfplus</title><link>https://yoyolp.github.io/posts/interestingchall/old_rop/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/interestingchall/old_rop/</guid><description>比较典型的ret2csu, ret2libc</description><pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;old_rop&lt;/h2&gt;
+</content:encoded></item><item><title>old_rop - ctfplus</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/old_rop/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/old_rop/</guid><description>比较典型的ret2csu, ret2libc</description><pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;old_rop&lt;/h2&gt;
 &lt;p&gt;将程序拖入 ida 中发现如下重要函数&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;__int64 __fastcall main(int a1, char **a2, char **a3)
 {
@@ -672,7 +672,7 @@ p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;总结：&lt;/h2&gt;
 &lt;p&gt;在有较大的溢出空间的情况下，ret2csu 能够控制大部分寄存器的状态。所以在gadget稀少的情况下，如果条件允许，可以考虑使用ret2csu&lt;/p&gt;
-</content:encoded></item><item><title>uaf</title><link>https://yoyolp.github.io/posts/heap/uaf/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/heap/uaf/</guid><description>一些Uaf的题目</description><pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;将程序拖入 ida 发现如下重要代码&lt;/p&gt;
+</content:encoded></item><item><title>uaf</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/heap/uaf/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/heap/uaf/</guid><description>一些Uaf的题目</description><pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;将程序拖入 ida 发现如下重要代码&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;int __cdecl Are()
 {
   int result; // eax
@@ -708,7 +708,7 @@ Flag
 
 cat flag
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>13考核wp</title><link>https://yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/</guid><description>3月份考核 WriteUp,SROP, 栈风水</description><pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;将附件拖入ida 发现程序只有两个函数&lt;/p&gt;
+</content:encoded></item><item><title>13考核wp</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/</guid><description>3月份考核 WriteUp,SROP, 栈风水</description><pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;将附件拖入ida 发现程序只有两个函数&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;echo      ; ===========================================================================
 echo
 echo      ; Segment type: Pure code
@@ -807,7 +807,7 @@ p.send(payload)
 p.send(cyclic(15))
 p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>ret2dlrsolve</title><link>https://yoyolp.github.io/posts/other/ret2dlrslove/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/ret2dlrslove/</guid><description>ret2dlrsolve的利用</description><pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;ret2dlrsolve&lt;/h2&gt;
+</content:encoded></item><item><title>ret2dlrsolve</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/ret2dlrslove/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/ret2dlrslove/</guid><description>ret2dlrsolve的利用</description><pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;ret2dlrsolve&lt;/h2&gt;
 &lt;p&gt;对于 Linux 程序的调用，一般来说，程序会调用 &lt;code&gt;dl_runtime_resolve(link_map_obj, reloc_offset)&lt;/code&gt; 函数来对动态连接的函数进行从定位，相比较于ret2libc,
 ret2dlresolve,的应用更加灵活，限制更少，但是应用复杂度更高，而且受限于 &lt;code&gt;RELRO&lt;/code&gt; 即 got.plt. 是否可读可写属性。&lt;/p&gt;
 &lt;h2&gt;例题&lt;/h2&gt;
@@ -935,7 +935,7 @@ p.interactive()
 需要构造伪造的 .dynamic 结构（ElfSym、ElfRel、字符串等）
 使用 pwntool 自动构建
 必须是 Partial RELRO或者更宽松的限制，因为需要修改 .got.plt 或使用其结构&lt;/p&gt;
-</content:encoded></item><item><title>SDPC::CTF WriteUp</title><link>https://yoyolp.github.io/posts/12/writeupspesc/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/12/writeupspesc/</guid><description>SDPC::CTF 热身赛,部分题目的wp</description><pubDate>Thu, 25 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;pwn-test-nc2&lt;/h2&gt;
+</content:encoded></item><item><title>SDPC::CTF WriteUp</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/12/writeupspesc/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/12/writeupspesc/</guid><description>SDPC::CTF 热身赛,部分题目的wp</description><pubDate>Thu, 25 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;pwn-test-nc2&lt;/h2&gt;
 &lt;p&gt;直接输入b&quot;bin/sh&quot;直接获取sh&lt;/p&gt;
 &lt;h2&gt;pwn-littlegame&lt;/h2&gt;
 &lt;p&gt;打开ida 发现是一个猜数字游戏，而且数字被硬编码到代码中，所以只需要输入 &lt;code&gt;42&lt;/code&gt; 即可直接获取sh&lt;/p&gt;
@@ -1505,7 +1505,7 @@ __int64 __fastcall obfuscate_value(__int64 p_s1, int a2)
 &lt;p&gt;也就是说第一个数&lt;code&gt;v4&lt;/code&gt;必须作为无符号整数得小于&lt;code&gt;0x80000007&lt;/code&gt;，同时作为有符号整数小于-4&lt;/p&gt;
 &lt;p&gt;同时第二个数&lt;code&gt;s2&lt;/code&gt;需要满足 &lt;code&gt;obfuscate_value((__int64)s2, v5[0]);&lt;/code&gt; 混淆之后与 &lt;code&gt;obfuscate_value((__int64)s1, 0x80000000);&lt;/code&gt; 相同所以第二个数只能为&lt;code&gt;0x80000000&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;所以只需要输入两次 &lt;code&gt;2147483648&lt;/code&gt;(&lt;code&gt;0x80000000&lt;/code&gt;) 即可得到shell&lt;/p&gt;
-</content:encoded></item><item><title>uaf</title><link>https://yoyolp.github.io/posts/12/uaf/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/12/uaf/</guid><description>Uaf</description><pubDate>Wed, 24 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;heap uaf&lt;/h2&gt;
+</content:encoded></item><item><title>uaf</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/12/uaf/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/12/uaf/</guid><description>Uaf</description><pubDate>Wed, 24 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;heap uaf&lt;/h2&gt;
 &lt;p&gt;UAF 是 堆利用的一种常见的利用方式。&lt;/p&gt;
 &lt;h3&gt;例题 pwny-ctf Baby Uaf&lt;/h3&gt;
 &lt;p&gt;将题目拖入ida, 发现如下关键代码&lt;/p&gt;
@@ -1794,7 +1794,7 @@ p.interactive()
 典型First-Fit特征&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-</content:encoded></item><item><title>writeUp12.12</title><link>https://yoyolp.github.io/posts/12/23/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/12/23/</guid><description>srop</description><pubDate>Tue, 23 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;SROP&lt;/h2&gt;
+</content:encoded></item><item><title>writeUp12.12</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/12/23/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/12/23/</guid><description>srop</description><pubDate>Tue, 23 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;SROP&lt;/h2&gt;
 &lt;p&gt;signal 机制是类 unix 系统中进程之间相互传递信息的一种方法。一般，我们也称其为软中断信号，或者软中断。比如说，进程之间可以通过系统调用 kill 来发送软中断信号。&lt;/p&gt;
 &lt;p&gt;步骤:&lt;/p&gt;
 &lt;ol&gt;
@@ -1977,7 +1977,7 @@ p.interactive()
 &lt;li&gt;没有使用沙箱禁用对应的系统调用
 :::&lt;/li&gt;
 &lt;/ol&gt;
-</content:encoded></item><item><title>writeUp12.12</title><link>https://yoyolp.github.io/posts/12/13/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/12/13/</guid><description>WriteUp 12.12</description><pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;PWN1&lt;/h2&gt;
+</content:encoded></item><item><title>writeUp12.12</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/12/13/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/12/13/</guid><description>WriteUp 12.12</description><pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;PWN1&lt;/h2&gt;
 &lt;p&gt;使用 &lt;code&gt;checksec ./pwn1&lt;/code&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; ~#@❯ checksec ./pwn1
 [*] &apos;/home/yoyo/yoyo_dir/MyProject/aboutPwn/work/date12_12/pwn1&apos;
@@ -2204,7 +2204,7 @@ payload = flat([
 ])
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;最终得到 shell 获取flag&lt;/p&gt;
-</content:encoded></item><item><title>12考核wp</title><link>https://yoyolp.github.io/posts/other/12kh/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/12kh/</guid><description>十二月考核 WriteUp</description><pubDate>Sat, 06 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;
+</content:encoded></item><item><title>12考核wp</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/12kh/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/12kh/</guid><description>十二月考核 WriteUp</description><pubDate>Sat, 06 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;
 通过， &lt;code&gt;checksec ./test&lt;/code&gt; 查看程序的保护机制&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[*] &apos;/home/yoyo/yoyo_dir/MyProject/aboutPwn/work/test/test&apos;
     Arch:       amd64-64-little
@@ -2366,7 +2366,7 @@ p.sendline(payload3)
 p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;运行这个脚本呢就可以获得flag&lt;/p&gt;
-</content:encoded></item><item><title>stackStruct</title><link>https://yoyolp.github.io/posts/11/30/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/11/30/</guid><description>stack, strcpy &amp; strcmp</description><pubDate>Sun, 30 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;随机数爆破&lt;/h2&gt;
+</content:encoded></item><item><title>stackStruct</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/11/30/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/11/30/</guid><description>stack, strcpy &amp; strcmp</description><pubDate>Sun, 30 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;随机数爆破&lt;/h2&gt;
 &lt;p&gt;除了实用调用libc的获取随机数的方法，还可以通过爆破方式获取随机数&lt;/p&gt;
 &lt;h3&gt;例题 &lt;a href=&quot;http://www.sdpcsec.cn/games/4/challenges&quot;&gt;testnc_revenge&lt;/a&gt;&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;checksec ./pwn
@@ -2745,7 +2745,7 @@ p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;总结&lt;/h2&gt;
 &lt;p&gt;在通过栈溢出漏洞劫持程序的时候，与需要兼顾园本的栈结构，这样不仅可以提高攻击的稳定性，也可以产生意想不到的效果&lt;/p&gt;
-</content:encoded></item><item><title>动态链接</title><link>https://yoyolp.github.io/posts/11/23/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/11/23/</guid><description>动态链接和延迟绑定, inject, 未初始化缓冲区</description><pubDate>Sun, 23 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;动态链接和延迟绑定&lt;/h2&gt;
+</content:encoded></item><item><title>动态链接</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/11/23/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/11/23/</guid><description>动态链接和延迟绑定, inject, 未初始化缓冲区</description><pubDate>Sun, 23 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;动态链接和延迟绑定&lt;/h2&gt;
 &lt;p&gt;一些来自动态连接库的函数，是在第一次调用的时候才会真正加载程序的地址，这就是延迟绑定，而这一个过程主要通过plt 表和 got 表来实现，
 其中 plt 是程序连接表，而 got表 是全局偏移表，程序在运行时，首次调用一个函数 假设为&lt;code&gt;printf&lt;/code&gt; 的时候，程序会调用 plt，通过plt跳转到，对应的got表之中
 但是在第一次调用的时候，got表中存放的不是函数的确切地址而是跳转回 plt中下一条指令的地址，而这个&lt;strong&gt;下一条&lt;/strong&gt; 指令会将 代表这个函数的标识符压入栈中，此时链接器&lt;code&gt;ld&lt;/code&gt;工作根据这个压入的标识符找到目标函数的真实位置，然后跟新GOT，此时GOT表中的地址就是该函数真实的地址，所以通过这个特性，我们可以通过泄露出的GOT更新前后的地址，分别求出libc(c 标准库)和elfbase(程序)的基址，来进行进一步的攻击&lt;/p&gt;
@@ -3052,7 +3052,7 @@ p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;总结&lt;/h3&gt;
 &lt;p&gt;当遇到程序访问没有初始化数据的缓冲区等类似性质的变量，可以尝试利用gdb调试栈中的状态，可能能通过栈的分布为后续栈溢出攻击创造条件,&lt;/p&gt;
-</content:encoded></item><item><title>canary</title><link>https://yoyolp.github.io/posts/11/18/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/11/18/</guid><description>栈金丝雀</description><pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;指定程序使用的libc 和 ld&lt;/h2&gt;
+</content:encoded></item><item><title>canary</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/11/18/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/11/18/</guid><description>栈金丝雀</description><pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;指定程序使用的libc 和 ld&lt;/h2&gt;
 &lt;p&gt;使用提供的libc 和 ld 运行程序(会修改二进制文件)&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;patchelf --set-interpreter ./ld-linux-x86-64.so.2 pwn
 &lt;/code&gt;&lt;/pre&gt;
@@ -3161,7 +3161,7 @@ print(a)
 &lt;h2&gt;总结&lt;/h2&gt;
 &lt;p&gt;遇到 栈金丝雀保护，首先需要寻找尝试寻找支持字符串格式化的内容，
 但是如果遇到那些不会往读取字符串后边加上 &lt;strong&gt;\x00&lt;/strong&gt; 的函数，也可以尝试去覆盖canary的最低位非0值，从而泄露出 栈金丝雀的值&lt;/p&gt;
-</content:encoded></item><item><title>Ghidra</title><link>https://yoyolp.github.io/posts/c_asm/ghidra01/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/ghidra01/</guid><description>Ghidra的简单使用</description><pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Ghidra 是一个由美国国家安全局（NSA）开发并开源，的逆向安全工具,是一个软件逆向工程（SRE）框架 包含:&lt;/p&gt;
+</content:encoded></item><item><title>Ghidra</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ghidra01/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ghidra01/</guid><description>Ghidra的简单使用</description><pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Ghidra 是一个由美国国家安全局（NSA）开发并开源，的逆向安全工具,是一个软件逆向工程（SRE）框架 包含:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;反汇编器：将机器代码转换为汇编代码&lt;/li&gt;
 &lt;li&gt;反编译器：将机器代码转换为 C-like 伪代码&lt;/li&gt;
@@ -3281,7 +3281,7 @@ int main(void)
 &lt;li&gt;ulong          无符号长整型&lt;/li&gt;
 &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>ida01</title><link>https://yoyolp.github.io/posts/c_asm/ida01/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/ida01/</guid><description>ida的简单使用</description><pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;IDA&lt;/h2&gt;
+</content:encoded></item><item><title>ida01</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida01/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida01/</guid><description>ida的简单使用</description><pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;IDA&lt;/h2&gt;
 &lt;p&gt;IDA Pro（Interactive Disassembler Professional）是由Hex-Rays公司开发的交互式反汇编工具，被广泛视为逆向工程领域的行业标准工具。该软件支持Windows、Linux、macOS操作系统，采用递归下降反汇编技术，具有可编程和可扩展特性，支持包括x86、ARM、MIPS、PowerPC、Z80、68000及c8051等数十种处理器架构。其核心功能包含静态分析、动态调试模块，提供Hex View窗口、Strings窗口等分析界面，兼容BinDiff插件并支持反编译生成类C代码 [4-6] [8]。
 作为多平台逆向分析工具，IDA Pro最初以MS-DOS控制台程序形态出现，采用水印追踪与密钥文件认证机制，支持命名许可证与计算机许可证两种授权模式。软件安装包包含32位与64位版本，生成包含.id0、.id1等扩展名的分析数据库，通过ida.key密钥文件激活后可实现跨平台二进制文件分析与汇编代码重构&lt;/p&gt;
 &lt;h2&gt;基本界面操作 1. 文件操作&lt;/h2&gt;
@@ -3395,7 +3395,7 @@ for i in range(44):
 print(flag)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;最终获得flag: 0xGame{6c74d39f-723f-42e7-9d7a-18e9508a655b}&lt;/p&gt;
-</content:encoded></item><item><title>ROPgadget</title><link>https://yoyolp.github.io/posts/11/16/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/11/16/</guid><description>ROPgadget 工具的使用, libc 的利用</description><pubDate>Sun, 16 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;使用ROPgadget 工具&lt;/h2&gt;
+</content:encoded></item><item><title>ROPgadget</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/11/16/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/11/16/</guid><description>ROPgadget 工具的使用, libc 的利用</description><pubDate>Sun, 16 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;使用ROPgadget 工具&lt;/h2&gt;
 &lt;p&gt;Gadget 是程序中已有的，以ret 结尾的一段机械指令序列&lt;/p&gt;
 &lt;p&gt;不过当程序中 Gadget 较少，而且没有合适话，可以尝试使用&lt;em&gt;&lt;strong&gt;ROPgadget&lt;/strong&gt;&lt;/em&gt;工具尝试从 其他地方比如 &lt;code&gt;libc&lt;/code&gt; 中寻找合适的gadget&lt;/p&gt;
 &lt;p&gt;ROPgadget 有两种使用方法&lt;/p&gt;
@@ -3503,7 +3503,7 @@ payload = flat([
 p.sendlineafter(b&apos;&amp;gt; &apos;, payload)
 p.interactive()
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>shellcode</title><link>https://yoyolp.github.io/posts/11/15/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/11/15/</guid><description>shellcode 的概念, 基本的函数调用栈,典型栈溢出,一些危险的函数</description><pubDate>Sat, 15 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;ShellCode&lt;/h2&gt;
+</content:encoded></item><item><title>shellcode</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/11/15/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/11/15/</guid><description>shellcode 的概念, 基本的函数调用栈,典型栈溢出,一些危险的函数</description><pubDate>Sat, 15 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;ShellCode&lt;/h2&gt;
 &lt;p&gt;ShellCode 是一段机器码，主要用于启动一个命令行的shell
 特征:&lt;/p&gt;
 &lt;ul&gt;
@@ -3702,7 +3702,7 @@ p.interactive()              # 交互
 &lt;pre&gt;&lt;code&gt;a = p.recv()
 print(a)
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>asm01</title><link>https://yoyolp.github.io/posts/c_asm/asm01/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/asm01/</guid><description>CPU 概念， 寄存器,物理内存 常用指令</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;ol&gt;
+</content:encoded></item><item><title>asm01</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm01/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm01/</guid><description>CPU 概念， 寄存器,物理内存 常用指令</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;ol&gt;
 &lt;li&gt;汇编指令是机器指令的助记符，同机器指令一一对应&lt;/li&gt;
 &lt;li&gt;每一种CPU都有自己的汇编指令集&lt;/li&gt;
 &lt;li&gt;CPU可以直接使用的信息在存储器中存放&lt;/li&gt;
@@ -4216,7 +4216,7 @@ _start:
   mov rdi, 0
   syscall
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>asm04</title><link>https://yoyolp.github.io/posts/c_asm/asm04/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/asm04/</guid><description>寄存器得使用约定， RFLAGS寄存器，程序栈得概念，System V ABI， 寻址方式</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;寄存器的使用约定&lt;/h2&gt;
+</content:encoded></item><item><title>asm04</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm04/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm04/</guid><description>寄存器得使用约定， RFLAGS寄存器，程序栈得概念，System V ABI， 寻址方式</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;寄存器的使用约定&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -4460,7 +4460,7 @@ je   error_handler  ; 条件跳转到标签
 call [rsi]         ; 调用 RSI 指向的地址处的函数
 jmp [jump_table + rdx*8]  ; 通过跳转表跳转
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>asm05</title><link>https://yoyolp.github.io/posts/c_asm/asm05/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/asm05/</guid><description>跳转指令 CMP, JNC, JC</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;cmp - 比较指令&lt;/h2&gt;
+</content:encoded></item><item><title>asm05</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm05/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm05/</guid><description>跳转指令 CMP, JNC, JC</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;cmp - 比较指令&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;
 cmp &amp;lt;src&amp;gt;, &amp;lt;dest&amp;gt;
 
@@ -4570,7 +4570,7 @@ mul rbx                # RDX:RAX = 10,000,000,000 * 300 = 3,000,000,000,000
 &lt;li&gt;&lt;strong&gt;CF（进位标志）&lt;/strong&gt; ：如果结果的高半部分（DX/EDX/RDX）不为0，则CF=1&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;OF（溢出标志）&lt;/strong&gt; ：与CF相同&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>asm06</title><link>https://yoyolp.github.io/posts/c_asm/asm06/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/asm06/</guid><description>nop, .rept 指令的使用</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;.rept 伪指令&lt;/h2&gt;
+</content:encoded></item><item><title>asm06</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm06/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm06/</guid><description>nop, .rept 指令的使用</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;.rept 伪指令&lt;/h2&gt;
 &lt;p&gt;通过GUN 汇编手册的介绍发现，通过该伪指令可以重复多次选定的代码&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;h2&gt;&lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/gas-2.9.1/html_mono/as.html#TOC116&quot;&gt;&lt;code&gt;.rept count&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
@@ -4597,7 +4597,7 @@ mul rbx                # RDX:RAX = 10,000,000,000 * 300 = 3,000,000,000,000
 &lt;li&gt;movsxd rax, ebx   将 32位的值赋值到64位中 多出来的位置 根据符号位来补齐即 如果是正数补0 负数补1&lt;/li&gt;
 &lt;li&gt;movzx  rax, ebx   将 32 位的值赋值到64位中，多出来的位置使用0来补齐&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>asmxx</title><link>https://yoyolp.github.io/posts/c_asm/asmxx/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/asmxx/</guid><description>为方便写汇编代码，所以将一些常用的功能封装到 `asm_simple_func.s` 中， 这是其中的内容</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;同时这是 &lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/gas-2.9.1&quot;&gt;GAS汇编器&lt;/a&gt;文档地址&lt;/p&gt;
+</content:encoded></item><item><title>asmxx</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asmxx/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asmxx/</guid><description>为方便写汇编代码，所以将一些常用的功能封装到 `asm_simple_func.s` 中， 这是其中的内容</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;同时这是 &lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/gas-2.9.1&quot;&gt;GAS汇编器&lt;/a&gt;文档地址&lt;/p&gt;
 &lt;h2&gt;&lt;code&gt;asm_simple_func.s&lt;/code&gt; :&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;.intel_syntax noprefix
 
@@ -4657,7 +4657,7 @@ __asm_func_print_stack:
   call __asm_func_print_stack 
 .endm
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>c01</title><link>https://yoyolp.github.io/posts/c_asm/c01/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/c01/</guid><description>计算机存储数据大小 命名规范， 字符串，面向过程，面向对象区别,  函数传参 </description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;常见数据类型大小&lt;/h1&gt;
+</content:encoded></item><item><title>c01</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c01/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c01/</guid><description>计算机存储数据大小 命名规范， 字符串，面向过程，面向对象区别,  函数传参 </description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;常见数据类型大小&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -4968,7 +4968,7 @@ umbrella.prevent(rain)
 &lt;li&gt;传指针是实参地址的一个拷贝，可以修改实参&lt;/li&gt;
 &lt;li&gt;传引用也是实参地址得一个拷贝，是实参的别名，可以修改实参。&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>c03</title><link>https://yoyolp.github.io/posts/c_asm/c02/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/c02/</guid><description>函数得调用约定，缓冲区溢出</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;函数调用约定(&lt;strong&gt;calling convention&lt;/strong&gt;)&lt;/h1&gt;
+</content:encoded></item><item><title>c03</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c02/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c02/</guid><description>函数得调用约定，缓冲区溢出</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;函数调用约定(&lt;strong&gt;calling convention&lt;/strong&gt;)&lt;/h1&gt;
 &lt;p&gt;调用者与被调用者关于栈上参数传递和清理得一个约定&lt;/p&gt;
 &lt;h2&gt;调用得约定&lt;/h2&gt;
 &lt;ul&gt;
@@ -5054,7 +5054,7 @@ int main(int argc, char* argv[])
 &lt;p&gt;假设该程序内存分布如下:
 &lt;img src=&quot;https://yoyolp.github.io/images/c/02/c_stack01.jpg&quot; alt=&quot;c_stack&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;此时如果多拷贝8个Byte得数据那么，将会把&lt;strong&gt;ret&lt;/strong&gt; 的地址覆盖, 此时如果将最后4个字节设计成一段其他代码的地址那么程序将不会停止而是直接跳转到这段地址继续执行,这就是栈溢出漏洞的基本原理&lt;/p&gt;
-</content:encoded></item><item><title>c03</title><link>https://yoyolp.github.io/posts/c_asm/c03/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/c03/</guid><description>C 函数 inline static 关键字 指针 内存分配相关</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;inline 内敛函数&lt;/h2&gt;
+</content:encoded></item><item><title>c03</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c03/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c03/</guid><description>C 函数 inline static 关键字 指针 内存分配相关</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;inline 内敛函数&lt;/h2&gt;
 &lt;p&gt;在调用者内部直接复制展开内敛函数代码，类似 &lt;strong&gt;#define&lt;/strong&gt; 宏展开，目的是减少函数调用的开销,但是这只是针对于编译器的建议，最后是否内敛取决于编译器，如果认为函数不复杂，能在调用点展开，才会真正内敛&lt;/p&gt;
 &lt;h2&gt;static 关键字&lt;/h2&gt;
 &lt;p&gt;使函数具有内部链接属性，只能定义他的源文件内的访问&lt;/p&gt;
@@ -5232,7 +5232,7 @@ s_name structA;
 &lt;ol&gt;
 &lt;li&gt;自然对齐：在默认情况下各成员变量存放的起始地址相对于结构的起始位置的偏移量:sizeof(基本类型)或其倍数如果该成员为非基本成员，则为其子成员中最大基本类型的整数倍&lt;/li&gt;
 &lt;/ol&gt;
-</content:encoded></item><item><title>c04</title><link>https://yoyolp.github.io/posts/c_asm/c04/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/c04/</guid><description>联合体 枚举 位运算 宏定义</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;联合体 UNION&lt;/h2&gt;
+</content:encoded></item><item><title>c04</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c04/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c04/</guid><description>联合体 枚举 位运算 宏定义</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;联合体 UNION&lt;/h2&gt;
 &lt;p&gt;C 语言编程的时候，需要使集中不同种类的变量存放到同一段内存中。也就是使用覆盖计数，几个变量相互覆盖重叠。这种几个不同的变量共同占用一段内存结构
 在C语言中，被称作联合体，也被称作&lt;strong&gt;共用体&lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;联合体定义方式&lt;/h3&gt;
@@ -5338,7 +5338,7 @@ enumName a;
 ...
 #endif
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>c05</title><link>https://yoyolp.github.io/posts/c_asm/c05/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/c05/</guid><description>文件分类，文件系统，文件读写</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;文件分类:&lt;/h2&gt;
+</content:encoded></item><item><title>c05</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c05/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c05/</guid><description>文件分类，文件系统，文件读写</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;文件分类:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;普通文件&lt;/li&gt;
 &lt;li&gt;设备文件 ： 把外部设备也看做一个一个文件来进行管理，把他们的输入，输出等同于对磁盘文件的读和写&lt;/li&gt;
@@ -5665,7 +5665,7 @@ printf(&quot;Hello World&quot;);
   return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>c06</title><link>https://yoyolp.github.io/posts/c_asm/c06/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/c06/</guid><description>文件指针，结构体io优化</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;文件的其他相关操作&lt;/h2&gt;
+</content:encoded></item><item><title>c06</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c06/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c06/</guid><description>文件指针，结构体io优化</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;文件的其他相关操作&lt;/h2&gt;
 &lt;h3&gt;读写指针控制&lt;/h3&gt;
 &lt;p&gt;在C 语言中，文件的读写指针（文件位置指针）用于跟踪文件中的当前位置，决定了下一次读写操作的位置&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;FILE* fp;
@@ -5923,7 +5923,7 @@ int optreadRecord(FILE* fp)
 &lt;p&gt;优化后的 &lt;strong&gt;struct_bin.dat&lt;/strong&gt; 文件结构如图
 &lt;img src=&quot;https://yoyolp.github.io/images/c/06/dat02.png&quot; alt=&quot;dat2&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;明显发现占用空间减小&lt;/p&gt;
-</content:encoded></item><item><title>c07</title><link>https://yoyolp.github.io/posts/c_asm/c07/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/c07/</guid><description>PE ELF 格式介绍</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>c07</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c07/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c07/</guid><description>PE ELF 格式介绍</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
 &lt;h2&gt;PE 格式&lt;/h2&gt;
 &lt;p&gt;一种规范和标准，里面包含了程序执行的代码，数据和资源等
 Win:.exe/.dll/.sys =&amp;gt; pe&lt;/p&gt;
@@ -6018,7 +6018,7 @@ Win:.exe/.dll/.sys =&amp;gt; pe&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-</content:encoded></item><item><title>c06</title><link>https://yoyolp.github.io/posts/c_asm/cformattable/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/cformattable/</guid><description>一些常用的转义符表</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;C/C++ 格式转义符完整参考手册&lt;/h1&gt;
+</content:encoded></item><item><title>c06</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cformattable/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cformattable/</guid><description>一些常用的转义符表</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;C/C++ 格式转义符完整参考手册&lt;/h1&gt;
 &lt;h2&gt;整数类型格式符&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -6245,7 +6245,7 @@ int main() {
 
 
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>program03</title><link>https://yoyolp.github.io/posts/program/program3/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/program/program3/</guid><description>程序员的自我修养， 特殊符号， C++符号修饰， 空间地址分配，相似段合并， 符号的解析与重定位</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;特殊符号&lt;/h2&gt;
+</content:encoded></item><item><title>program03</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/program/program3/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/program/program3/</guid><description>程序员的自我修养， 特殊符号， C++符号修饰， 空间地址分配，相似段合并， 符号的解析与重定位</description><pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;特殊符号&lt;/h2&gt;
 &lt;p&gt;当我们使用ld作为连接器来链接生产可执行文件时，它会为我们定义很多特殊符号，这些符号没有在程序中定义，&lt;em&gt;&lt;strong&gt;只有使用ld 链接生产最终可执行文件的时候这些符号在会存在&lt;/strong&gt;&lt;/em&gt; 以下为几个具有代表性的特殊符号&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;__executable_start&lt;/code&gt; ， 该符号为程序其实嗲之，注意不是入口地址，是程序的最开始的地址&lt;/li&gt;
@@ -6430,7 +6430,7 @@ __attribute__((weak)) weak2 = 2;
 &lt;h2&gt;符号的解析与重定位&lt;/h2&gt;
 &lt;h3&gt;重定位&lt;/h3&gt;
 &lt;p&gt;在完成空间和地址的分配步骤之后，链接器就进入了符号解析和重定位的步骤，这也是静态链接的核心内容，&lt;/p&gt;
-</content:encoded></item><item><title>Program02</title><link>https://yoyolp.github.io/posts/program/program2/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/program/program2/</guid><description>程序员的自我修养, ELF 文件格式描述</description><pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;文件头&lt;/h2&gt;
+</content:encoded></item><item><title>Program02</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/program/program2/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/program/program2/</guid><description>程序员的自我修养, ELF 文件格式描述</description><pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;文件头&lt;/h2&gt;
 &lt;p&gt;ELF 目标文件格式的最前部是ELF 文件头，它包含了描述整个文件的基本属性，比如ELF 文件版本，目标机器型号，程序入口地址等。&lt;/p&gt;
 &lt;p&gt;我们可以使用readelf 命令来详细查看ELF 文件&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;readelf -h SimpleSection.o
@@ -6939,7 +6939,7 @@ typedef struct
 &lt;pre&gt;&lt;code&gt;readelf -s SimpleSection.o
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;输出结果中的 Ndx列就是表示该符号所表示的段&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-</content:encoded></item><item><title>program01</title><link>https://yoyolp.github.io/posts/program/program/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/program/program/</guid><description>程序员的自我修养笔记, 内存分配问题，同步， GCC 编译过程， 目标文件样式，不提供附件，文件fd</description><pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>program01</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/program/program/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/program/program/</guid><description>程序员的自我修养笔记, 内存分配问题，同步， GCC 编译过程， 目标文件样式，不提供附件，文件fd</description><pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
 &lt;h2&gt;内存分配问题&lt;/h2&gt;
 &lt;p&gt;在多个程序内存分配上，存在许多内存的分配问题&lt;/p&gt;
 &lt;ul&gt;
@@ -7167,7 +7167,7 @@ __attribute__((section(&quot;BAR&quot;))) void foo()
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在全局变量或者函数之前加上 &lt;code&gt;__attribute__((section(&quot;name&quot;)))&lt;/code&gt; 属性就可以把相应的变量或者函数放到以&quot;name&quot; 作为段名的段中&lt;/p&gt;
-</content:encoded></item><item><title>Cfn</title><link>https://yoyolp.github.io/posts/c_asm/cfn/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/cfn/</guid><description>常用C语言函数速查表</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;table&gt;
+</content:encoded></item><item><title>Cfn</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cfn/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cfn/</guid><description>常用C语言函数速查表</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;函数名字&lt;/th&gt;
@@ -7233,13 +7233,13 @@ __attribute__((section(&quot;BAR&quot;))) void foo()
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content:encoded></item><item><title>ida02</title><link>https://yoyolp.github.io/posts/c_asm/ida02/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/ida02/</guid><description>ida的简单使用</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;ida 的使用，和一些练习题&lt;/p&gt;
+</content:encoded></item><item><title>ida02</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida02/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida02/</guid><description>ida的简单使用</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;ida 的使用，和一些练习题&lt;/p&gt;
 &lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
 &lt;h2&gt;CTF+ &lt;a href=&quot;https://www.ctfplus.cn/problem-detail/1975492223294246912/description&quot;&gt;SignIn2&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;标签 0xGame2025 re week1&lt;/h3&gt;
 &lt;p&gt;将题目提供的exe 文件拖入ida 中 main 函数 和其中 flag 解密函数的伪代码如图&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://yoyolp.github.io/_astro/02_1.DCwt6lgb_Z1Ian51.webp&quot; alt=&quot;ida_02_1&quot; /&gt;
-&lt;img src=&quot;https://yoyolp.github.io/_astro/02_2.C_cjzy1X_DaO1v.webp&quot; alt=&quot;ida_02_2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://yoyolp.github.io/yoyolp.github.io/_astro/02_1.DCwt6lgb_Z1aA2eX.webp&quot; alt=&quot;ida_02_1&quot; /&gt;
+&lt;img src=&quot;https://yoyolp.github.io/yoyolp.github.io/_astro/02_2.C_cjzy1X_Z1Lu1tj.webp&quot; alt=&quot;ida_02_2&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;找到flag的原始数据如下&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; ; flag
 .data:00000001400035EB                 db 40h, 7Dh, 43h, 6Fh, 42h, 6Fh, 2Ah, 79h, 71h, 21h, 2Ah
@@ -7301,7 +7301,7 @@ else:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;找到key值 16
 最终找到flag: 0xGame{We1c0m3_2_xiaoxinxie_qq_1060449509}&lt;/p&gt;
-</content:encoded></item><item><title>ida03</title><link>https://yoyolp.github.io/posts/c_asm/ida03/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/ida03/</guid><description>ida的简单使用</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;ida 使用， __stdcall __fastcall __cdecl ... 函数调用约定&lt;/p&gt;
+</content:encoded></item><item><title>ida03</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida03/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida03/</guid><description>ida的简单使用</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;ida 使用， __stdcall __fastcall __cdecl ... 函数调用约定&lt;/p&gt;
 &lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
 &lt;p&gt;使用环境: llvm-mingw-20250613-msvcrt-i686, clang 20.1.7, IDA Pro 9.1&lt;/p&gt;
 &lt;p&gt;将这段代码编译并拖入ida&lt;/p&gt;
@@ -7792,7 +7792,7 @@ for char in decoded_str:
 print(&quot;Flag:&quot;, flag)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;最终解得flag: SYC{SYCTQWEFGHYIICIOJKLBNMCVBFGHSDFF}&lt;/p&gt;
-</content:encoded></item><item><title>day1</title><link>https://yoyolp.github.io/posts/other/day1/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/day1/</guid><description>写了两道题目</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;CTF+ 题目1 &lt;a href=&quot;https://www.ctfplus.cn/problem-detail/1975492169263222784/description&quot;&gt;Sign_in&lt;/a&gt;&lt;/h2&gt;
+</content:encoded></item><item><title>day1</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/day1/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/day1/</guid><description>写了两道题目</description><pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;CTF+ 题目1 &lt;a href=&quot;https://www.ctfplus.cn/problem-detail/1975492169263222784/description&quot;&gt;Sign_in&lt;/a&gt;&lt;/h2&gt;
 &lt;h4&gt;标签: Misc 0xgame2025&lt;/h4&gt;
 &lt;p&gt;由题目发现信息: MGhRa3dve0dvdm0wd29fZDBfMGhRNHczXzJ5MjVfQHhuX3JAbXVfUHliX3BlWH0=
 显然为Base64编码 解码后发现信息 0hQkwo{Govm0wo_d0_0hQ4w3_2y25_@xn_r@mu_Pyb_peX}
@@ -7861,7 +7861,7 @@ result = vigenere_decrypt(ciphertext, key)
 print(result)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;得到flag: 0xGame{you_learned_vigenere_cipher_2df4b1c2e3}&lt;/p&gt;
-</content:encoded></item><item><title>day5</title><link>https://yoyolp.github.io/posts/other/day5/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/day5/</guid><description>一些题目和笔记</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
+</content:encoded></item><item><title>day5</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/day5/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/day5/</guid><description>一些题目和笔记</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&amp;lt;!--more--&amp;gt;&lt;/p&gt;
 &lt;h2&gt;MoeCTF 题目 &lt;a href=&quot;https://ctf.xidian.edu.cn/training/22?challenge=858&amp;amp;tab=terminal&quot;&gt;0 Web入门指北&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;标签: MoeCTF2025 Web Web安全与渗透测试&lt;/h3&gt;
 &lt;p&gt;下载附件后发现如下密文&lt;/p&gt;
@@ -7911,7 +7911,7 @@ Date: Mon, 13 Oct 2025 13:53:27 GMT
 &lt;p&gt;得到flag: moectf{0bs3rv3_Th3_Gold3n_traiL}&lt;/p&gt;
 &lt;h4&gt;note:&lt;/h4&gt;
 &lt;p&gt;curl 指令 可以通过-i 参数来查看访问头&lt;/p&gt;
-</content:encoded></item><item><title>day6</title><link>https://yoyolp.github.io/posts/other/day6/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/day6/</guid><description>一些题目+ ZAP工具的使用 + SQL 相关</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;MeoCTF 题目 &lt;a href=&quot;https://ctf.xidian.edu.cn/training/22?challenge=882&quot;&gt;03 第三章 问剑石！篡天改命！&lt;/a&gt;&lt;/h2&gt;
+</content:encoded></item><item><title>day6</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/day6/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/day6/</guid><description>一些题目+ ZAP工具的使用 + SQL 相关</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;MeoCTF 题目 &lt;a href=&quot;https://ctf.xidian.edu.cn/training/22?challenge=882&quot;&gt;03 第三章 问剑石！篡天改命！&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;标签: MoeCTF2025 Web Web安全与渗透测试&lt;/h3&gt;
 &lt;p&gt;进入题干给的靶机地址发现API: &lt;strong&gt;/test_talent&lt;/strong&gt; 这个是服务器提交和获取flag的关键
 同时查看代码&lt;/p&gt;
@@ -8043,7 +8043,7 @@ select 列名,列数 from TableName # 从TableName 中查找对应的值
 &lt;h3&gt;标签: MoeCTF2025 Web&lt;/h3&gt;
 &lt;p&gt;F12 查看源码发现 判断猜数的JS 并没有做混淆 直接使用&lt;strong&gt;覆盖&lt;/strong&gt; 修改其中的猜中判断方法 &lt;strong&gt;checkGuess()&lt;/strong&gt;
 获得flag: moectf{b38b9fc5-2703-e415-6fed-676213dc04bc}&lt;/p&gt;
-</content:encoded></item><item><title>day7</title><link>https://yoyolp.github.io/posts/other/day7-pwn01/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/day7-pwn01/</guid><description>一些题目+ ZAP工具的使用 + SQL 相关wn 入门指北,Pwn 环境配置</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Pwn的标准流程:&lt;/h1&gt;
+</content:encoded></item><item><title>day7</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/day7-pwn01/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/day7-pwn01/</guid><description>一些题目+ ZAP工具的使用 + SQL 相关wn 入门指北,Pwn 环境配置</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Pwn的标准流程:&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;ol&gt;
@@ -8215,7 +8215,7 @@ p.interactive()              # 获得shell 权限
 &lt;p&gt;:::important
 note: Liunx 分配fd的时候总是会分配最小的未分配数
 :::&lt;/p&gt;
-</content:encoded></item><item><title>ewrok01</title><link>https://yoyolp.github.io/posts/other/ework01/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/ework01/</guid><description>第二次考核的错题</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;3. 现在有一段神秘的伪代码，但是不用管这个函数实现了啥功能，根据上面回复出来的伪代码与下面没有进行回复的代码进行比较，恢复这个名为VM的结构体,结构如下:&lt;/h2&gt;
+</content:encoded></item><item><title>ewrok01</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/ework01/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/ework01/</guid><description>第二次考核的错题</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;3. 现在有一段神秘的伪代码，但是不用管这个函数实现了啥功能，根据上面回复出来的伪代码与下面没有进行回复的代码进行比较，恢复这个名为VM的结构体,结构如下:&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;struct VM
 {
   unsigned char mem[4096];
@@ -8698,7 +8698,7 @@ int main(void)
 &lt;p&gt;:::important
 注意： 这里不适用scanf 是因为scanf 在读取到 空白符 制表符 和换行符等，会直接截断
 :::&lt;/p&gt;
-</content:encoded></item><item><title>正则表达式速查表</title><link>https://yoyolp.github.io/posts/other/regextable/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/regextable/</guid><description>正则表达式速查表</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;这是一个正则表达式的速查表，和一些常用的例子&lt;/h1&gt;
+</content:encoded></item><item><title>正则表达式速查表</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/regextable/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/regextable/</guid><description>正则表达式速查表</description><pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;这是一个正则表达式的速查表，和一些常用的例子&lt;/h1&gt;
 &lt;h2&gt;基础语法&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -9095,7 +9095,7 @@ int main(void)
 // IP地址
 ((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>day2</title><link>https://yoyolp.github.io/posts/other/day2/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/day2/</guid><description>写了两道题目</description><pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;MeoCtf 题目 &lt;a href=&quot;https://ctf.xidian.edu.cn/training/18?challenge=820&quot;&gt;吃豆人&lt;/a&gt;&lt;/h2&gt;
+</content:encoded></item><item><title>day2</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/day2/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/day2/</guid><description>写了两道题目</description><pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;MeoCtf 题目 &lt;a href=&quot;https://ctf.xidian.edu.cn/training/18?challenge=820&quot;&gt;吃豆人&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;标签 Mini_L-CTF_2025 Misc&lt;/h3&gt;
 &lt;p&gt;在进入靶机地址后得到如下画面
 &lt;img src=&quot;https://yoyolp.github.io/images/day2/1.png&quot; alt=&quot;图片1&quot; /&gt;
@@ -9194,7 +9194,7 @@ fileInput.addEventListener(&apos;change&apos;, function(e) {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&quot;https://yoyolp.github.io/images/day2/3.png&quot; alt=&quot;图片3&quot; /&gt;
 得到flag: miniLCTF{Y0u-@rE_4-t41ENt3D-slngEr376fddc2}&lt;/p&gt;
-</content:encoded></item><item><title>day3</title><link>https://yoyolp.github.io/posts/other/day3/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/day3/</guid><description>linux 学习笔记</description><pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Liunx 学习笔记&lt;/h1&gt;
+</content:encoded></item><item><title>day3</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/day3/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/day3/</guid><description>linux 学习笔记</description><pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Liunx 学习笔记&lt;/h1&gt;
 &lt;h4&gt;touch 的使用&lt;/h4&gt;
 &lt;p&gt;touch 命令主要用于创建空文件和修改文件的时间戳&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 创建单个文件
@@ -9480,7 +9480,7 @@ grep -C 2 &quot;pattern&quot; file.txt  # 显示匹配行前后各2行
 同理通过第一位 如果为 &lt;strong&gt;s&lt;/strong&gt;rwxrwxrwx 则为套接字文件&lt;/p&gt;
 &lt;h4&gt;进程相关&lt;/h4&gt;
 &lt;p&gt;ps&lt;/p&gt;
-</content:encoded></item><item><title>day4</title><link>https://yoyolp.github.io/posts/other/day4/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/other/day4/</guid><description>一些题目 + curl 指令的用法</description><pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;CTF+ 题目 &lt;a href=&quot;https://www.ctfplus.cn/problem-detail/1975492176561311744/description&quot;&gt;Http的真理，我已解明&lt;/a&gt;&lt;/h2&gt;
+</content:encoded></item><item><title>day4</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/other/day4/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/other/day4/</guid><description>一些题目 + curl 指令的用法</description><pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;CTF+ 题目 &lt;a href=&quot;https://www.ctfplus.cn/problem-detail/1975492176561311744/description&quot;&gt;Http的真理，我已解明&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;标签: 0xGame Web&lt;/h3&gt;
 &lt;p&gt;题目要求我们用指定的GET POST COOKIE 传入特定的参数 使用特定的浏览器 使用 表示经过代理或者网关, 以及从指定的网站跳转过来
 所以得出curl指令&lt;/p&gt;
@@ -9586,7 +9586,7 @@ else{
 &lt;pre&gt;&lt;code&gt;. ./flag
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;执行文件得到flag：0xGame{y0u_c4n_4ls0_3x3cu73_c0mm4nd_w17h0u7_5h_4nd_c47}&lt;/p&gt;
-</content:encoded></item><item><title>asm02</title><link>https://yoyolp.github.io/posts/c_asm/asm02/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/asm02/</guid><description>gdb 的使用 Liunx syscall 系统调用约定， loop， Call&amp;Ret, Stack栈的使用</description><pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;GDB&lt;/h2&gt;
+</content:encoded></item><item><title>asm02</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm02/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm02/</guid><description>gdb 的使用 Liunx syscall 系统调用约定， loop， Call&amp;Ret, Stack栈的使用</description><pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;GDB&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;GDB&lt;/strong&gt; 全称是  &lt;strong&gt;GNU Debugger&lt;/strong&gt; ，是 GNU 软件系统的一部分。它是一个功能强大的 &lt;strong&gt;程序调试工具&lt;/strong&gt; 。&lt;/p&gt;
 &lt;p&gt;简单来说，GDB 就像一个程序的“手术刀”和“X光机”，它允许你深入到程序内部，观察其运行时的每一个细节。你可以让程序在任何你指定的地方暂停，然后检查当时的状态（比如变量的值、内存的内容、函数的调用关系等），也可以一步一步地执行代码，看程序究竟是如何运行的。&lt;/p&gt;
 &lt;h3&gt;GDB 能做什么？（主要功能）&lt;/h3&gt;
@@ -10474,7 +10474,7 @@ _func_print_msg:
   syscall
   ret
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>asm03</title><link>https://yoyolp.github.io/posts/c_asm/asm03/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/c_asm/asm03/</guid><description>GAS 汇编表示偏移地址, .include 伪指令</description><pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;寻址方式&lt;/h2&gt;
+</content:encoded></item><item><title>asm03</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm03/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm03/</guid><description>GAS 汇编表示偏移地址, .include 伪指令</description><pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;寻址方式&lt;/h2&gt;
 &lt;p&gt;在 GAS 汇编中有多种寻址方式，可以给我们便利的的访问或者操纵内存中的值，下面是寻址方式总结表&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -10811,7 +10811,7 @@ str2_loop:
   syscall
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;除了使用 位运算的方法 还可以使用 算数的方法来实现大小写的转化，在ASCII码中 小写字母 和大写字母 之间的差值为20H&lt;/p&gt;
-</content:encoded></item><item><title>Markdown Tutorial</title><link>https://yoyolp.github.io/posts/markdown-tutorial/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/markdown-tutorial/</guid><description>A simple example of a Markdown blog post.</description><pubDate>Mon, 20 Jan 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Markdown Tutorial&lt;/h1&gt;
+</content:encoded></item><item><title>Markdown Tutorial</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/markdown-tutorial/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/markdown-tutorial/</guid><description>A simple example of a Markdown blog post.</description><pubDate>Mon, 20 Jan 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Markdown Tutorial&lt;/h1&gt;
 &lt;p&gt;A markdown example shows how to write a markdown file. This document integrates core syntax and extensions (GMF).&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#block-elements&quot;&gt;Block Elements&lt;/a&gt;
@@ -11521,7 +11521,7 @@ This is another regular paragraph.
 &lt;strong&gt;No Work&lt;/strong&gt;
 &amp;lt;/div&amp;gt;&lt;/p&gt;
 &lt;hr /&gt;
-</content:encoded></item><item><title>Markdown Extended Features</title><link>https://yoyolp.github.io/posts/markdown-extended/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/markdown-extended/</guid><description>Read more about Markdown features in Mizuki</description><pubDate>Wed, 01 May 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;GitHub Repository Cards&lt;/h2&gt;
+</content:encoded></item><item><title>Markdown Extended Features</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/markdown-extended/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/markdown-extended/</guid><description>Read more about Markdown features in Mizuki</description><pubDate>Wed, 01 May 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;GitHub Repository Cards&lt;/h2&gt;
 &lt;p&gt;You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API.&lt;/p&gt;
 &lt;p&gt;::github{repo=&quot;matsuzaka-yuki/Mizuki&quot;}&lt;/p&gt;
 &lt;p&gt;Create a GitHub repository card with the code &lt;code&gt;::github{repo=&quot;matsuzaka-yuki/Mizuki&quot;}&lt;/code&gt;.&lt;/p&gt;
@@ -11577,7 +11577,7 @@ This is a note with a custom title.
 &lt;p&gt;You can add spoilers to your text. The text also supports &lt;strong&gt;Markdown&lt;/strong&gt; syntax.&lt;/p&gt;
 &lt;p&gt;The content :spoiler[is hidden &lt;strong&gt;ayyy&lt;/strong&gt;]!&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;The content :spoiler[is hidden **ayyy**]!&lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>Simple Guides for Mizuki</title><link>https://yoyolp.github.io/posts/guide/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/guide/</guid><description>How to use this blog template.</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This blog template is built with &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;. For the things that are not mentioned in this guide, you may find the answers in the &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt;.&lt;/p&gt;
+</content:encoded></item><item><title>Simple Guides for Mizuki</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/guide/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/guide/</guid><description>How to use this blog template.</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This blog template is built with &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;. For the things that are not mentioned in this guide, you may find the answers in the &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Front-matter of Posts&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;---
 title: My First Blog Post
@@ -11655,7 +11655,7 @@ draft: false
     ├── cover.webp
     └── index.md
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>Encrypted Post</title><link>https://yoyolp.github.io/posts/encrypted-example/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/encrypted-example/</guid><description>This is an article for testing the page encryption feature</description><pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This blog template is built with &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;. For the things that are not mentioned in this guide, you may find the answers in the &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt;.&lt;/p&gt;
+</content:encoded></item><item><title>Encrypted Post</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/encrypted-example/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/encrypted-example/</guid><description>This is an article for testing the page encryption feature</description><pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This blog template is built with &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;. For the things that are not mentioned in this guide, you may find the answers in the &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Front-matter of Posts&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;---
 title: My First Blog Post
@@ -11824,7 +11824,7 @@ passwordHint: &quot;Hint: The password is my dog&apos;s name&quot;
 &lt;li&gt;A password input field and unlock button&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;After entering the correct password, the content is decrypted and displayed. The password is stored in session storage so users don&apos;t need to re-enter it on subsequent page loads within the same session.&lt;/p&gt;
-</content:encoded></item><item><title>Markdown Mermaid</title><link>https://yoyolp.github.io/posts/markdown-mermaid/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/markdown-mermaid/</guid><description>A simple example of a Markdown blog post with Mermaid.</description><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Complete Guide to Markdown with Mermaid Diagrams&lt;/h1&gt;
+</content:encoded></item><item><title>Markdown Mermaid</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/markdown-mermaid/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/markdown-mermaid/</guid><description>A simple example of a Markdown blog post with Mermaid.</description><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Complete Guide to Markdown with Mermaid Diagrams&lt;/h1&gt;
 &lt;p&gt;This article demonstrates how to create various complex diagrams using Mermaid in Markdown documents, including flowcharts, sequence diagrams, Gantt charts, class diagrams, and state diagrams.&lt;/p&gt;
 &lt;h2&gt;Flowchart Example&lt;/h2&gt;
 &lt;p&gt;Flowcharts are excellent for representing processes or algorithm steps.&lt;/p&gt;
@@ -11975,7 +11975,7 @@ passwordHint: &quot;Hint: The password is my dog&apos;s name&quot;
 &lt;p&gt;Mermaid is a powerful tool for creating various types of diagrams in Markdown documents. This article demonstrated how to use flowcharts, sequence diagrams, Gantt charts, class diagrams, state diagrams, and pie charts. These diagrams can help you express complex concepts, processes, and data structures more clearly.&lt;/p&gt;
 &lt;p&gt;To use Mermaid, simply specify the mermaid language in a code block and describe the diagram using concise text syntax. Mermaid will automatically convert these descriptions into beautiful visual diagrams.&lt;/p&gt;
 &lt;p&gt;Try using Mermaid diagrams in your next technical blog post or project documentation - they will make your content more professional and easier to understand!&lt;/p&gt;
-</content:encoded></item><item><title>Include Video in the Posts</title><link>https://yoyolp.github.io/posts/video/</link><guid isPermaLink="true">https://yoyolp.github.io/posts/video/</guid><description>This post demonstrates how to include embedded video in a blog post.</description><pubDate>Mon, 01 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Just copy the embed code from YouTube or other platforms, and paste it in the markdown file.&lt;/p&gt;
+</content:encoded></item><item><title>Include Video in the Posts</title><link>https://yoyolp.github.io/yoyolp.github.io/posts/video/</link><guid isPermaLink="true">https://yoyolp.github.io/yoyolp.github.io/posts/video/</guid><description>This post demonstrates how to include embedded video in a blog post.</description><pubDate>Mon, 01 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Just copy the embed code from YouTube or other platforms, and paste it in the markdown file.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;---
 title: Include Video in the Post
 published: 2023-10-19

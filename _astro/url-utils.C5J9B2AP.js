@@ -1,0 +1,1 @@
+import"./config.4QauyR6n.js";import"./zh_TW.DQhvB9P3.js";function u(o,e){const n=o.replace(/^\/|\/$/g,"").toLowerCase(),r=e.replace(/^\/|\/$/g,"").toLowerCase();return n===r}function t(...o){return o.join("/").replace(/\/+/g,"/")}function c(o){return t("","/yoyolp.github.io/",o)}export{u as p,c as u};
