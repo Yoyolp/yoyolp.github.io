@@ -5,12 +5,12 @@
   <link href="https://yoyolp.github.io/" rel="alternate" type="text/html"/>
   <link href="https://yoyolp.github.io/atom.xml" rel="self" type="application/atom+xml"/>
   <id>https://yoyolp.github.io/</id>
-  <updated>2026-04-01T11:57:48.927Z</updated>
+  <updated>2026-04-01T12:04:30.416Z</updated>
   <language>zh_CN</language>
   <entry>
     <title>Tcache</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/heap/tcache/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/heap/tcache/</id>
+    <link href="https://yoyolp.github.io/posts/heap/tcache/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/heap/tcache/</id>
     <published>2026-03-30T00:00:00.000Z</published>
     <updated>2026-03-30T00:00:00.000Z</updated>
     <summary>tecache分析</summary>
@@ -129,8 +129,8 @@ tcache_put (mchunkptr chunk, size_t tc_idx)
   </entry>
   <entry>
     <title>randomBreak</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/11/19/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/11/19/</id>
+    <link href="https://yoyolp.github.io/posts/11/19/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/11/19/</id>
     <published>2026-03-29T00:00:00.000Z</published>
     <updated>2026-03-29T00:00:00.000Z</updated>
     <summary>伪随机数攻击</summary>
@@ -214,8 +214,8 @@ int randd(void)
   </entry>
   <entry>
     <title>asmMaster - ctfPlus</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/asmmaster/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/asmmaster/</id>
+    <link href="https://yoyolp.github.io/posts/interestingchall/asmmaster/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/interestingchall/asmmaster/</id>
     <published>2026-03-29T00:00:00.000Z</published>
     <updated>2026-03-29T00:00:00.000Z</updated>
     <summary>shellcode，汇编, 指令滑板</summary>
@@ -312,8 +312,8 @@ p.interactive(
   </entry>
   <entry>
     <title>Chance Only One - ctfplus</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/chanceonlyone/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/chanceonlyone/</id>
+    <link href="https://yoyolp.github.io/posts/interestingchall/chanceonlyone/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/interestingchall/chanceonlyone/</id>
     <published>2026-03-29T00:00:00.000Z</published>
     <updated>2026-03-29T00:00:00.000Z</updated>
     <summary>ret 滑梯， 栈迁移</summary>
@@ -381,8 +381,8 @@ p.interactive()
   </entry>
   <entry>
     <title>ncpro - ctfplus</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/ncpro/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/ncpro/</id>
+    <link href="https://yoyolp.github.io/posts/interestingchall/ncpro/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/interestingchall/ncpro/</id>
     <published>2026-03-29T00:00:00.000Z</published>
     <updated>2026-03-29T00:00:00.000Z</updated>
     <summary>远程环境，不提供附件，文件fd</summary>
@@ -483,8 +483,8 @@ io.close()
   </entry>
   <entry>
     <title>doubleFree</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/heap/doublefree/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/heap/doublefree/</id>
+    <link href="https://yoyolp.github.io/posts/heap/doublefree/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/heap/doublefree/</id>
     <published>2026-03-21T00:00:00.000Z</published>
     <updated>2026-03-21T00:00:00.000Z</updated>
     <summary>一道简单的堆题目, double free</summary>
@@ -650,8 +650,8 @@ p.interactive()
   </entry>
   <entry>
     <title>old_rop - ctfplus</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/old_rop/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/interestingchall/old_rop/</id>
+    <link href="https://yoyolp.github.io/posts/interestingchall/old_rop/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/interestingchall/old_rop/</id>
     <published>2026-03-21T00:00:00.000Z</published>
     <updated>2026-03-21T00:00:00.000Z</updated>
     <summary>比较典型的ret2csu, ret2libc</summary>
@@ -774,8 +774,8 @@ p.interactive()
   </entry>
   <entry>
     <title>uaf</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/heap/uaf/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/heap/uaf/</id>
+    <link href="https://yoyolp.github.io/posts/heap/uaf/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/heap/uaf/</id>
     <published>2026-03-19T00:00:00.000Z</published>
     <updated>2026-03-19T00:00:00.000Z</updated>
     <summary>一些Uaf的题目</summary>
@@ -823,8 +823,8 @@ cat flag
   </entry>
   <entry>
     <title>13考核wp</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/</id>
+    <link href="https://yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/13%E8%80%83%E6%A0%B8wp/</id>
     <published>2026-03-14T00:00:00.000Z</published>
     <updated>2026-03-14T00:00:00.000Z</updated>
     <summary>3月份考核 WriteUp,SROP, 栈风水</summary>
@@ -935,8 +935,8 @@ p.interactive()
   </entry>
   <entry>
     <title>ret2dlrsolve</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/ret2dlrslove/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/ret2dlrslove/</id>
+    <link href="https://yoyolp.github.io/posts/other/ret2dlrslove/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/ret2dlrslove/</id>
     <published>2026-03-11T00:00:00.000Z</published>
     <updated>2026-03-11T00:00:00.000Z</updated>
     <summary>ret2dlrsolve的利用</summary>
@@ -1076,8 +1076,8 @@ p.interactive()
   </entry>
   <entry>
     <title>SDPC::CTF WriteUp</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/12/writeupspesc/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/12/writeupspesc/</id>
+    <link href="https://yoyolp.github.io/posts/12/writeupspesc/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/12/writeupspesc/</id>
     <published>2025-12-25T00:00:00.000Z</published>
     <updated>2025-12-25T00:00:00.000Z</updated>
     <summary>SDPC::CTF 热身赛,部分题目的wp</summary>
@@ -1659,8 +1659,8 @@ __int64 __fastcall obfuscate_value(__int64 p_s1, int a2)
   </entry>
   <entry>
     <title>uaf</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/12/uaf/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/12/uaf/</id>
+    <link href="https://yoyolp.github.io/posts/12/uaf/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/12/uaf/</id>
     <published>2025-12-24T00:00:00.000Z</published>
     <updated>2025-12-24T00:00:00.000Z</updated>
     <summary>Uaf</summary>
@@ -1961,8 +1961,8 @@ p.interactive()
   </entry>
   <entry>
     <title>writeUp12.12</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/12/23/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/12/23/</id>
+    <link href="https://yoyolp.github.io/posts/12/23/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/12/23/</id>
     <published>2025-12-23T00:00:00.000Z</published>
     <updated>2025-12-23T00:00:00.000Z</updated>
     <summary>srop</summary>
@@ -2157,8 +2157,8 @@ p.interactive()
   </entry>
   <entry>
     <title>writeUp12.12</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/12/13/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/12/13/</id>
+    <link href="https://yoyolp.github.io/posts/12/13/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/12/13/</id>
     <published>2025-12-12T00:00:00.000Z</published>
     <updated>2025-12-12T00:00:00.000Z</updated>
     <summary>WriteUp 12.12</summary>
@@ -2397,8 +2397,8 @@ payload = flat([
   </entry>
   <entry>
     <title>12考核wp</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/12kh/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/12kh/</id>
+    <link href="https://yoyolp.github.io/posts/other/12kh/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/12kh/</id>
     <published>2025-12-06T00:00:00.000Z</published>
     <updated>2025-12-06T00:00:00.000Z</updated>
     <summary>十二月考核 WriteUp</summary>
@@ -2572,8 +2572,8 @@ p.interactive()
   </entry>
   <entry>
     <title>stackStruct</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/11/30/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/11/30/</id>
+    <link href="https://yoyolp.github.io/posts/11/30/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/11/30/</id>
     <published>2025-11-30T00:00:00.000Z</published>
     <updated>2025-11-30T00:00:00.000Z</updated>
     <summary>stack, strcpy & strcmp</summary>
@@ -2964,8 +2964,8 @@ p.interactive()
   </entry>
   <entry>
     <title>动态链接</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/11/23/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/11/23/</id>
+    <link href="https://yoyolp.github.io/posts/11/23/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/11/23/</id>
     <published>2025-11-23T00:00:00.000Z</published>
     <updated>2025-11-23T00:00:00.000Z</updated>
     <summary>动态链接和延迟绑定, inject, 未初始化缓冲区</summary>
@@ -3284,8 +3284,8 @@ p.interactive()
   </entry>
   <entry>
     <title>canary</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/11/18/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/11/18/</id>
+    <link href="https://yoyolp.github.io/posts/11/18/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/11/18/</id>
     <published>2025-11-18T00:00:00.000Z</published>
     <updated>2025-11-18T00:00:00.000Z</updated>
     <summary>栈金丝雀</summary>
@@ -3406,8 +3406,8 @@ print(a)
   </entry>
   <entry>
     <title>Ghidra</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ghidra01/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ghidra01/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/ghidra01/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/ghidra01/</id>
     <published>2025-11-18T00:00:00.000Z</published>
     <updated>2025-11-18T00:00:00.000Z</updated>
     <summary>Ghidra的简单使用</summary>
@@ -3539,8 +3539,8 @@ int main(void)
   </entry>
   <entry>
     <title>ida01</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida01/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida01/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/ida01/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/ida01/</id>
     <published>2025-11-18T00:00:00.000Z</published>
     <updated>2025-11-18T00:00:00.000Z</updated>
     <summary>ida的简单使用</summary>
@@ -3666,8 +3666,8 @@ print(flag)
   </entry>
   <entry>
     <title>ROPgadget</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/11/16/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/11/16/</id>
+    <link href="https://yoyolp.github.io/posts/11/16/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/11/16/</id>
     <published>2025-11-16T00:00:00.000Z</published>
     <updated>2025-11-16T00:00:00.000Z</updated>
     <summary>ROPgadget 工具的使用, libc 的利用</summary>
@@ -3787,8 +3787,8 @@ p.interactive()
   </entry>
   <entry>
     <title>shellcode</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/11/15/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/11/15/</id>
+    <link href="https://yoyolp.github.io/posts/11/15/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/11/15/</id>
     <published>2025-11-15T00:00:00.000Z</published>
     <updated>2025-11-15T00:00:00.000Z</updated>
     <summary>shellcode 的概念, 基本的函数调用栈,典型栈溢出,一些危险的函数</summary>
@@ -3999,8 +3999,8 @@ print(a)
   </entry>
   <entry>
     <title>asm01</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm01/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm01/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/asm01/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/asm01/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>CPU 概念， 寄存器,物理内存 常用指令</summary>
@@ -4526,8 +4526,8 @@ _start:
   </entry>
   <entry>
     <title>asm04</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm04/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm04/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/asm04/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/asm04/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>寄存器得使用约定， RFLAGS寄存器，程序栈得概念，System V ABI， 寻址方式</summary>
@@ -4783,8 +4783,8 @@ jmp [jump_table + rdx*8]  ; 通过跳转表跳转
   </entry>
   <entry>
     <title>asm05</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm05/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm05/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/asm05/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/asm05/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>跳转指令 CMP, JNC, JC</summary>
@@ -4906,8 +4906,8 @@ mul rbx                # RDX:RAX = 10,000,000,000 * 300 = 3,000,000,000,000
   </entry>
   <entry>
     <title>asm06</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm06/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm06/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/asm06/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/asm06/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>nop, .rept 指令的使用</summary>
@@ -4946,8 +4946,8 @@ mul rbx                # RDX:RAX = 10,000,000,000 * 300 = 3,000,000,000,000
   </entry>
   <entry>
     <title>asmxx</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asmxx/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asmxx/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/asmxx/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/asmxx/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>为方便写汇编代码，所以将一些常用的功能封装到 `asm_simple_func.s` 中， 这是其中的内容</summary>
@@ -5019,8 +5019,8 @@ __asm_func_print_stack:
   </entry>
   <entry>
     <title>c01</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c01/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c01/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/c01/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/c01/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>计算机存储数据大小 命名规范， 字符串，面向过程，面向对象区别,  函数传参 </summary>
@@ -5343,8 +5343,8 @@ umbrella.prevent(rain)
   </entry>
   <entry>
     <title>c03</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c02/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c02/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/c02/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/c02/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>函数得调用约定，缓冲区溢出</summary>
@@ -5442,8 +5442,8 @@ int main(int argc, char* argv[])
   </entry>
   <entry>
     <title>c03</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c03/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c03/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/c03/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/c03/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>C 函数 inline static 关键字 指针 内存分配相关</summary>
@@ -5633,8 +5633,8 @@ s_name structA;
   </entry>
   <entry>
     <title>c04</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c04/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c04/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/c04/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/c04/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>联合体 枚举 位运算 宏定义</summary>
@@ -5752,8 +5752,8 @@ enumName a;
   </entry>
   <entry>
     <title>c05</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c05/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c05/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/c05/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/c05/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>文件分类，文件系统，文件读写</summary>
@@ -6092,8 +6092,8 @@ printf("Hello World");
   </entry>
   <entry>
     <title>c06</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c06/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c06/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/c06/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/c06/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>文件指针，结构体io优化</summary>
@@ -6363,8 +6363,8 @@ int optreadRecord(FILE* fp)
   </entry>
   <entry>
     <title>c07</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c07/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/c07/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/c07/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/c07/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>PE ELF 格式介绍</summary>
@@ -6471,8 +6471,8 @@ Win:.exe/.dll/.sys =&gt; pe</p>
   </entry>
   <entry>
     <title>c06</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cformattable/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cformattable/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/cformattable/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/cformattable/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>一些常用的转义符表</summary>
@@ -6711,8 +6711,8 @@ int main() {
   </entry>
   <entry>
     <title>program03</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/program/program3/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/program/program3/</id>
+    <link href="https://yoyolp.github.io/posts/program/program3/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/program/program3/</id>
     <published>2025-11-13T00:00:00.000Z</published>
     <updated>2025-11-13T00:00:00.000Z</updated>
     <summary>程序员的自我修养， 特殊符号， C++符号修饰， 空间地址分配，相似段合并， 符号的解析与重定位</summary>
@@ -6909,8 +6909,8 @@ __attribute__((weak)) weak2 = 2;
   </entry>
   <entry>
     <title>Program02</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/program/program2/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/program/program2/</id>
+    <link href="https://yoyolp.github.io/posts/program/program2/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/program/program2/</id>
     <published>2025-11-12T00:00:00.000Z</published>
     <updated>2025-11-12T00:00:00.000Z</updated>
     <summary>程序员的自我修养, ELF 文件格式描述</summary>
@@ -7431,8 +7431,8 @@ typedef struct
   </entry>
   <entry>
     <title>program01</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/program/program/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/program/program/</id>
+    <link href="https://yoyolp.github.io/posts/program/program/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/program/program/</id>
     <published>2025-11-11T00:00:00.000Z</published>
     <updated>2025-11-11T00:00:00.000Z</updated>
     <summary>程序员的自我修养笔记, 内存分配问题，同步， GCC 编译过程， 目标文件样式，不提供附件，文件fd</summary>
@@ -7672,8 +7672,8 @@ __attribute__((section("BAR"))) void foo()
   </entry>
   <entry>
     <title>Cfn</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cfn/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/cfn/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/cfn/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/cfn/</id>
     <published>2025-10-28T00:00:00.000Z</published>
     <updated>2025-10-28T00:00:00.000Z</updated>
     <summary>常用C语言函数速查表</summary>
@@ -7751,8 +7751,8 @@ __attribute__((section("BAR"))) void foo()
   </entry>
   <entry>
     <title>ida02</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida02/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida02/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/ida02/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/ida02/</id>
     <published>2025-10-28T00:00:00.000Z</published>
     <updated>2025-10-28T00:00:00.000Z</updated>
     <summary>ida的简单使用</summary>
@@ -7761,8 +7761,8 @@ __attribute__((section("BAR"))) void foo()
 <h2>CTF+ <a href="https://www.ctfplus.cn/problem-detail/1975492223294246912/description">SignIn2</a></h2>
 <h3>标签 0xGame2025 re week1</h3>
 <p>将题目提供的exe 文件拖入ida 中 main 函数 和其中 flag 解密函数的伪代码如图</p>
-<p><img src="https://yoyolp.github.io/yoyolp.github.io/_astro/02_1.DCwt6lgb_Z1aA2eX.webp" alt="ida_02_1" />
-<img src="https://yoyolp.github.io/yoyolp.github.io/_astro/02_2.C_cjzy1X_Z1Lu1tj.webp" alt="ida_02_2" /></p>
+<p><img src="https://yoyolp.github.io/_astro/02_1.DCwt6lgb_Z1Ian51.webp" alt="ida_02_1" />
+<img src="https://yoyolp.github.io/_astro/02_2.C_cjzy1X_DaO1v.webp" alt="ida_02_2" /></p>
 <p>找到flag的原始数据如下</p>
 <pre><code> ; flag
 .data:00000001400035EB                 db 40h, 7Dh, 43h, 6Fh, 42h, 6Fh, 2Ah, 79h, 71h, 21h, 2Ah
@@ -7832,8 +7832,8 @@ else:
   </entry>
   <entry>
     <title>ida03</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida03/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/ida03/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/ida03/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/ida03/</id>
     <published>2025-10-28T00:00:00.000Z</published>
     <updated>2025-10-28T00:00:00.000Z</updated>
     <summary>ida的简单使用</summary>
@@ -8336,8 +8336,8 @@ print("Flag:", flag)
   </entry>
   <entry>
     <title>day1</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/day1/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/day1/</id>
+    <link href="https://yoyolp.github.io/posts/other/day1/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/day1/</id>
     <published>2025-10-28T00:00:00.000Z</published>
     <updated>2025-10-28T00:00:00.000Z</updated>
     <summary>写了两道题目</summary>
@@ -8418,8 +8418,8 @@ print(result)
   </entry>
   <entry>
     <title>day5</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/day5/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/day5/</id>
+    <link href="https://yoyolp.github.io/posts/other/day5/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/day5/</id>
     <published>2025-10-22T00:00:00.000Z</published>
     <updated>2025-10-22T00:00:00.000Z</updated>
     <summary>一些题目和笔记</summary>
@@ -8481,8 +8481,8 @@ Date: Mon, 13 Oct 2025 13:53:27 GMT
   </entry>
   <entry>
     <title>day6</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/day6/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/day6/</id>
+    <link href="https://yoyolp.github.io/posts/other/day6/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/day6/</id>
     <published>2025-10-22T00:00:00.000Z</published>
     <updated>2025-10-22T00:00:00.000Z</updated>
     <summary>一些题目+ ZAP工具的使用 + SQL 相关</summary>
@@ -8626,8 +8626,8 @@ select 列名,列数 from TableName # 从TableName 中查找对应的值
   </entry>
   <entry>
     <title>day7</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/day7-pwn01/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/day7-pwn01/</id>
+    <link href="https://yoyolp.github.io/posts/other/day7-pwn01/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/day7-pwn01/</id>
     <published>2025-10-22T00:00:00.000Z</published>
     <updated>2025-10-22T00:00:00.000Z</updated>
     <summary>一些题目+ ZAP工具的使用 + SQL 相关wn 入门指北,Pwn 环境配置</summary>
@@ -8811,8 +8811,8 @@ note: Liunx 分配fd的时候总是会分配最小的未分配数
   </entry>
   <entry>
     <title>ewrok01</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/ework01/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/ework01/</id>
+    <link href="https://yoyolp.github.io/posts/other/ework01/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/ework01/</id>
     <published>2025-10-22T00:00:00.000Z</published>
     <updated>2025-10-22T00:00:00.000Z</updated>
     <summary>第二次考核的错题</summary>
@@ -9307,8 +9307,8 @@ int main(void)
   </entry>
   <entry>
     <title>正则表达式速查表</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/regextable/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/regextable/</id>
+    <link href="https://yoyolp.github.io/posts/other/regextable/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/regextable/</id>
     <published>2025-10-22T00:00:00.000Z</published>
     <updated>2025-10-22T00:00:00.000Z</updated>
     <summary>正则表达式速查表</summary>
@@ -9717,8 +9717,8 @@ int main(void)
   </entry>
   <entry>
     <title>day2</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/day2/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/day2/</id>
+    <link href="https://yoyolp.github.io/posts/other/day2/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/day2/</id>
     <published>2025-10-18T00:00:00.000Z</published>
     <updated>2025-10-18T00:00:00.000Z</updated>
     <summary>写了两道题目</summary>
@@ -9829,8 +9829,8 @@ fileInput.addEventListener('change', function(e) {
   </entry>
   <entry>
     <title>day3</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/day3/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/day3/</id>
+    <link href="https://yoyolp.github.io/posts/other/day3/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/day3/</id>
     <published>2025-10-18T00:00:00.000Z</published>
     <updated>2025-10-18T00:00:00.000Z</updated>
     <summary>linux 学习笔记</summary>
@@ -10128,8 +10128,8 @@ grep -C 2 "pattern" file.txt  # 显示匹配行前后各2行
   </entry>
   <entry>
     <title>day4</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/other/day4/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/other/day4/</id>
+    <link href="https://yoyolp.github.io/posts/other/day4/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/other/day4/</id>
     <published>2025-10-18T00:00:00.000Z</published>
     <updated>2025-10-18T00:00:00.000Z</updated>
     <summary>一些题目 + curl 指令的用法</summary>
@@ -10247,8 +10247,8 @@ else{
   </entry>
   <entry>
     <title>asm02</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm02/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm02/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/asm02/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/asm02/</id>
     <published>2025-10-13T00:00:00.000Z</published>
     <updated>2025-10-13T00:00:00.000Z</updated>
     <summary>gdb 的使用 Liunx syscall 系统调用约定， loop， Call&Ret, Stack栈的使用</summary>
@@ -11148,8 +11148,8 @@ _func_print_msg:
   </entry>
   <entry>
     <title>asm03</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm03/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/c_asm/asm03/</id>
+    <link href="https://yoyolp.github.io/posts/c_asm/asm03/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/c_asm/asm03/</id>
     <published>2025-10-13T00:00:00.000Z</published>
     <updated>2025-10-13T00:00:00.000Z</updated>
     <summary>GAS 汇编表示偏移地址, .include 伪指令</summary>
@@ -11498,8 +11498,8 @@ str2_loop:
   </entry>
   <entry>
     <title>Markdown Tutorial</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/markdown-tutorial/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/markdown-tutorial/</id>
+    <link href="https://yoyolp.github.io/posts/markdown-tutorial/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/markdown-tutorial/</id>
     <published>2025-01-20T00:00:00.000Z</published>
     <updated>2025-01-20T00:00:00.000Z</updated>
     <summary>A simple example of a Markdown blog post.</summary>
@@ -12221,8 +12221,8 @@ This is another regular paragraph.
   </entry>
   <entry>
     <title>Markdown Extended Features</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/markdown-extended/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/markdown-extended/</id>
+    <link href="https://yoyolp.github.io/posts/markdown-extended/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/markdown-extended/</id>
     <published>2024-05-01T00:00:00.000Z</published>
     <updated>2024-11-29T00:00:00.000Z</updated>
     <summary>Read more about Markdown features in Mizuki</summary>
@@ -12290,8 +12290,8 @@ This is a note with a custom title.
   </entry>
   <entry>
     <title>Simple Guides for Mizuki</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/guide/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/guide/</id>
+    <link href="https://yoyolp.github.io/posts/guide/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/guide/</id>
     <published>2024-04-01T00:00:00.000Z</published>
     <updated>2024-04-01T00:00:00.000Z</updated>
     <summary>How to use this blog template.</summary>
@@ -12381,8 +12381,8 @@ draft: false
   </entry>
   <entry>
     <title>Encrypted Post</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/encrypted-example/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/encrypted-example/</id>
+    <link href="https://yoyolp.github.io/posts/encrypted-example/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/encrypted-example/</id>
     <published>2024-01-15T00:00:00.000Z</published>
     <updated>2024-01-15T00:00:00.000Z</updated>
     <summary>This is an article for testing the page encryption feature</summary>
@@ -12563,8 +12563,8 @@ passwordHint: "Hint: The password is my dog's name"
   </entry>
   <entry>
     <title>Markdown Mermaid</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/markdown-mermaid/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/markdown-mermaid/</id>
+    <link href="https://yoyolp.github.io/posts/markdown-mermaid/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/markdown-mermaid/</id>
     <published>2023-10-01T00:00:00.000Z</published>
     <updated>2023-10-01T00:00:00.000Z</updated>
     <summary>A simple example of a Markdown blog post with Mermaid.</summary>
@@ -12727,8 +12727,8 @@ passwordHint: "Hint: The password is my dog's name"
   </entry>
   <entry>
     <title>Include Video in the Posts</title>
-    <link href="https://yoyolp.github.io/yoyolp.github.io/posts/video/" rel="alternate" type="text/html"/>
-    <id>https://yoyolp.github.io/yoyolp.github.io/posts/video/</id>
+    <link href="https://yoyolp.github.io/posts/video/" rel="alternate" type="text/html"/>
+    <id>https://yoyolp.github.io/posts/video/</id>
     <published>2022-08-01T00:00:00.000Z</published>
     <updated>2022-08-01T00:00:00.000Z</updated>
     <summary>This post demonstrates how to include embedded video in a blog post.</summary>
